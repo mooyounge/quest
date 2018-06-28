@@ -17,11 +17,15 @@ create table quest_genre(
     genre_number number unique
 );
 
+drop table quest_genre; -- 이거 삭제하고 게임 이름에 걍 집어넣어도 될거같음
+
 -- 게임 이름
 create table quest_game(
-    genre_number number references quest_genre(genre_number),
+    genre varchar2(30) not null,
     game_name varchar2(30) primary key
 );
+
+drop table quest_game;
 
 -- 게시판
 create table quest_board(
@@ -30,7 +34,7 @@ create table quest_board(
     board_name varchar2(20) not null
 );
 create sequence quest_board_id;
-
+drop table quest_board;
 -- 글 
 create table quest_post(
     post_id number primary key,
@@ -42,6 +46,8 @@ create table quest_post(
     post_like number default 0,
     post_dislike number default 0
 );
+
+
 create sequence quest_post_id;
 drop table quest_post;
 
@@ -55,13 +61,40 @@ create table quest_comment(
     comment_like number default 0,
     comment_dislike number default 0
 );
+drop table quest_comment;
 --신고
 
 
 --태그
 
 
+-- Insert
+insert into quest_user values
+('admin','admin','admin','khh971228@naver.com','01011111111','admin','971228','','');
 
+insert into quest_game values('RPG','검은사막');
+insert into quest_game values('RPG','테라');
+insert into quest_game values('RPG','리니지');
+insert into quest_game values('ALL','ALL');
+insert into quest_board values('ALL',quest_board_id.nextval,'실험게시판');
+select * from quest_board;
+insert into quest_post values(quest_post_id.nextval,1,'admin','test','test',systimestamp,0,0);
+insert into quest_post values(quest_post_id.nextval,1,'admin','test1','test1',systimestamp,0,0);
+insert into quest_post values(quest_post_id.nextval,1,'admin','test2','test2',systimestamp,0,0);
+insert into quest_post values(quest_post_id.nextval,1,'admin','test3','test3',systimestamp,0,0);
+insert into quest_post values(quest_post_id.nextval,1,'admin','test4','test4',systimestamp,0,0);
 
-
-
+select * from quest_post;    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

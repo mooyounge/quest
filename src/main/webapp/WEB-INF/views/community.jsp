@@ -38,12 +38,23 @@
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
+					<th>글쓴이</th>
 					<th>날짜</th>
 					<th>조회수</th>
 				</tr>
 			</thead>
 			<tbody>
 				<!-- 여기에 포문돌리면됨 -->
+				<c:forEach var="post" varStatus="status" items="${postList}">
+				<tr>
+					<td>${status.count}</td>
+					<td>${post.post_title}</td>
+					<td>${post.user_id}</td>
+					<td>${post.post_regdate}</td>
+					<td>${post.post_lookup}</td>
+				</tr>
+				</c:forEach>
+				
 				<tr>
 					<td>165</td>
 					<td>후하후하후하후하후ㅏ</td>

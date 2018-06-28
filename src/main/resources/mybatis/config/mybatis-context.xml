@@ -4,8 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
   <typeAliases>
+  	<package name="com.quest.vo"/>
   </typeAliases>
   <mappers>
+  	<mapper resource="mybatis/mapper/post.xml" />
   </mappers>
 </configuration>
 
