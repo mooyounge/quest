@@ -6,9 +6,16 @@ public class Post {
 	private String user_id;
 	private String post_title;
 	private String content;
-	private String regdate;
+	private String post_regdate;
 	private int post_like;
 	private int post_dislike;
+	private int post_lookup;
+	public int getPost_lookup() {
+		return post_lookup;
+	}
+	public void setPost_lookup(int post_lookup) {
+		this.post_lookup = post_lookup;
+	}
 	public int getPost_id() {
 		return post_id;
 	}
@@ -39,11 +46,11 @@ public class Post {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getRegdate() {
-		return regdate;
+	public String getPost_regdate() {
+		return post_regdate;
 	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setPost_regdate(String post_regdate) {
+		this.post_regdate = post_regdate;
 	}
 	public int getPost_like() {
 		return post_like;
