@@ -28,7 +28,7 @@
 				<ul class="links">
 					<li style="background-color:black;"><a href="index.html">Main</a></li>
 					<li><a href="gameShop.html">GameShop</a></li>
-					<li><a href="community.html">Community</a></li>
+					<li><a href="/community">Community</a></li>
 					<li><a href="streaming.html">Streaming</a></li>
 					<li><a href="gameReviews.html">Game Reviews</a></li>
 					<li><a href="Support.html">Support</a></li>
