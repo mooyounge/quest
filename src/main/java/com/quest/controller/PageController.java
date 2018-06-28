@@ -26,11 +26,13 @@ public class PageController {
 	public String community(Model model) {
 		
 		List<Post> postList = postService.getList();
-		System.out.println(postList.size());
-		System.out.println(postList.get(0).getPost_id());
 		model.addAttribute("postList",postList);
 		return "community";
 	}
 	
+	@GetMapping("/login")
+	public String loginGet() {
+		return "login";
+	}
 	
 }

@@ -46,8 +46,8 @@ create table quest_post(
     post_like number default 0,
     post_dislike number default 0
 );
-
-
+alter table quest_post add(post_lookup number default 0);
+select * from quest_post;
 create sequence quest_post_id;
 drop table quest_post;
 
