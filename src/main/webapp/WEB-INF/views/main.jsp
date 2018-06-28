@@ -50,7 +50,7 @@
 							</p>
 						</div>
 						<div>
-							<a href="community.html"><h3>Community</h3></a>
+							<a href="/community"><h3>Community</h3></a>
 							<p>Tristique yonve cursus jam nulla quam<br /> loreipsu gravida adipiscing lorem</p>
 						</div>
 					</div>
