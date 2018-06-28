@@ -55,30 +55,10 @@
 				</tr>
 				</c:forEach>
 				
-				<tr>
-					<td>165</td>
-					<td>후하후하후하후하후ㅏ</td>
-					<td>test</td>
-					<td>test</td>
-					<td>test</td>
-				</tr>
-				<tr>
-					<td>165</td>
-					<td>후하후하후하후하후ㅏ2</td>
-					<td>test</td>
-					<td>test</td>
-					<td>test</td>
-				</tr>
-				<tr>
-					<td>165</td>
-					<td>후하후하후하후하후ㅏ3</td>
-					<td>test</td>
-					<td>test</td>
-					<td>test</td>
-				</tr>
-
 			</tbody>
+			
 		</table>
+		<button class="btn btn-success writebtn" onclick="location.href='/postWrite'">글쓰기</button>
 		<hr />
 		<div class="text-center">
 			<ul class="pagination">
@@ -88,6 +68,7 @@
 				<li><a href="">4</a></li>
 				<li><a href="">5</a></li>
 			</ul>
+			
 		</div>
 	</div>
 
