@@ -6,7 +6,7 @@
 </nav>
 <a href="/" class="logo">QUEST</a>
 <nav class="right">
-	<a href="#" class="button alt">Log in</a>
+	<a href="/login" class="button alt">Log in</a>
 </nav>
 
 
@@ -21,6 +21,6 @@
 		<li><a href="Support.html">Support</a></li>
 	</ul>
 	<ul class="actions vertical">
-		<li><a href="#" class="button fit">Login</a></li>
+		<li><a href="/login" class="button fit">Login</a></li>
 	</ul>
 </nav>

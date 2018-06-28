@@ -34,4 +34,9 @@ public class PageController {
 		return "communitywrite";
 	}
 	
+	@GetMapping("/login")
+	public String loginGet() {
+		return "login";
+	}
+	
 }
