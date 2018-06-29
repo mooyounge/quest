@@ -64,9 +64,7 @@
 						<table border="0" width="100%">
 							<tr>
 								<td><p>
-									<div >
-										${post.post_content}
-									</div>
+									<div>${post.post_content}</div>
 									</p></td>
 							</tr>
 						</table>
@@ -76,14 +74,25 @@
 				<!-- //con_substance -->
 
 
+				<div style="display: inline-block;text-align:center;">
+					<a href="javascript:;" id="recommend_vote_up"
+						class="b_re_up fixed_name_box" title="추천"
+						style="width: 30px; heigth: 30px;"> <img src="/images/up.png"
+						alt="" />
+					</a>
+					<br />
+					${post.post_like}
+				</div>
 
-				<a href="javascript:;" id="recommend_vote_up"
-					class="b_re_up fixed_name_box" title="추천" style="width:30px;heigth:30px;">
-						<img src="/images/up.png" alt="" />
-				</a> <a href="javascript:;" id="recommend_vote_down" class="b_re_down"
-					title="비추천" style="width:30px;heigth:30px;">
-						<img src="/images/down.png" alt="" />
-				</a>
+				<div style="display: inline-block;text-align:center;">
+					<a href="javascript:;" id="recommend_vote_down" class="b_re_down"
+						title="비추천" style="width: 30px; heigth: 30px;"> <img
+						src="/images/down.png" alt="" />
+					</a>
+					<br />
+					${post.post_dislike}
+				</div>
+
 
 
 
