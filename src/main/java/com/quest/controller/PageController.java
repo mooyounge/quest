@@ -70,5 +70,10 @@ public class PageController {
 	public String signup() {
 		return "signup";
 	}
+
+	@GetMapping("/community/view")
+	public String comview() {
+		return "communityView";
+	}
 	
 }
