@@ -12,5 +12,7 @@ public interface PostService {
 	List<Post> getList();
 
 	void insert(Post post);
+
+	Post getPost(int id);
 	
 }

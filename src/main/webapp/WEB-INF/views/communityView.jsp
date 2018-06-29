@@ -40,18 +40,18 @@
 			<div class="w_top_left">
 				<dl class="wt_subject">
 					<dt>제 목</dt>
-					<dd>제목예시 ㅁㄴㅇㅎ</dd>
+					<dd>${post.post_title }</dd>
 				</dl>
 				<dl>
 					<dt>글쓴이</dt>
-					<dd>ㅁㄴㅇㄹ</dd>
+					<dd>${post.user_id }</dd>
 				</dl>
 			</div>
 			<!-- // w_top_left -->
 			<!--  w_top_right -->
 			<div>
 				<ul>
-					<li><b>2018-06-29 14:34:17</b></li>
+					<li><b>${post.post_regdate }</b></li>
 					<li>220.116.*.*</li>
 				</ul>
 			</div>
@@ -64,9 +64,8 @@
 						<table border="0" width="100%">
 							<tr>
 								<td><p>
-									<div app_paragraph="Dc_App_text_0" app_editorNo="0">
-										발키리 마에 미라등 특능포인트부터 소프트브리칭 스폰킬스팟 완벽히 숙지가능<br /> <br />대신 게임
-										안돌리고 유투브뒤져보면서 커스텀 존나게 돌려야함
+									<div >
+										${post.post_content}
 									</div>
 									</p></td>
 							</tr>
@@ -105,7 +104,7 @@
 					<c:forEach var="post" varStatus="status" items="${postList}">
 						<tr>
 							<td>${status.count}</td>
-							<td><a href="/community/view">${post.post_title}</a></td>
+							<td><a href="/community/view?id=${post.post_id}">${post.post_title}</a></td>
 							<td>${post.user_id}</td>
 							<td>${post.post_regdate}</td>
 							<td>${post.post_lookup}</td>

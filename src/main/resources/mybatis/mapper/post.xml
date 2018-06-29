@@ -6,8 +6,13 @@
 	<select id="getList" resultType="post">
 		select * from quest_post
 	</select>
+	
+	<select id="getPost" resultType="post" parameterType="int">
+		select * from quest_post where post_id = #{value}
+	</select>
+	
 	<insert id="insert" parameterType="post">
-		insert into quest_post values(quest_post_id.nextval,1,'admin',#{post_title},#{content},sysdate,0,0,0)
+		insert into quest_post values(quest_post_id.nextval,1,'admin',#{post_title},#{post_content},sysdate,0,0,0)
 	</insert>
 </mapper>
 
