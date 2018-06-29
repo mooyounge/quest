@@ -39,4 +39,9 @@ public class PageController {
 		return "login";
 	}
 	
+	@GetMapping("/community/view")
+	public String comview() {
+		return "communityView";
+	}
+	
 }

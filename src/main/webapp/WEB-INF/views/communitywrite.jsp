@@ -36,23 +36,24 @@
 
 	<div id="content-categories">자유 게시판</div>
 	<h3>새 글쓰기</h3>
-	<form id="writeForm" action="write_proc.jsp" method="post"
-		enctype="multipart/form-data">
+	<form id="writeForm" action="write_proc.jsp" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="boardCd" value="free" />
-		<table id="write-form" class="bbs-table">
-			<tr>
-				<td>제목</td>
-				<td><input type="text" name="title" style="width: 90%;" /></td>
-			</tr>
-			<div class="col-sm-8">
+		<div id="write-form" class="bbs-table">
+			<div>
+				<p>제목</p>
+				<p><input type="text" name="title" style="width: 90%;" /></p>
+			</div>
+			
+			<div class="">
 				<textarea id="content" class="form-control" rows="10"></textarea>
 			</div>
-
-			<tr>
-				<td>첨부 파일</td>
-				<td><input type="file" name="attachFile" /></td>
-			</tr>
-		</table>
+			
+			
+			<div>
+				<p>첨부 파일</p>
+				<p><input type="file" name="attachFile" /></p>
+			</div>
+		</div>
 		<div style="text-align: center; padding-bottom: 15px;">
 			<input type="submit" value="전송" /> <input type="button" value="취소" />
 			<input type="button" value="목록" />
