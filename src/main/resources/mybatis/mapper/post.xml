@@ -6,6 +6,9 @@
 	<select id="getList" resultType="post">
 		select * from quest_post
 	</select>
+	<insert id="insert" parameterType="post">
+		insert into quest_post values(quest_post_id.nextval,1,'admin',#{post_title},#{content},sysdate,0,0,0)
+	</insert>
 </mapper>
 
 

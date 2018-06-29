@@ -36,27 +36,28 @@
 
 	<div id="content-categories">자유 게시판</div>
 	<h3>새 글쓰기</h3>
-	<form id="writeForm" action="write_proc.jsp" method="post" enctype="multipart/form-data">
+
+	<form id="writeForm" action="/postWrite" method="post"
+		enctype="multipart/form-data">
 		<input type="hidden" name="boardCd" value="free" />
 		<div id="write-form" class="bbs-table">
 			<div>
 				<p>제목</p>
-				<p><input type="text" name="title" style="width: 90%;" /></p>
+				<p>
+					<input type="text" id="post_title" name="post_title"
+						style="width: 90%;" />
+				</p>
 			</div>
-			
-			<div class="">
-				<textarea id="content" class="form-control" rows="10"></textarea>
-			</div>
-			
-			
+
 			<div>
-				<p>첨부 파일</p>
-				<p><input type="file" name="attachFile" /></p>
+				<textarea id="content" name="content" class="form-control" rows="10"></textarea>
 			</div>
+
 		</div>
 		<div style="text-align: center; padding-bottom: 15px;">
-			<input type="submit" value="전송" /> <input type="button" value="취소" />
-			<input type="button" value="목록" />
+			<input type="submit" value="전송" /> <input type="button"
+				onclick="history.back();" value="취소" /> <input type="button"
+				value="목록" />
 		</div>
 	</form>
 	<!-- 본문 끝 -->
@@ -66,11 +67,7 @@
 	<footer id="footer">
 		<jsp:include page="include/footer.jsp" />
 	</footer>
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+
 	<!-- script libary -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script

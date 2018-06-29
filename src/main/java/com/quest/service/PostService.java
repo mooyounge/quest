@@ -10,5 +10,7 @@ import com.quest.vo.Post;
 public interface PostService {
 	
 	List<Post> getList();
+
+	void insert(Post post);
 	
 }
