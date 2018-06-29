@@ -1,11 +1,18 @@
 package com.quest.vo;
 
+import javax.validation.constraints.Size;
+
 public class Post {
 	private int post_id;
 	private int board_id;
 	private String user_id;
+	
+	@Size(min=3,max=15,message="3~15글자 이내로 작성해 주세요.")
 	private String post_title;
+	
+	@Size(min=3,max=500,message="3~500글자 이내로 작성해 주세요")
 	private String content;
+	
 	private String post_regdate;
 	private int post_like;
 	private int post_dislike;

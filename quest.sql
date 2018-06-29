@@ -44,9 +44,9 @@ create table quest_post(
     post_content clob not null,
     post_regdate date not null,
     post_like number default 0,
-    post_dislike number default 0
+    post_dislike number default 0,
+    post_lookup number default 0
 );
-alter table quest_post add(post_lookup number default 0);
 select * from quest_post;
 create sequence quest_post_id;
 drop table quest_post;
@@ -84,7 +84,7 @@ insert into quest_post values(quest_post_id.nextval,1,'admin','test2','test2',sy
 insert into quest_post values(quest_post_id.nextval,1,'admin','test3','test3',systimestamp,0,0);
 insert into quest_post values(quest_post_id.nextval,1,'admin','test4','test4',systimestamp,0,0);
 
-select * from quest_post;    
+select * from quest_post;
     
     
     
