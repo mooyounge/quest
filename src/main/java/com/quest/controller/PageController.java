@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.quest.service.PostService;
 import com.quest.vo.Post;
@@ -51,9 +52,6 @@ public class PageController {
 			return "communitywrite";
 		}
 		
-		System.out.println(post.getPost_title());
-		System.out.println(post.getContent());
-		
 		postService.insert(post);
 		
 		return "redirect:/community";
@@ -72,7 +70,12 @@ public class PageController {
 	}
 
 	@GetMapping("/community/view")
-	public String comview() {
+	public String comview(Model model,@RequestParam int id) {
+		Post post = postService.getPost(id);
+		
+		List<Post> postList = postService.getList();
+		model.addAttribute("post",post);
+		model.addAttribute("postList",postList);
 		return "communityView";
 	}
 	

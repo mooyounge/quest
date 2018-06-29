@@ -47,7 +47,7 @@
 				<c:forEach var="post" varStatus="status" items="${postList}">
 					<tr>
 						<td>${status.count}</td>
-						<td><a href="/community/view">${post.post_title}</a></td>
+						<td><a href="/community/view?id=${post.post_id}">${post.post_title}</a></td>
 						<td>${post.user_id}</td>
 						<td>${post.post_regdate}</td>
 						<td>${post.post_lookup}</td>

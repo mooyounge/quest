@@ -23,5 +23,10 @@ public class PostServiceImpl implements PostService {
 	public void insert(Post post) {
 		postDao.insert(post);
 	}
+
+	@Override
+	public Post getPost(int id) {
+		return postDao.getPost(id);
+	}
 	
 }

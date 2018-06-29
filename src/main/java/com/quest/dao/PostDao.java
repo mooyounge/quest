@@ -22,6 +22,11 @@ public class PostDao {
 		session.insert("post.insert",post);
 		
 	}
+
+	public Post getPost(int id) {
+		return session.selectOne("post.getPost",id);
+		
+	}
 	
 	
 	
