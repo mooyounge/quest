@@ -40,6 +40,7 @@
 	<form id="writeForm" action="/postWrite" method="post"
 		enctype="multipart/form-data">
 		<input type="hidden" name="boardCd" value="free" />
+
 		<div id="write-form" class="bbs-table">
 			<div>
 				<p>제목</p>
