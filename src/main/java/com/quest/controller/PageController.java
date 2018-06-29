@@ -22,12 +22,13 @@ public class PageController {
 	@Autowired
 	PostService postService;
 	
-	
+	//메인
 	@GetMapping("/")
 	public String main() {
 		return "main";
 	}
 	
+	//커뮤니티
 	@GetMapping("/community")
 	public String community(Model model) {
 		
@@ -35,11 +36,14 @@ public class PageController {
 		model.addAttribute("postList",postList);
 		return "community";
 	}
+	
+	//글쓰기 view로 보냄
 	@GetMapping("/postWrite")
 	public String postWrite() {
 		return "communitywrite";
 	}
 	
+	//글 데이터베이스로 보냄
 	@PostMapping("/postWrite")
 	public String postWritepost(@ModelAttribute @Valid Post post,BindingResult result) {
 		
@@ -55,10 +59,16 @@ public class PageController {
 		return "redirect:/community";
 	}
 	
-	
+	//로그인
 	@GetMapping("/login")
 	public String loginGet() {
 		return "login";
+	}
+	
+	//회원가입
+	@GetMapping("/signup")
+	public String signup() {
+		return "signup";
 	}
 	
 }
