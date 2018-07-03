@@ -5,7 +5,6 @@
 <div class="text-center">
 	<ul class="pagination">
 		<li><a href="javascript:move('/community/ajaxlist?page=${param.firstPageNo}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if>')" class="first">처음</a></li>
-		<li><a href="javascript:move('/community/ajaxlist?page=${param.prevPageNo}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if>')" class="prev">이전</a></li>
 		<c:forEach var="i" begin="${param.startPageNo}"
 			end="${param.endPageNo}" step="1">
 			<c:choose>
@@ -17,7 +16,6 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<li><a href="javascript:move('/community/ajaxlist?page=${param.nextPageNo}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if>')" class="next">다음</a></li>
 		<li><a href="javascript:move('/community/ajaxlist?page=${param.finalPageNo}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if>')" class="last">마지막</a></li>
 	</ul>
 </div>
