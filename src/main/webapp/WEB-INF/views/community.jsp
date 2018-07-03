@@ -26,10 +26,12 @@
 	<jsp:include page="include/comnav.jsp" />
 
 	<div class="container">
-		<div class="menuleft">
+		<div class="menuleft text-center">
 			<ul>
-				<li><a href="">정보게시판</a></li>
-				<li><a href="">자유게시판</a></li>
+				<li style="background: #25a2c3;width:150px;"><a href=""
+					style="color: white;">정보게시판</a></li>
+				<li style="background: #25a2c3;width:150px;"><a href=""
+					style="color: white;">자유게시판</a></li>
 			</ul>
 		</div>
 		<table class="table table-striped table-hover">
@@ -69,10 +71,10 @@
 					<option value="content">내용</option>
 					<option value="name">글쓴이</option>
 					<option value="title_content">제목+내용</option>
-				</select>
-				<input type="text" id="search_text"
+				</select> <input type="text" id="search_text"
 					style="width: 200px; height: 30px; display: inline-block;" />
-				<button class="btn btn-success writebtn" onclick="location.href='/community'"
+				<button class="btn btn-success writebtn"
+					onclick="location.href='/community'"
 					style="width: 80px; height: 30px; display: inline-block; margin-left: 10px;">전체목록
 				</button>
 				<button class="btn btn-success writebtn" onclick="search()"
@@ -103,17 +105,17 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script>
-		function search(){
+		function search() {
 			var option = $("#search_option").val();
 			var text = $("#search_text").val();
-			if(option != null && text == ""){
+			if (option != null && text == "") {
 				alert("검색어를 입력해 주세요");
 				$("#search_text").focus();
 				return;
 			}
-			
-			location.href = "?option="+option+"&text="+text;
-			
+
+			location.href = "?option=" + option + "&text=" + text;
+
 		}
 	</script>
 </body>

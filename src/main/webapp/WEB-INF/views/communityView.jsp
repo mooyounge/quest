@@ -81,17 +81,12 @@
 						alt="" />
 					</a> <br /> ${post.post_like}
 				</div>
-
 				<div style="display: inline-block; text-align: center;">
 					<a href="javascript:;" id="recommend_vote_down" class="b_re_down"
 						title="비추천" style="width: 30px; heigth: 30px;"> <img
 						src="/images/down.png" alt="" />
 					</a> <br /> ${post.post_dislike}
 				</div>
-
-
-
-
 			</div>
 
 			<table class="table table-striped table-hover">

@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <style>
 .menubar li {
 	display: inline-block;
 	width: 16%;
-	background: gray;
+	background: #25a2c3;
 }
 
 .menubar li ul {
+	width: 16%;
 	height: 300px;
 	display: none; /* 평상시에는 서브메뉴가 안보이게 하기 */
 	height: auto;
@@ -22,9 +23,9 @@
 }
 
 .menubar li ul li {
-	width: 200px;
+	width: 100%;
 	display: block;
-	background: green;
+	background: #25a2c3;
 }
 
 .menubar {
@@ -32,7 +33,7 @@
 }
 
 .menubar li a {
-	color: black;
+	color: white;
 }
 </style>
 
