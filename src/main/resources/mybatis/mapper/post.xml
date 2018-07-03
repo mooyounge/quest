@@ -37,6 +37,29 @@
 
 	<select id="getSize" resultType="int">
 		select count(post_id) from quest_post
+						<if test="option != null">
+			        	where
+			        	<choose>
+			        		<when test="option == 'all'">
+			        			user_id like '%'||#{text}||'%' or
+			        			post_title like '%'||#{text}||'%' or
+			        			post_content like '%'||#{text}||'%'
+			        		</when>
+			        		<when test="option == 'name'">
+			        			user_id like '%'||#{text}||'%'
+			        		</when>
+			        		<when test="option == 'title'">
+			        			post_title like '%'||#{text}||'%'
+			        		</when>
+			        		<when test="option == 'content'">
+			        			post_content like '%'||#{text}||'%'
+			        		</when>
+			        		<when test="option == 'title_content'">
+			        			post_title like '%'||#{text}||'%' or
+			        			post_content like '%'||#{text}||'%'
+			        		</when>
+			        	</choose>
+			        </if>
 	</select>
 	
 	<insert id="insert" parameterType="post">

@@ -33,8 +33,13 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public int getSize() {
-		return postDao.getSize();
+	public int getSize(String option, String text) {
+		
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("option", option);
+		map.put("text", text);
+		
+		return postDao.getSize(map);
 	}
 	
 	@Override

@@ -29,8 +29,8 @@ public class PostDao {
 		
 	}
 
-	public int getSize() {
-		return session.selectOne("post.getSize");
+	public int getSize(Map<String, Object> map) {
+		return session.selectOne("post.getSize",map);
 	}
 
 	public List<Post> getList(Map<String, Object> map) {

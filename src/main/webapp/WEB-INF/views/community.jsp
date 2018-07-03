@@ -83,7 +83,7 @@
 				<input type="text" id="search_text"
 					style="width: 200px; height: 30px; display: inline-block;" />
 				
-				<button class="btn btn-success writebtn" onclick=""
+				<button class="btn btn-success writebtn" onclick="location.href='/community'"
 					style="width: 80px; height: 30px; display: inline-block;">전체목록
 				</button>
 				<button class="btn btn-success writebtn" onclick="search()"

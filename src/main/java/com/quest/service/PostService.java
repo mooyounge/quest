@@ -16,7 +16,7 @@ public interface PostService {
 
 	Post getPost(int id);
 	
-	int getSize();
+	int getSize(String option, String text);
 
 	List<Post> getList(String option, String text, Paging paging);
 

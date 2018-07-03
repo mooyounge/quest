@@ -42,13 +42,10 @@ public class PageController {
 			searchParam = "&option="+option+"&text="+text;
 		}
 		
-		
         Paging paging = getPaging(page);
         List<Post> postList = postService.getList(option,text,paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
         
-        paging.setTotalCount(postService.getSize());
-        
-        
+        paging.setTotalCount(postService.getSize(option,text));
         
         model.addAttribute("paging",paging);
         
@@ -107,7 +104,7 @@ public class PageController {
 	private Paging getPaging(int page) {
 		Paging paging = new Paging();
         paging.setPageNo(page);
-        paging.setPageSize(10);
+        paging.setPageSize(2);
         
         return paging;
 	}
