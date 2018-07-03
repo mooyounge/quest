@@ -1,6 +1,7 @@
 package com.quest.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,14 @@ public class PostDao {
 	public Post getPost(int id) {
 		return session.selectOne("post.getPost",id);
 		
+	}
+
+	public int getSize() {
+		return session.selectOne("post.getSize");
+	}
+
+	public List<Post> getList(Map<String, Object> map) {
+		return session.selectList("post.getList",map);
 	}
 	
 	

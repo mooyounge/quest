@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.quest.util.Paging;
 import com.quest.vo.Post;
 
 @Service
@@ -15,4 +16,7 @@ public interface PostService {
 
 	Post getPost(int id);
 	
+	int getSize();
+
+	List<Post> getList(Paging paging);
 }
