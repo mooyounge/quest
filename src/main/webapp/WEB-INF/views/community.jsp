@@ -113,13 +113,8 @@
 				$("#search_text").focus();
 				return;
 			}
-<<<<<<< HEAD
 
 			location.href = "?option=" + option + "&text=" + text;
-
-=======
-			location.href = "?option="+option+"&text="+text;
->>>>>>> branch 'master' of https://github.com/mooyounge/quest.git
 		}
 	</script>
 </body>
