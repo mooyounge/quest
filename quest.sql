@@ -85,7 +85,8 @@ insert into quest_post values(quest_post_id.nextval,1,'admin','test3','test3',sy
 insert into quest_post values(quest_post_id.nextval,1,'admin','test4','test4',systimestamp,0,0);
 
 select * from quest_post;
-    
+
+select count(post_id) from quest_post;    
     
     
     

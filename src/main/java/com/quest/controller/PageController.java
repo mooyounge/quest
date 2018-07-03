@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.quest.service.PostService;
+import com.quest.util.Paging;
 import com.quest.vo.Post;
 
 
@@ -31,9 +32,20 @@ public class PageController {
 	
 	//커뮤니티
 	@GetMapping("/community")
-	public String community(Model model) {
+	public String community(Model model,@RequestParam(defaultValue="1") int page) {
 		
-		List<Post> postList = postService.getList();
+        Paging paging = new Paging();
+        paging.setPageNo(page);
+        paging.setPageSize(1); 
+        
+        List<Post> postList = postService.getList(paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
+        
+        paging.setTotalCount(postService.getSize());
+        
+        
+        
+        model.addAttribute("paging",paging);
+        
 		model.addAttribute("postList",postList);
 		return "community";
 	}

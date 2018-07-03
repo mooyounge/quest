@@ -3,17 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="post">
-	<select id="getList" resultType="post">
-		select * from quest_post
+	<select id="getList" resultType="post" parameterType="map">
+		select * from (select rownum as rnum, a.* 
+		from (select * from quest_post) a) where rnum between #{start} and #{end}
 	</select>
 	
 	<select id="getPost" resultType="post" parameterType="int">
 		select * from quest_post where post_id = #{value}
 	</select>
+
+	<select id="getSize" resultType="int">
+		select count(post_id) from quest_post
+	</select>
 	
 	<insert id="insert" parameterType="post">
 		insert into quest_post values(quest_post_id.nextval,1,'admin',#{post_title},#{post_content},sysdate,0,0,0)
 	</insert>
+	
 </mapper>
 
 
