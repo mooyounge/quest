@@ -28,9 +28,9 @@
 	<div class="container">
 		<div class="menuleft text-center">
 			<ul>
-				<li style="background: #25a2c3;width:150px;"><a href=""
+				<li style="background: #25a2c3; width: 150px;"><a href=""
 					style="color: white;">정보게시판</a></li>
-				<li style="background: #25a2c3;width:150px;"><a href=""
+				<li style="background: #25a2c3; width: 150px;"><a href=""
 					style="color: white;">자유게시판</a></li>
 			</ul>
 		</div>
@@ -71,10 +71,11 @@
 					<option value="content">내용</option>
 					<option value="name">글쓴이</option>
 					<option value="title_content">제목+내용</option>
-				</select>
-				<input type="text" id="search_text"
-					style="width: 200px; height: 30px; display: inline-block;" value="${param.text}" />
-				<button class="btn btn-success writebtn" onclick="location.href='/community'"
+				</select> <input type="text" id="search_text"
+					style="width: 200px; height: 30px; display: inline-block;"
+					value="${param.text}" />
+				<button class="btn btn-success writebtn"
+					onclick="location.href='/community'"
 					style="width: 80px; height: 30px; display: inline-block; margin-left: 10px;">전체목록
 				</button>
 				<button class="btn btn-success writebtn" onclick="search()"
@@ -82,7 +83,6 @@
 			</div>
 			<button class="btn btn-success writebtn"
 				onclick="location.href='/postWrite'" style="height: 30px;">글쓰기</button>
-
 			<jsp:include page="include/paging.jsp" flush="flase">
 				<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
 				<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
