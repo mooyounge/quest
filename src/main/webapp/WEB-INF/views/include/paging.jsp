@@ -10,7 +10,7 @@
 			end="${param.endPageNo}" step="1">
 			<c:choose>
 				<c:when test="${i eq param.pageNo}">
-					<li><a href="/community?page=${i}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if>" class="choice" style="background-color: black;">${i}</a></li>
+					<li><a href="/community?page=${i}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if>" class="choice" style="background-color: #3ec5f0;">${i}</a></li>
 				</c:when>
 				<c:otherwise>
 					<li><a href="/community?page=${i}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if>">${i}</a></li>
