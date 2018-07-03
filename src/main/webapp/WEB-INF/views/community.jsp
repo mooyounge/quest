@@ -62,20 +62,20 @@
 
 		<div class="text-center">
 			<div class="search actions" style="display: inline-block;">
-				<select name="job"
+				<select id="search_option"
 					style="display: inline-block; width: 70px; height: 30px;">
-					<option value="전체" selected="selected">전체</option>
-					<option value="제목">제목</option>
-					<option value="내용">내용</option>
-					<option value="글쓴이">글쓴이</option>
-					<option value="제목+내용">제목+내용</option>
-				</select> <input type="text"
+					<option value="all" selected="selected">전체</option>
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+					<option value="name">글쓴이</option>
+					<option value="title_content">제목+내용</option>
+				</select>
+				<input type="text" id="search_text"
 					style="width: 200px; height: 30px; display: inline-block;" />
-
-				<button class="btn btn-success writebtn" onclick=""
+				<button class="btn btn-success writebtn" onclick="location.href='/community'"
 					style="width: 80px; height: 30px; display: inline-block; margin-left: 10px;">전체목록
 				</button>
-				<button class="btn btn-success writebtn" onclick=""
+				<button class="btn btn-success writebtn" onclick="search()"
 					style="width: 70px; height: 30px; display: inline-block; margin-left: 10px;">검색</button>
 			</div>
 			<button class="btn btn-success writebtn"
@@ -102,5 +102,19 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script>
+		function search(){
+			var option = $("#search_option").val();
+			var text = $("#search_text").val();
+			if(option != null && text == ""){
+				alert("검색어를 입력해 주세요");
+				$("#search_text").focus();
+				return;
+			}
+			
+			location.href = "?option="+option+"&text="+text;
+			
+		}
+	</script>
 </body>
 </html>

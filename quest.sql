@@ -88,8 +88,8 @@ select * from quest_post;
 
 select count(post_id) from quest_post;    
     
-    
-    
+select * from (select rownum as rnum, a.* 
+		from (select * from quest_post) a);
     
     
     
