@@ -32,11 +32,19 @@ public class PageController {
 	
 	//커뮤니티
 	@GetMapping("/community")
-	public String community(Model model,@RequestParam(defaultValue="1") int page) {
+	public String community(Model model,
+							@RequestParam(required=false) String option,
+							@RequestParam(required=false) String text,
+							@RequestParam(defaultValue="1") int page) {
+		
+		String searchParam = "";
+		if(option != null) {
+			searchParam = "&option="+option+"&text="+text;
+		}
+		
 		
         Paging paging = getPaging(page);
-        
-        List<Post> postList = postService.getList(paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
+        List<Post> postList = postService.getList(option,text,paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
         
         paging.setTotalCount(postService.getSize());
         
@@ -80,11 +88,14 @@ public class PageController {
 	}
 
 	@GetMapping("/community/view")
-	public String comview(Model model,@RequestParam int id,@RequestParam(defaultValue="1") int page) {
+	public String comview(Model model,@RequestParam int id,
+						@RequestParam(required=false) String option,
+						@RequestParam(required=false) String text,
+						@RequestParam(defaultValue="1") int page) {
 		Post post = postService.getPost(id);
 		
 		Paging paging = getPaging(page);
-		List<Post> postList = postService.getList(paging);
+		List<Post> postList = postService.getList(option,text,paging);
 		
 		
 		model.addAttribute("post",post);
@@ -96,7 +107,7 @@ public class PageController {
 	private Paging getPaging(int page) {
 		Paging paging = new Paging();
         paging.setPageNo(page);
-        paging.setPageSize(1);
+        paging.setPageSize(10);
         
         return paging;
 	}

@@ -36,14 +36,18 @@ public class PostServiceImpl implements PostService {
 	public int getSize() {
 		return postDao.getSize();
 	}
-
+	
 	@Override
-	public List<Post> getList(Paging paging) {
+	public List<Post> getList(String option, String text, Paging paging) {
 		
 		Map<String,Object> map = getSearchMap(paging);
 		
+		map.put("option", option);
+		map.put("text", text);
+		
 		return postDao.getList(map);
 	}
+	
 	
 	
 	private Map<String, Object> getSearchMap(
@@ -57,5 +61,4 @@ public class PostServiceImpl implements PostService {
 	
 	return searchMap;
 	}
-	
 }
