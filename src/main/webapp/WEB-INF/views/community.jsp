@@ -58,19 +58,22 @@
 
 		</table>
 
-		<button class="btn btn-success writebtn"
-			onclick="location.href='/postWrite'">글쓰기</button>
-		<hr />
-		<div class="text-center col-sm-offset-4">
+
+		<div class="text-center">
 			<ul class="pagination">
-				<li><a href="">1</a></li>
-				<li><a href="">2</a></li>
-				<li><a href="">3</a></li>
-				<li><a href="">4</a></li>
-				<li><a href="">5</a></li>
+				<jsp:include page="include/paging.jsp" flush="flase">
+					<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
+					<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
+					<jsp:param name="startPageNo" value="${paging.startPageNo}" />
+					<jsp:param name="pageNo" value="${paging.pageNo}" />
+					<jsp:param name="endPageNo" value="${paging.endPageNo}" />
+					<jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
+					<jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
+				</jsp:include>
 			</ul>
 			<div class="search actions" style="display: inline-block;">
-				<select id="search_option" style="display: inline-block;width: 70px; height: 30px;">
+				<select id="search_option"
+					style="display: inline-block; width: 70px; height: 30px;">
 					<option value="all" selected="selected">전체</option>
 					<option value="title">제목</option>
 					<option value="content">내용</option>
@@ -79,20 +82,20 @@
 				</select>
 				<input type="text" id="search_text"
 					style="width: 200px; height: 30px; display: inline-block;" />
+				
+				<button class="btn btn-success writebtn" onclick=""
+					style="width: 80px; height: 30px; display: inline-block;">전체목록
+				</button>
 				<button class="btn btn-success writebtn" onclick="search()"
 					style="width: 70px; height: 30px; display: inline-block;">검색</button>
 			</div>
+			<button class="btn btn-success writebtn"
+				onclick="location.href='/postWrite'"
+				style="height: 30px; margin-top: 15px;">글쓰기</button>
 		</div>
+
 	</div>
-	<jsp:include page="include/paging.jsp" flush="flase">
-    <jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
-    <jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
-    <jsp:param name="startPageNo" value="${paging.startPageNo}" />
-    <jsp:param name="pageNo" value="${paging.pageNo}" />
-    <jsp:param name="endPageNo" value="${paging.endPageNo}" />
-    <jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
-    <jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
-	</jsp:include>
+
 	<footer id="footer">
 		<jsp:include page="include/footer.jsp" />
 	</footer>
