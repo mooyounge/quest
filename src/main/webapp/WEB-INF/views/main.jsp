@@ -25,9 +25,6 @@
 					<p>
 						Morbi in sem quis dui plalorem ipsum<br /> euismod in, pharetra
 						sed ultricies.
-
-
-
 					</p>
 				</div>
 				<div>
@@ -167,16 +164,12 @@
 				</div>
 			</div>
 		</section>
-
 		<!-- Footer -->
 		<footer id="footer">
 			<jsp:include page="include/footer.jsp" />
 		</footer>
-
-
 		<!-- script libary -->
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<script
-			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>
