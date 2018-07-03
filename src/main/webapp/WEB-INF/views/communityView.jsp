@@ -26,10 +26,12 @@
 	<jsp:include page="include/comnav.jsp" />
 
 	<div class="container">
-		<div class="menuleft">
+		<div class="menuleft text-center">
 			<ul>
-				<li><a href="">정보게시판</a></li>
-				<li><a href="">자유게시판</a></li>
+				<li style="background: #25a2c3;width:150px;"><a href=""
+					style="color: white;">정보게시판</a></li>
+				<li style="background: #25a2c3;width:150px;"><a href=""
+					style="color: white;">자유게시판</a></li>
 			</ul>
 		</div>
 
@@ -89,7 +91,7 @@
 				</div>
 			</div>
 
-			<table class="table table-striped table-hover">
+			<table class="table table-striped table-hover" id="post_table">
 				<thead>
 					<tr>
 						<th>번호</th>
@@ -99,7 +101,8 @@
 						<th>조회수</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="posts">
+				
 					<!-- 여기에 포문돌리면됨 -->
 					<c:forEach var="post" varStatus="status" items="${postList}">
 						<tr>
@@ -118,7 +121,7 @@
 			<div class="text-center">
 				<div class="search actions" style="display: inline-block;">
 					<select id="search_option"
-						style="display: inline-block; width: 70px; height: 30px;">
+						style="display: inline-block; width: 150px; height: 30px;">
 						<option value="all" selected="selected">전체</option>
 						<option value="title">제목</option>
 						<option value="content">내용</option>
@@ -136,7 +139,7 @@
 				<button class="btn btn-success writebtn"
 					onclick="location.href='/postWrite'" style="height: 30px;">글쓰기</button>
 
-				<jsp:include page="include/paging.jsp" flush="flase">
+				<jsp:include page="include/pagingwithajax.jsp" flush="flase">
 					<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
 					<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
 					<jsp:param name="startPageNo" value="${paging.startPageNo}" />
@@ -149,20 +152,29 @@
 		</div>
 	</div>
 
-
-
-
-
-
-
-
 	<footer id="footer">
 		<jsp:include page="include/footer.jsp" />
 	</footer>
-
+	
 	<!-- script libary -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script>
+	function search(){
+		var option = $("#search_option").val();
+		var text = $("#search_text").val();
+		if(option != null && text == ""){
+			alert("검색어를 입력해 주세요");
+			$("#search_text").focus();
+			return;
+		}
+		//수정 해야됨 community 로 가야됨.
+		location.href = "/community?option="+option+"&text="+text;
+	}
+	
+	
+	
+	</script>
 </body>
 </html>

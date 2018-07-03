@@ -50,7 +50,7 @@
 					<tr>
 						<td>${status.count}</td>
 						<td><a
-							href="/community/view?id=${post.post_id}&page=${param.page}">${post.post_title}</a></td>
+							href="/community/view?id=${post.post_id}&page=${param.page}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if>">${post.post_title}</a></td>
 						<td>${post.user_id}</td>
 						<td>${post.post_regdate}</td>
 						<td>${post.post_lookup}</td>
@@ -65,16 +65,16 @@
 		<div class="text-center">
 			<div class="search actions" style="display: inline-block;">
 				<select id="search_option"
-					style="display: inline-block; width: 70px; height: 30px;">
+					style="display: inline-block; width: 150px; height: 30px;">
 					<option value="all" selected="selected">전체</option>
 					<option value="title">제목</option>
 					<option value="content">내용</option>
 					<option value="name">글쓴이</option>
 					<option value="title_content">제목+내용</option>
-				</select> <input type="text" id="search_text"
-					style="width: 200px; height: 30px; display: inline-block;" />
-				<button class="btn btn-success writebtn"
-					onclick="location.href='/community'"
+				</select>
+				<input type="text" id="search_text"
+					style="width: 200px; height: 30px; display: inline-block;" value="${param.text}" />
+				<button class="btn btn-success writebtn" onclick="location.href='/community'"
 					style="width: 80px; height: 30px; display: inline-block; margin-left: 10px;">전체목록
 				</button>
 				<button class="btn btn-success writebtn" onclick="search()"
@@ -113,9 +113,13 @@
 				$("#search_text").focus();
 				return;
 			}
+<<<<<<< HEAD
 
 			location.href = "?option=" + option + "&text=" + text;
 
+=======
+			location.href = "?option="+option+"&text="+text;
+>>>>>>> branch 'master' of https://github.com/mooyounge/quest.git
 		}
 	</script>
 </body>

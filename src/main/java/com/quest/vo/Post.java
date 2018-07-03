@@ -3,6 +3,7 @@ package com.quest.vo;
 import javax.validation.constraints.Size;
 
 public class Post {
+	private int rnum;
 	private int post_id;
 	private int board_id;
 	private String user_id;
@@ -17,6 +18,13 @@ public class Post {
 	private int post_like;
 	private int post_dislike;
 	private int post_lookup;
+	
+	public int getRnum() {
+		return rnum;
+	}
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
 	public int getPost_lookup() {
 		return post_lookup;
 	}
