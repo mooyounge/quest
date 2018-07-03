@@ -34,9 +34,7 @@ public class PageController {
 	@GetMapping("/community")
 	public String community(Model model,@RequestParam(defaultValue="1") int page) {
 		
-        Paging paging = new Paging();
-        paging.setPageNo(page);
-        paging.setPageSize(1); 
+        Paging paging = getPaging(page);
         
         List<Post> postList = postService.getList(paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
         
@@ -82,13 +80,25 @@ public class PageController {
 	}
 
 	@GetMapping("/community/view")
-	public String comview(Model model,@RequestParam int id) {
+	public String comview(Model model,@RequestParam int id,@RequestParam(defaultValue="1") int page) {
 		Post post = postService.getPost(id);
 		
-		List<Post> postList = postService.getList();
+		Paging paging = getPaging(page);
+		List<Post> postList = postService.getList(paging);
+		
+		
 		model.addAttribute("post",post);
 		model.addAttribute("postList",postList);
 		return "communityView";
+	}
+	
+	
+	private Paging getPaging(int page) {
+		Paging paging = new Paging();
+        paging.setPageNo(page);
+        paging.setPageSize(1);
+        
+        return paging;
 	}
 	
 }
