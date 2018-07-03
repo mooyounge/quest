@@ -116,6 +116,13 @@
 
 			location.href = "?option=" + option + "&text=" + text;
 		}
+		
+		$(function(){
+			if(${param.option != null}){
+				$("#search_option").val("${param.option}").prop("selected",true);
+			}
+		});
+		
 	</script>
 </body>
 </html>
