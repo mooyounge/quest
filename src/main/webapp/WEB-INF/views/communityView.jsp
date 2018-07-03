@@ -28,9 +28,9 @@
 	<div class="container">
 		<div class="menuleft text-center">
 			<ul>
-				<li style="background: #25a2c3;width:150px;"><a href=""
+				<li style="background: #25a2c3; width: 150px;"><a href=""
 					style="color: white;">정보게시판</a></li>
-				<li style="background: #25a2c3;width:150px;"><a href=""
+				<li style="background: #25a2c3; width: 150px;"><a href=""
 					style="color: white;">자유게시판</a></li>
 			</ul>
 		</div>
@@ -102,7 +102,7 @@
 					</tr>
 				</thead>
 				<tbody id="posts">
-				
+
 					<!-- 여기에 포문돌리면됨 -->
 					<c:forEach var="post" varStatus="status" items="${postList}">
 						<tr>
@@ -155,7 +155,7 @@
 	<footer id="footer">
 		<jsp:include page="include/footer.jsp" />
 	</footer>
-	
+
 	<!-- script libary -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
@@ -172,7 +172,11 @@
 		//수정 해야됨 community 로 가야됨.
 		location.href = "/community?option="+option+"&text="+text;
 	}
-	
+	$(function(){
+		if(${param.option != null}){
+			$("#search_option").val("${param.option}").prop("selected",true);
+		}
+	});
 	
 	
 	</script>
