@@ -48,7 +48,7 @@
 					<tr>
 						<td>${status.count}</td>
 						<td><a
-							href="/community/view?id=${post.post_id}&page=${param.page}">${post.post_title}</a></td>
+							href="/community/view?id=${post.post_id}&page=${param.page}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if>">${post.post_title}</a></td>
 						<td>${post.user_id}</td>
 						<td>${post.post_regdate}</td>
 						<td>${post.post_lookup}</td>
@@ -71,7 +71,7 @@
 					<option value="title_content">제목+내용</option>
 				</select>
 				<input type="text" id="search_text"
-					style="width: 200px; height: 30px; display: inline-block;" />
+					style="width: 200px; height: 30px; display: inline-block;" value="${param.text}" />
 				<button class="btn btn-success writebtn" onclick="location.href='/community'"
 					style="width: 80px; height: 30px; display: inline-block; margin-left: 10px;">전체목록
 				</button>
@@ -111,9 +111,7 @@
 				$("#search_text").focus();
 				return;
 			}
-			
 			location.href = "?option="+option+"&text="+text;
-			
 		}
 	</script>
 </body>

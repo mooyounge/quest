@@ -1,6 +1,8 @@
 package com.quest.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.quest.service.PostService;
 import com.quest.util.Paging;
@@ -43,9 +46,12 @@ public class PageController {
 		}
 		
         Paging paging = getPaging(page);
-        List<Post> postList = postService.getList(option,text,paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
         
         paging.setTotalCount(postService.getSize(option,text));
+        
+        List<Post> postList = postService.getList(option,text,paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
+        
+        
         
         model.addAttribute("paging",paging);
         
@@ -91,13 +97,38 @@ public class PageController {
 						@RequestParam(defaultValue="1") int page) {
 		Post post = postService.getPost(id);
 		
-		Paging paging = getPaging(page);
-		List<Post> postList = postService.getList(option,text,paging);
+		String searchParam = "";
+		if(option != null) {
+			searchParam = "&option="+option+"&text="+text;
+		}
 		
+        Paging paging = getPaging(page);
+        
+        
+        List<Post> postList = postService.getList(option,text,paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
+        
+        paging.setTotalCount(postService.getSize(option,text));
 		
+        model.addAttribute("paging",paging);
 		model.addAttribute("post",post);
 		model.addAttribute("postList",postList);
 		return "communityView";
+	}
+	
+	@PostMapping("/community/ajaxlist")
+	@ResponseBody
+	public Map<String,Object> ajaxlist(@RequestParam(required=false) String option,
+			@RequestParam(required=false) String text,
+			@RequestParam(defaultValue="1") int page) {
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		Paging paging = getPaging(page);
+		
+        List<Post> postList = postService.getList(option, text,paging);
+
+		map.put("postList", postList);
+		map.put("page", page);
+		return map;
 	}
 	
 	
