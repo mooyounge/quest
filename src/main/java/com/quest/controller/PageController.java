@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.quest.service.BoardService;
 import com.quest.service.GameService;
 import com.quest.service.PostService;
 import com.quest.util.Paging;
+import com.quest.vo.Board;
 import com.quest.vo.Game;
 import com.quest.vo.Post;
 
@@ -31,6 +33,10 @@ public class PageController {
 	
 	@Autowired
 	private GameService gameService;
+	
+	@Autowired
+	private BoardService boardService;
+	
 	
 	//메인
 	@GetMapping("/")
@@ -156,8 +162,29 @@ public class PageController {
 	}
 	
 	@GetMapping("/community/admin")
-	public String communityadmin() {
+	public String communityadmin(Model model) {
+		
+        //게임 이름 불러오기 comnav
+        List<Game> gameList = gameService.getList();
+		model.addAttribute("gameList",gameList);
+		
 		return "adminpage";
 	}
+	
+	@PostMapping("/community/admin/gameinsert")
+	public String communitygameinsert(Model model,@ModelAttribute Game game) {
+		
+		//게임 집어넣고
+		gameService.insert(game);
+		
+		//게시판 제작 전체,자유,정보
+		Board board = new Board();
+		
+		board.setGame_name(game.getGame_name());
+		boardService.insertAll(board);
+		
+		return "redirect:/community/admin";
+	}
+	
 	
 }

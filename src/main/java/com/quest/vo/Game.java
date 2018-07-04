@@ -3,8 +3,15 @@ package com.quest.vo;
 public class Game {
 	private String genre;
 	private String game_name;
+	private String game_abb;
 	
 	
+	public String getGame_abb() {
+		return game_abb;
+	}
+	public void setGame_abb(String game_abb) {
+		this.game_abb = game_abb;
+	}
 	public String getGenre() {
 		return genre;
 	}

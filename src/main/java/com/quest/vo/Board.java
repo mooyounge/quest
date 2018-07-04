@@ -1,15 +1,16 @@
 package com.quest.vo;
 
 public class Board {
-	private String quest_game;
+	private String game_name;
 	private int board_id;
 	private String board_name;
 
-	public String getQuest_game() {
-		return quest_game;
+	
+	public String getGame_name() {
+		return game_name;
 	}
-	public void setQuest_game(String quest_game) {
-		this.quest_game = quest_game;
+	public void setGame_name(String game_name) {
+		this.game_name = game_name;
 	}
 	public int getBoard_id() {
 		return board_id;

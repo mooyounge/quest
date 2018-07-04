@@ -1,24 +1,19 @@
 package com.quest.dao;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.quest.vo.Game;
+import com.quest.vo.Board;
 
 @Repository
-public class GameDao {
-	
+public class BoardDao {
 	@Autowired
 	private SqlSession session;
 
-	public List<Game> getList() {
-		return session.selectList("game.getList");
-	}
-
-	public void insert(Game game) {
-		session.insert("game.insert",game);
+	public void insertAll(Board board) {
+		session.insert("board.insertAll",board);
+		session.insert("board.insertFree",board);
+		session.insert("board.insertInfo",board);
 	}
 }

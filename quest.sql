@@ -63,7 +63,6 @@ create table quest_board(
 );
 
 select * from quest_board;
-
 create sequence quest_board_id;
 drop table quest_board;
 -- ±Û 

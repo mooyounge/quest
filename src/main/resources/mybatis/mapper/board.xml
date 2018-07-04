@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	<insert id="insertAll" parameterType="board">
+		insert into quest_board values(#{game_name},quest_board_id.nextval,'전체')
+	</insert>
+	<insert id="insertFree" parameterType="board">
+		insert into quest_board values(#{game_name},quest_board_id.nextval,'자유')
+	</insert>
+	<insert id="insertInfo" parameterType="board">
+		insert into quest_board values(#{game_name},quest_board_id.nextval,'정보')
+	</insert>
+</mapper>
+
+
+
