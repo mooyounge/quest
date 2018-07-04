@@ -26,6 +26,9 @@
 	width: 100%;
 	display: block;
 	background: #3ec5f0;
+	border-width : 1px;
+	border-style: solid;
+	border-color: #25a2c3;
 }
 
 .menubar {
@@ -34,6 +37,7 @@
 
 .menubar li a {
 	color: white;
+	display: block;
 }
 </style>
 

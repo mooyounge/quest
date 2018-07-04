@@ -140,4 +140,9 @@ public class PageController {
         return paging;
 	}
 	
+	@GetMapping("/community/admin")
+	public String communityadmin() {
+		return "adminpage";
+	}
+	
 }
