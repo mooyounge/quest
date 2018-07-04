@@ -40,6 +40,35 @@
 			        </if> order by post_regdate desc )  a) where rnum between #{start} and #{end}
 	</select>
 	
+	<select id="getAllList" resultType="post" parameterType="map">
+		select * from (select rownum as rnum, a.* 
+		from (select * from quest_post
+						<if test="option != null">
+						where
+			        	<choose>
+			        		<when test="option == 'all'">
+			        			user_id like '%'||#{text}||'%' or
+			        			post_title like '%'||#{text}||'%' or
+			        			post_content like '%'||#{text}||'%'
+			        		</when>
+			        		<when test="option == 'name'">
+			        			user_id like '%'||#{text}||'%'
+			        		</when>
+			        		<when test="option == 'title'">
+			        			post_title like '%'||#{text}||'%'
+			        		</when>
+			        		<when test="option == 'content'">
+			        			post_content like '%'||#{text}||'%'
+			        		</when>
+			        		<when test="option == 'title_content'">
+			        			post_title like '%'||#{text}||'%' or
+			        			post_content like '%'||#{text}||'%'
+			        		</when>
+			        	</choose>
+			        </if> order by post_regdate desc )  a) where rnum between #{start} and #{end}
+	</select>
+	
+	
 	<select id="getPost" resultType="post" parameterType="int">
 		select * from quest_post where post_id = #{value}
 	</select>
@@ -81,7 +110,7 @@
 	</select>
 	
 	<insert id="insert" parameterType="post">
-		insert into quest_post values(quest_post_id.nextval,'all',65,'admin',#{post_title},#{post_content},sysdate,0,0,0)
+		insert into quest_post values(quest_post_id.nextval,#{game_abb},#{board_id},'admin',#{post_title},#{post_content},sysdate,0,0,0)
 	</insert>
 	
 </mapper>

@@ -62,7 +62,14 @@ public class PageController {
         
         paging.setTotalCount(postService.getSize(option,text,game_abb));
         
-        List<Post> postList = postService.getList(option,text,paging,game_abb);
+        List<Post> postList = null;
+        //game_abb가 없으면 전체 리스트 불러오기
+        if(game_abb==null) {
+        	postList = postService.getAllList(option,text,paging);
+        }else {
+        	postList = postService.getList(option,text,paging,game_abb);
+        }
+        
         
         //게임 이름 불러오기 comnav
         List<Game> gameList = gameService.getList();
@@ -75,13 +82,25 @@ public class PageController {
 	
 	//글쓰기 view로 보냄
 	@GetMapping("/postWrite")
-	public String postWrite(Model model) {
-		
-        //게임 이름 불러오기 comnav
-        List<Game> gameList = gameService.getList();
+	public String postWrite(Model model,@RequestParam(defaultValue="all") String game_abb) {
+		Game game = gameService.getOne(game_abb);
+       
+		//게임 이름 불러오기 comnav
+		List<Game> gameList = gameService.getList(game.getGenre());
 		model.addAttribute("gameList",gameList);
 		
 		return "communitywrite";
+	}
+	
+	//글쓰기 view ajax 통신
+	@PostMapping("/postWrite/gameName")
+	@ResponseBody
+	public List<Game> postWriteGameName(String genre) {
+		
+		//게임 이름 불러오기 comnav
+        List<Game> gameList = gameService.getList(genre);
+		
+		return gameList;
 	}
 	
 	//글 데이터베이스로 보냄

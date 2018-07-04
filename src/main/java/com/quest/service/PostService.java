@@ -19,4 +19,6 @@ public interface PostService {
 
 	List<Post> getList(String option, String text, Paging paging);
 
+	List<Post> getAllList(String option, String text, Paging paging);
+
 }

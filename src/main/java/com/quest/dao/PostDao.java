@@ -36,6 +36,10 @@ public class PostDao {
 	public List<Post> getList(Map<String, Object> map) {
 		return session.selectList("post.getList",map);
 	}
+
+	public List<Post> getAllList(Map<String, Object> map) {
+		return session.selectList("post.getAllList",map);
+	}
 	
 	
 	

@@ -51,6 +51,7 @@ insert into quest_game values('RPG','리니지','lineage');
 insert into quest_game values('ALL','ALL');
 
 select * from quest_game;
+update quest_game set game_name = '전체게시판' where genre = 'ALL';
 commit;
 
 
@@ -61,7 +62,7 @@ create table quest_board(
     board_id number primary key,
     board_name varchar2(20) not null
 );
-insert into quest_board values('all',quest_board_id.nextval,'전체');
+insert into quest_board values('all',quest_board_id.nextval,'정보');
 delete from quest_board where board_id > 5;
 select * from quest_board;
 create sequence quest_board_id;

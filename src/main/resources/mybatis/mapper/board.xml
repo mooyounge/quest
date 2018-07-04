@@ -12,6 +12,20 @@
 	<insert id="insertInfo" parameterType="board">
 		insert into quest_board values(#{game_abb},quest_board_id.nextval,'정보')
 	</insert>
+	
+
+	<select id="getBoardAllId" parameterType="String" resultType="int">
+		select board_id from quest_board where game_abb = #{value} and board_name = '전체'
+	</select>
+	<select id="getBoardFreeId" parameterType="String" resultType="int">
+		select board_id from quest_board where game_abb = #{value} and board_name = '자유'
+	</select>
+	<select id="getBoardInfoId" parameterType="String" resultType="int">
+		select board_id from quest_board where game_abb = #{value} and board_name = '정보'
+	</select>
+	
+
+	
 </mapper>
 
 

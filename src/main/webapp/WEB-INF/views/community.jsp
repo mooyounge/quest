@@ -71,7 +71,7 @@
 					style="width: 70px; height: 30px; display: inline-block; margin-left: 10px;">검색</button>
 			</div>
 			<button class="btn btn-success writebtn"
-				onclick="location.href='/postWrite'" style="height: 30px;">글쓰기</button>
+				onclick="location.href='/postWrite<c:if test="${param.game_abb!=null}">?game_abb=${param.game_abb}</c:if>'" style="height: 30px;">글쓰기</button>
 			<jsp:include page="include/paging.jsp" flush="flase">
 				<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
 				<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />

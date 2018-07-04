@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.quest.dao.BoardDao;
 import com.quest.dao.PostDao;
 import com.quest.util.Paging;
 import com.quest.vo.Post;
@@ -17,9 +18,15 @@ public class PostServiceImpl implements PostService {
 	@Autowired
 	private PostDao postDao;
 
+	@Autowired
+	private BoardDao boardDao;
+	
 	@Override
 	public void insert(Post post) {
+		int board_id = boardDao.getBoardFreeId(post.getGame_abb());
+		post.setBoard_id(board_id);
 		postDao.insert(post);
+		
 	}
 
 	@Override
@@ -72,6 +79,16 @@ public class PostServiceImpl implements PostService {
 		map.put("game_abb", game_abb);
 		
 		return postDao.getList(map);
+	}
+
+	@Override
+	public List<Post> getAllList(String option, String text, Paging paging) {
+		Map<String,Object> map = getSearchMap(paging);
+		
+		map.put("option", option);
+		map.put("text", text);
+		
+		return postDao.getAllList(map);
 	}
 
 

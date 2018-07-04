@@ -21,6 +21,14 @@ public class GameService {
 		gameDao.insert(game);
 		
 	}
+
+	public Game getOne(String game_abb) {
+		return gameDao.getOne(game_abb);
+	}
+
+	public List<Game> getList(String genre) {
+		return gameDao.getList(genre);
+	}
 	
 	
 }
