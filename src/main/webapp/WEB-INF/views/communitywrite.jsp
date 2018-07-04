@@ -34,7 +34,6 @@
 
 
 
-	<div id="content-categories">자유 게시판</div>
 	<h3>새 글쓰기</h3>
 
 	<form id="writeForm" action="/postWrite" method="post"
@@ -43,15 +42,30 @@
 
 		<div id="write-form" class="bbs-table">
 			<div>
-				<p>제목</p>
-				<p>
+				<p style="display: inline-block;">제목</p>
+				<p style="display: inline-block;">
 					<input type="text" id="post_title" name="post_title"
-						style="width: 90%;" />
+						style="width: 300px; height: 30px;" />
 				</p>
 			</div>
-
+			<select id="" name=""
+				style="display: inline-block; width: 150px; height: 30px;">
+				<option value="FPS" selected="selected">FPS</option>
+				<option value="RPG">RPG</option>
+				<option value="AOS">AOS</option>
+				<option value="rhythm">리듬게임</option>
+				<option value="indie">인디게임</option>
+			</select>
+			<select id="" name=""
+				style="display: inline-block; width: 150px; height: 30px;">
+				<option value="" selected="selected">서든어택</option>
+				<option value="">배틀그라운드</option>
+				<option value="">더 디비전</option>
+				<option value="">레인보우식스 시즈</option>
+			</select>
 			<div>
-				<textarea id="post_content" name="post_content" class="form-control" rows="10"></textarea>
+				<textarea id="post_content" name="post_content" class="form-control"
+					rows="10"></textarea>
 			</div>
 
 		</div>

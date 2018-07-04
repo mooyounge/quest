@@ -83,6 +83,7 @@
 						src="/images/down.png" alt="" />
 					</a> <br /> ${post.post_dislike}
 				</div>
+				<!-- 정보글 추천버튼 필요 -->
 			</div>
 
 			<table class="table table-striped table-hover" id="post_table">

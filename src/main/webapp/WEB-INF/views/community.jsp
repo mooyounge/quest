@@ -11,23 +11,18 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<style>
-.menuleft li {
-	display: inline-block;
-}
-</style>
 </head>
 <body>
 
 	<header id="header">
 		<jsp:include page="include/mainnav.jsp" />
 	</header>
-
+	
 	<jsp:include page="include/comnav.jsp" />
 	
 	<jsp:include page="include/commenu.jsp" />
 	
-	<div class="container">
+	<div class="container" style="margin-top:50px;">
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>

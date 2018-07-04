@@ -3,12 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 .menuleft {
+	width: 150px;
+	height: 70px;
 	display: inline-block;
-	width: 100px;
-	height: 30px;
+}
+
+.menuleft>ul {
+	width: 150px;
+	height: 650px;
 }
 
 .menuleft>ul>li {
+	display: inline-block;
 	background: #3ec5f0;
 	width: 100px;
 	border-width: 1px;
