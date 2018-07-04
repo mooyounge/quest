@@ -49,25 +49,27 @@ insert into quest_game values('RPG','테라','tera');
 insert into quest_game values('RPG','리니지','lineage');
 
 insert into quest_game values('ALL','ALL');
-insert into quest_board values('ALL',quest_board_id.nextval,'실험게시판');
 
+select * from quest_game;
 commit;
 
 
 
 -- 게시판
 create table quest_board(
-    game_name varchar2(30) references quest_game(game_name),
+    game_abb varchar2(10) references quest_game(game_abb),
     board_id number primary key,
     board_name varchar2(20) not null
 );
-
+insert into quest_board values('all',quest_board_id.nextval,'전체');
+delete from quest_board where board_id > 5;
 select * from quest_board;
 create sequence quest_board_id;
 drop table quest_board;
 -- 글 
 create table quest_post(
     post_id number primary key,
+    game_abb varchar2(10) references quest_game(game_abb), 
     board_id number references quest_board(board_id),
     user_id varchar2(15) references quest_user(id),
     post_title varchar2(50) not null,
@@ -104,7 +106,7 @@ insert into quest_user values
 
 
 select * from quest_board;
-insert into quest_post values(quest_post_id.nextval,1,'admin','test','test',systimestamp,0,0);
+insert into quest_post values(quest_post_id.nextval,'all',65,'admin','test','test',systimestamp,0,0,0);
 insert into quest_post values(quest_post_id.nextval,1,'admin','test1','test1',systimestamp,0,0);
 insert into quest_post values(quest_post_id.nextval,1,'admin','test2','test2',systimestamp,0,0);
 insert into quest_post values(quest_post_id.nextval,1,'admin','test3','test3',systimestamp,0,0);

@@ -4,6 +4,9 @@ import javax.validation.constraints.Size;
 
 public class Post {
 	private int rnum;
+	
+	private String game_abb;
+	
 	private int post_id;
 	private int board_id;
 	private String user_id;
@@ -19,6 +22,13 @@ public class Post {
 	private int post_dislike;
 	private int post_lookup;
 	
+	
+	public String getGame_abb() {
+		return game_abb;
+	}
+	public void setGame_abb(String game_abb) {
+		this.game_abb = game_abb;
+	}
 	public int getRnum() {
 		return rnum;
 	}

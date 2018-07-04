@@ -9,13 +9,13 @@ import com.quest.vo.Post;
 
 public interface PostService {
 	
-	List<Post> getList();
+	List<Post> getList(String option, String text, Paging paging, String game_abb);
 
 	void insert(Post post);
 
 	Post getPost(int id);
 	
-	int getSize(String option, String text);
+	int getSize(String option, String text, String game_abb);
 
 	List<Post> getList(String option, String text, Paging paging);
 

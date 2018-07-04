@@ -50,7 +50,7 @@
 					<ul>
 						<c:forEach var="game" items="${gameList}">
 						<c:if test="${game.genre=='FPS'}">
-						<li><a href="#">${game.game_name }</a></li>
+						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
 						</c:if>
 						</c:forEach>
 					</ul>
@@ -60,7 +60,7 @@
 				<ul>
 					<c:forEach var="game" items="${gameList}">
 						<c:if test="${game.genre=='RPG'}">
-						<li><a href="#">${game.game_name }</a></li>
+						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
 						</c:if>
 						</c:forEach>
 				</ul></li>
@@ -68,7 +68,7 @@
 				<ul>
 					<c:forEach var="game" items="${gameList}">
 						<c:if test="${game.genre=='AOS'}">
-						<li><a href="#">${game.game_name }</a></li>
+						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
 						</c:if>
 					</c:forEach>
 				</ul></li>
@@ -76,7 +76,7 @@
 				<ul>
 					<c:forEach var="game" items="${gameList}">
 						<c:if test="${game.genre=='rhythm'}">
-						<li><a href="#">${game.game_name }</a></li>
+						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
 						</c:if>
 					</c:forEach>
 				</ul></li>
@@ -84,7 +84,7 @@
 				<ul>
 					<c:forEach var="game" items="${gameList}">
 						<c:if test="${game.genre=='indie'}">
-						<li><a href="#">${game.game_name }</a></li>
+						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
 						</c:if>
 					</c:forEach>
 				</ul></li>

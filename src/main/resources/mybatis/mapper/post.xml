@@ -5,9 +5,18 @@
 <mapper namespace="post">
 	<select id="getList" resultType="post" parameterType="map">
 		select * from (select rownum as rnum, a.* 
-		from (select * from quest_post 
+		from (select * from quest_post
+						where
+		        			<choose>
+		        			 	<when test="game_abb != null">
+		        					game_abb = #{game_abb}
+		        				</when>
+		        				<otherwise>
+		        					game_abb = 'all'
+		        				</otherwise>
+		        			</choose>
 						<if test="option != null">
-			        	where
+						and
 			        	<choose>
 			        		<when test="option == 'all'">
 			        			user_id like '%'||#{text}||'%' or
@@ -37,8 +46,17 @@
 
 	<select id="getSize" resultType="int">
 		select count(post_id) from quest_post
+						where
+		        			<choose>
+		        			 	<when test="game_abb != null">
+		        					game_abb = #{game_abb}
+		        				</when>
+		        				<otherwise>
+		        					game_abb = 'all'
+		        				</otherwise>
+		        			</choose>
 						<if test="option != null">
-			        	where
+						and
 			        	<choose>
 			        		<when test="option == 'all'">
 			        			user_id like '%'||#{text}||'%' or
@@ -59,11 +77,11 @@
 			        			post_content like '%'||#{text}||'%'
 			        		</when>
 			        	</choose>
-			        </if>
+			        	</if>
 	</select>
 	
 	<insert id="insert" parameterType="post">
-		insert into quest_post values(quest_post_id.nextval,1,'admin',#{post_title},#{post_content},sysdate,0,0,0)
+		insert into quest_post values(quest_post_id.nextval,'all',65,'admin',#{post_title},#{post_content},sysdate,0,0,0)
 	</insert>
 	
 </mapper>
