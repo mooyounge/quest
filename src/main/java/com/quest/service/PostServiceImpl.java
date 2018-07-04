@@ -18,11 +18,6 @@ public class PostServiceImpl implements PostService {
 	private PostDao postDao;
 
 	@Override
-	public List<Post> getList() {
-		return postDao.getList();
-	}
-
-	@Override
 	public void insert(Post post) {
 		postDao.insert(post);
 	}
@@ -33,11 +28,12 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public int getSize(String option, String text) {
+	public int getSize(String option, String text,String game_abb) {
 		
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("option", option);
 		map.put("text", text);
+		map.put("game_abb", game_abb);
 		
 		return postDao.getSize(map);
 	}
@@ -66,4 +62,17 @@ public class PostServiceImpl implements PostService {
 	
 	return searchMap;
 	}
+
+	@Override
+	public List<Post> getList(String option, String text, Paging paging, String game_abb) {
+		Map<String,Object> map = getSearchMap(paging);
+		
+		map.put("option", option);
+		map.put("text", text);
+		map.put("game_abb", game_abb);
+		
+		return postDao.getList(map);
+	}
+
+
 }

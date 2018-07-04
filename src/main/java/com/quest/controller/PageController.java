@@ -49,7 +49,9 @@ public class PageController {
 	public String community(Model model,
 							@RequestParam(required=false) String option,
 							@RequestParam(required=false) String text,
-							@RequestParam(defaultValue="1") int page) {
+							@RequestParam(defaultValue="1") int page,
+							@RequestParam(required=false) String game_abb //game_abb
+							) {
 		
 		String searchParam = "";
 		if(option != null) {
@@ -58,9 +60,9 @@ public class PageController {
 		
         Paging paging = getPaging(page);
         
-        paging.setTotalCount(postService.getSize(option,text));
+        paging.setTotalCount(postService.getSize(option,text,game_abb));
         
-        List<Post> postList = postService.getList(option,text,paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
+        List<Post> postList = postService.getList(option,text,paging,game_abb);
         
         //게임 이름 불러오기 comnav
         List<Game> gameList = gameService.getList();
@@ -111,7 +113,8 @@ public class PageController {
 	public String comview(Model model,@RequestParam int id,
 						@RequestParam(required=false) String option,
 						@RequestParam(required=false) String text,
-						@RequestParam(defaultValue="1") int page) {
+						@RequestParam(defaultValue="1") int page,
+						@RequestParam(required=false) String game_abb) {
 		Post post = postService.getPost(id);
 		
 		String searchParam = "";
@@ -124,7 +127,7 @@ public class PageController {
         
         List<Post> postList = postService.getList(option,text,paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
         
-        paging.setTotalCount(postService.getSize(option,text));
+        paging.setTotalCount(postService.getSize(option,text,game_abb));
 		
         //게임 이름 불러오기 comnav
         List<Game> gameList = gameService.getList();
@@ -180,7 +183,7 @@ public class PageController {
 		//게시판 제작 전체,자유,정보
 		Board board = new Board();
 		
-		board.setGame_name(game.getGame_name());
+		board.setGame_abb(game.getGame_abb());
 		boardService.insertAll(board);
 		
 		return "redirect:/community/admin";
