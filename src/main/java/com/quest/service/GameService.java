@@ -16,6 +16,11 @@ public class GameService {
 	public List<Game> getList() {
 		return gameDao.getList();
 	}
+
+	public void insert(Game game) {
+		gameDao.insert(game);
+		
+	}
 	
 	
 }

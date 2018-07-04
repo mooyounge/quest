@@ -9,6 +9,7 @@
   <mappers>
   	<mapper resource="mybatis/mapper/post.xml" />
   	<mapper resource="mybatis/mapper/game.xml" />
+  	<mapper resource="mybatis/mapper/board.xml" />
   </mappers>
 </configuration>
 
