@@ -57,8 +57,7 @@
 		</div>
 		<div style="text-align: center; padding-bottom: 15px;">
 			<input type="submit" value="전송" /> <input type="button"
-				onclick="history.back();" value="취소" /> <input type="button"
-				value="목록" />
+				onclick="location.href='/community'" value="취소" />
 		</div>
 	</form>
 	<!-- 본문 끝 -->

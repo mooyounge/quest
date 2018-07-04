@@ -24,16 +24,10 @@
 	</header>
 
 	<jsp:include page="include/comnav.jsp" />
-
+	
+	<jsp:include page="include/commenu.jsp" />
+	
 	<div class="container">
-		<div class="menuleft text-center">
-			<ul>
-				<li style="background: #25a2c3; width: 150px;"><a href=""
-					style="color: white;">정보게시판</a></li>
-				<li style="background: #25a2c3; width: 150px;"><a href=""
-					style="color: white;">자유게시판</a></li>
-			</ul>
-		</div>
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
