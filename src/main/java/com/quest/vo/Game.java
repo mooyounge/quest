@@ -1,14 +1,15 @@
 package com.quest.vo;
 
 public class Game {
-	private int genre_number;
+	private String genre;
 	private String game_name;
 	
-	public int getGenre_number() {
-		return genre_number;
+	
+	public String getGenre() {
+		return genre;
 	}
-	public void setGenre_number(int genre_number) {
-		this.genre_number = genre_number;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 	public String getGame_name() {
 		return game_name;

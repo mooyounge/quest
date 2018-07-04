@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 .menubar li {
 	display: inline-block;
@@ -37,43 +38,51 @@
 }
 </style>
 
-
 <div class="menubar">
-	<ul>
-		<li><a href="#">FPS</a>
-			<ul>
-				<li><a href="#">서든어택</a></li>
-				<li><a href="#">레인보우식스 시즈</a></li>
-				<li><a href="#">배틀그라운드</a></li>
-				<li><a href="#">디비전</a></li>
-			</ul></li>
-		<li><a href="#" id="current">RPG</a>
-			<ul>
-				<li><a href="#">검은사막</a></li>
-				<li><a href="#">테라</a></li>
-				<li><a href="#">리니지</a></li>
-				<li><a href="#">몰라</a></li>
-			</ul></li>
-		<li><a href="#">AOS</a>
-			<ul>
-				<li><a href="#">롤</a></li>
-				<li><a href="#">도타</a></li>
-				<li><a href="#">ㅁㄴㅇ</a></li>
-				<li><a href="#">ㅇㄴㅁ</a></li>
-			</ul></li>
-		<li><a href="#">리듬게임</a>
-			<ul>
-				<li><a href="#">디제이맥스</a></li>
-				<li><a href="#">ㄴㅁㅇㅈㅂㄷ</a></li>
-				<li><a href="#">ㅁㄴㅇㅁㄴㅇ</a></li>
-				<li><a href="#">ㅎㄷㅁㅇㄷㅈ</a></li>
-			</ul></li>
-		<li><a href="#">인디게임</a>
-			<ul>
-				<li><a href="#">ㄴㅇㅁㄴㅇ</a></li>
-				<li><a href="#">ㅇㄴㅁㅇㅁ</a></li>
-				<li><a href="#">ㅁㄴㅇㅁㄴ</a></li>
-				<li><a href="#">ㄹㅇㄴㅁㅈ</a></li>
-			</ul></li>
-	</ul>
+	
+		<ul>
+			
+			<li id="FPS"><a href="#">FPS</a>
+					<ul>
+						<c:forEach var="game" items="${gameList}">
+						<c:if test="${game.genre=='FPS'}">
+						<li><a href="#">${game.game_name }</a></li>
+						</c:if>
+						</c:forEach>
+					</ul>
+			</li>
+			
+			<li id="RPG"><a href="#">RPG</a>
+				<ul>
+					<c:forEach var="game" items="${gameList}">
+						<c:if test="${game.genre=='RPG'}">
+						<li><a href="#">${game.game_name }</a></li>
+						</c:if>
+						</c:forEach>
+				</ul></li>
+			<li id="AOS"><a href="#">AOS</a>
+				<ul>
+					<c:forEach var="game" items="${gameList}">
+						<c:if test="${game.genre=='AOS'}">
+						<li><a href="#">${game.game_name }</a></li>
+						</c:if>
+					</c:forEach>
+				</ul></li>
+			<li id="RHYTHM"><a href="#">리듬게임</a>
+				<ul>
+					<c:forEach var="game" items="${gameList}">
+						<c:if test="${game.genre=='rhythm'}">
+						<li><a href="#">${game.game_name }</a></li>
+						</c:if>
+					</c:forEach>
+				</ul></li>
+			<li id="INDIE"><a href="#">인디게임</a>
+				<ul>
+					<c:forEach var="game" items="${gameList}">
+						<c:if test="${game.genre=='indie'}">
+						<li><a href="#">${game.game_name }</a></li>
+						</c:if>
+					</c:forEach>
+				</ul></li>
+		</ul>
 </div>

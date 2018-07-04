@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.quest.util.Paging;
 import com.quest.vo.Post;
 
-@Service
 public interface PostService {
 	
 	List<Post> getList();

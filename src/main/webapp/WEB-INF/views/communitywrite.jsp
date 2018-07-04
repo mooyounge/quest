@@ -51,7 +51,7 @@
 			</div>
 
 			<div>
-				<textarea id="content" name="content" class="form-control" rows="10"></textarea>
+				<textarea id="post_content" name="post_content" class="form-control" rows="10"></textarea>
 			</div>
 
 		</div>
@@ -78,7 +78,7 @@
 	<script
 		src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/lang/summernote-ko-KR.min.js"></script>
 	<script>
-		$("#content").summernote({
+		$("#post_content").summernote({
 			height : 300,
 			focus : true,
 			lang : 'ko-KR',

@@ -48,7 +48,7 @@
 				<!-- 여기에 포문돌리면됨 -->
 				<c:forEach var="post" varStatus="status" items="${postList}">
 					<tr>
-						<td>${status.count}</td>
+						<td>${post.rnum}</td>
 						<td><a
 							href="/community/view?id=${post.post_id}&page=${param.page}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if>">${post.post_title}</a></td>
 						<td>${post.user_id}</td>
