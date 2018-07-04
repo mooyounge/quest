@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.quest.service.GameService;
 import com.quest.service.PostService;
 import com.quest.util.Paging;
+import com.quest.vo.Game;
 import com.quest.vo.Post;
 
 
@@ -25,7 +27,10 @@ import com.quest.vo.Post;
 public class PageController {
 	
 	@Autowired
-	PostService postService;
+	private PostService postService;
+	
+	@Autowired
+	private GameService gameService;
 	
 	//메인
 	@GetMapping("/")
@@ -51,17 +56,23 @@ public class PageController {
         
         List<Post> postList = postService.getList(option,text,paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
         
-        
+        //게임 이름 불러오기 comnav
+        List<Game> gameList = gameService.getList();
+		model.addAttribute("gameList",gameList);
         
         model.addAttribute("paging",paging);
-        
 		model.addAttribute("postList",postList);
 		return "community";
 	}
 	
 	//글쓰기 view로 보냄
 	@GetMapping("/postWrite")
-	public String postWrite() {
+	public String postWrite(Model model) {
+		
+        //게임 이름 불러오기 comnav
+        List<Game> gameList = gameService.getList();
+		model.addAttribute("gameList",gameList);
+		
 		return "communitywrite";
 	}
 	
@@ -108,6 +119,10 @@ public class PageController {
         List<Post> postList = postService.getList(option,text,paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
         
         paging.setTotalCount(postService.getSize(option,text));
+		
+        //게임 이름 불러오기 comnav
+        List<Game> gameList = gameService.getList();
+		model.addAttribute("gameList",gameList);
 		
         model.addAttribute("paging",paging);
 		model.addAttribute("post",post);

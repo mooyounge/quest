@@ -22,10 +22,38 @@ drop table quest_genre; -- 이거 삭제하고 게임 이름에 걍 집어넣어도 될거같음
 -- 게임 이름
 create table quest_game(
     genre varchar2(30) not null,
-    game_name varchar2(30) primary key
+    game_name varchar2(30) primary key,
+    game_abb varchar2(10) not null
 );
+ALTER TABLE quest_game modify(game_abb varchar2(10) unique);
 
-drop table quest_game;
+update quest_game set GAME_ABB = 'all' where genre = 'ALL';
+
+
+select * from quest_game;
+insert into quest_game values('FPS','서든어택','sudden');
+insert into quest_game values('FPS','배틀 그라운드','bground');
+insert into quest_game values('FPS','더 디비전','thediv');
+insert into quest_game values('FPS','레인보우식스 시즈','rb6s');
+
+insert into quest_game values('AOS','리그오브 레전드','lol');
+insert into quest_game values('AOS','DOTA2','dota2');
+insert into quest_game values('AOS','사이퍼즈','cypers');
+
+insert into quest_game values('rhythm','DJ MAX','djmax');
+
+insert into quest_game values('indie','A Hat in time','ahit');
+
+insert into quest_game values('RPG','검은사막','bdesrt');
+insert into quest_game values('RPG','테라','tera');
+insert into quest_game values('RPG','리니지','lineage');
+
+insert into quest_game values('ALL','ALL');
+insert into quest_board values('ALL',quest_board_id.nextval,'실험게시판');
+
+commit;
+
+
 
 -- 게시판
 create table quest_board(
@@ -33,6 +61,9 @@ create table quest_board(
     board_id number primary key,
     board_name varchar2(20) not null
 );
+
+select * from quest_board;
+
 create sequence quest_board_id;
 drop table quest_board;
 -- 글 
@@ -72,11 +103,7 @@ drop table quest_comment;
 insert into quest_user values
 ('admin','admin','admin','khh971228@naver.com','01011111111','admin','971228','','');
 
-insert into quest_game values('RPG','검은사막');
-insert into quest_game values('RPG','테라');
-insert into quest_game values('RPG','리니지');
-insert into quest_game values('ALL','ALL');
-insert into quest_board values('ALL',quest_board_id.nextval,'실험게시판');
+
 select * from quest_board;
 insert into quest_post values(quest_post_id.nextval,1,'admin','test','test',systimestamp,0,0);
 insert into quest_post values(quest_post_id.nextval,1,'admin','test1','test1',systimestamp,0,0);

@@ -28,7 +28,7 @@
 			        			post_content like '%'||#{text}||'%'
 			        		</when>
 			        	</choose>
-			        </if> ) a) where rnum between #{start} and #{end}
+			        </if> order by post_regdate desc )  a) where rnum between #{start} and #{end}
 	</select>
 	
 	<select id="getPost" resultType="post" parameterType="int">
