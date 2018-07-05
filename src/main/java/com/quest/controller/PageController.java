@@ -60,14 +60,18 @@ public class PageController {
 			searchParam = "&option="+option+"&text="+text;
 		}
         Paging paging = getPaging(page);
-        paging.setTotalCount(postService.getSize(option,text,game_abb,name));
         List<Post> postList = null;
         //game_abb가 없으면 전체 리스트 불러오기
-        if(game_abb==null) {
+        /*if(game_abb.equals("all")) {
+        	//1. 전체 목록이 출력이 되는가??  완료
+        	//2. 전체 목록에서 자유 정보 나눠 지는가? 
         	postList = postService.getAllList(option,text,paging);
-        }else {
+        	paging.setTotalCount(postService.getSize(option,text,game_abb));
+        }else {*/
+        		System.out.println(name);
         		postList = postService.getList(option,text,paging,game_abb,name);
-        }
+        		paging.setTotalCount(postService.getSize(option,text,game_abb,name));
+        //}
         //요기까지
         
         

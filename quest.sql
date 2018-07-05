@@ -116,18 +116,14 @@ insert into quest_post values(quest_post_id.nextval,1,'admin','test2','test2',sy
 insert into quest_post values(quest_post_id.nextval,1,'admin','test3','test3',systimestamp,0,0);
 insert into quest_post values(quest_post_id.nextval,1,'admin','test4','test4',systimestamp,0,0);
 
-select * from quest_post;
-
-select count(post_id) from quest_post;    
-    
-select * from (select rownum as rnum, a.* 
-		from (select * from quest_post) a);
-    
+select board_id from quest_board where board_name = 'free';
+select * from quest_board;
+select * from quest_post where game_abb like('%');
+select * from quest_post where game_abb = 'all' and (board_id ='65' or board_id='64');
+select count(post_id) from quest_post where game_abb like '%' and board_id >= 0;
     
     
-select * from quest_post where and post_title = 'asdf';
-select * from quest_post;
-    
-    
-    
+    100
+    97
+    94
     

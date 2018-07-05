@@ -1,5 +1,7 @@
 package com.quest.dao;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -28,5 +30,11 @@ public class BoardDao {
 	public int getBoardId(Map<String, Object> map) {
 		return session.selectOne("board.getBoardId",map);
 		
+	}
+
+	public List<Integer> getBoardIdList(String name) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("name",name);
+		return session.selectList("board.getBoardIdList",map);
 	}
 }

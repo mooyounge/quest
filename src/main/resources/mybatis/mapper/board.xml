@@ -23,6 +23,18 @@
 		select board_id from quest_board where game_abb = #{game_abb} and board_name = #{name}
 	</select>
 	
+	<select id="getBoardIdList" parameterType="map" resultType="int">
+		<choose>
+			<when test="name == 'all'">
+				select board_id from quest_board
+			</when>
+			<otherwise>
+				select board_id from quest_board where board_name = #{name}
+			</otherwise>
+		</choose>
+		
+	</select>
+	
 
 	
 </mapper>
