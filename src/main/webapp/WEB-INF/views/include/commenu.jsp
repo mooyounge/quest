@@ -15,11 +15,11 @@
 
 .menuleft>ul>li {
 	display: inline-block;
-	background: #3ec5f0;
+	background: #787878;
 	width: 100px;
 	border-width: 1px;
 	border-style: solid;
-	border-color: #25a2c3;
+	border-color: #606060;
 }
 
 .menuleft>ul>li>a {
