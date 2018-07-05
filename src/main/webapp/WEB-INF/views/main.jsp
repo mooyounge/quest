@@ -13,7 +13,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-	<header id="header">
+	<header id="header" style="height:84px;">
 		<jsp:include page="include/mainnav.jsp" />
 	</header>
 	<!-- 이정표 -->

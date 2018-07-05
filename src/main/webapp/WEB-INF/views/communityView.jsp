@@ -19,7 +19,7 @@
 </head>
 <body>
 
-	<header id="header">
+	<header id="header" style="height:84px;">
 		<jsp:include page="include/mainnav.jsp" />
 	</header>
 
