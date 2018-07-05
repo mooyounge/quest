@@ -53,15 +53,15 @@ public class PageController {
 							@RequestParam(required=false) String game_abb //game_abb
 							) {
 		
+		
+		
+		//페이징 한세트
 		String searchParam = "";
 		if(option != null) {
 			searchParam = "&option="+option+"&text="+text;
 		}
-		
         Paging paging = getPaging(page);
-        
         paging.setTotalCount(postService.getSize(option,text,game_abb));
-        
         List<Post> postList = null;
         //game_abb가 없으면 전체 리스트 불러오기
         if(game_abb==null) {
@@ -69,6 +69,7 @@ public class PageController {
         }else {
         	postList = postService.getList(option,text,paging,game_abb);
         }
+        //요기까지
         
         
         //게임 이름 불러오기 comnav
@@ -136,17 +137,21 @@ public class PageController {
 						@RequestParam(required=false) String game_abb) {
 		Post post = postService.getPost(id);
 		
-		String searchParam = "";
-		if(option != null) {
-			searchParam = "&option="+option+"&text="+text;
-		}
-		
-        Paging paging = getPaging(page);
-        
-        
-        List<Post> postList = postService.getList(option,text,paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
-        
-        paging.setTotalCount(postService.getSize(option,text,game_abb));
+		//페이징 한세트
+				String searchParam = "";
+				if(option != null) {
+					searchParam = "&option="+option+"&text="+text;
+				}
+		        Paging paging = getPaging(page);
+		        paging.setTotalCount(postService.getSize(option,text,game_abb));
+		        List<Post> postList = null;
+		        //game_abb가 없으면 전체 리스트 불러오기
+		        if(game_abb==null) {
+		        	postList = postService.getAllList(option,text,paging);
+		        }else {
+		        	postList = postService.getList(option,text,paging,game_abb);
+		        }
+		        //요기까지
 		
         //게임 이름 불러오기 comnav
         List<Game> gameList = gameService.getList();

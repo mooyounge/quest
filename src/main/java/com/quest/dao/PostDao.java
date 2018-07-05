@@ -15,9 +15,6 @@ public class PostDao {
 	@Autowired
 	private SqlSession session;
 
-	public List<Post> getList() {
-		return session.selectList("post.getList");
-	}
 
 	public void insert(Post post) {
 		session.insert("post.insert",post);

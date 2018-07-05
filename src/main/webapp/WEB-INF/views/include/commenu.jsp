@@ -31,7 +31,7 @@
 <div class="menuleft col-sm-2">
 	<ul>
 		<li><a href="">전체게시판</a></li>
-		<li><a href="">정보게시판</a></li>
 		<li><a href="">자유게시판</a></li>
+		<li><a href="">정보게시판</a></li>
 	</ul>
 </div>

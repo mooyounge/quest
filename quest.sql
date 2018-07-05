@@ -122,8 +122,8 @@ select * from (select rownum as rnum, a.*
     
     
     
-    
-    
+select * from quest_post where and post_title = 'asdf';
+select * from quest_post;
     
     
     

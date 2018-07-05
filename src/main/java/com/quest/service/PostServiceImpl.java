@@ -73,7 +73,6 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<Post> getList(String option, String text, Paging paging, String game_abb) {
 		Map<String,Object> map = getSearchMap(paging);
-		
 		map.put("option", option);
 		map.put("text", text);
 		map.put("game_abb", game_abb);
