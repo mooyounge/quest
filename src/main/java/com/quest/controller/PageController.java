@@ -50,19 +50,26 @@ public class PageController {
 							@RequestParam(required=false) String option,
 							@RequestParam(required=false) String text,
 							@RequestParam(defaultValue="1") int page,
-							@RequestParam(required=false) String game_abb //game_abb
+							@RequestParam(defaultValue="all") String game_abb,
+							@RequestParam(defaultValue="all") String name
 							) {
 		
+		//페이징 한세트
 		String searchParam = "";
 		if(option != null) {
 			searchParam = "&option="+option+"&text="+text;
 		}
-		
         Paging paging = getPaging(page);
+        paging.setTotalCount(postService.getSize(option,text,game_abb,name));
+        List<Post> postList = null;
+        //game_abb가 없으면 전체 리스트 불러오기
+        if(game_abb==null) {
+        	postList = postService.getAllList(option,text,paging);
+        }else {
+        		postList = postService.getList(option,text,paging,game_abb,name);
+        }
+        //요기까지
         
-        paging.setTotalCount(postService.getSize(option,text,game_abb));
-        
-        List<Post> postList = postService.getList(option,text,paging,game_abb);
         
         //게임 이름 불러오기 comnav
         List<Game> gameList = gameService.getList();
@@ -75,13 +82,25 @@ public class PageController {
 	
 	//글쓰기 view로 보냄
 	@GetMapping("/postWrite")
-	public String postWrite(Model model) {
-		
-        //게임 이름 불러오기 comnav
-        List<Game> gameList = gameService.getList();
+	public String postWrite(Model model,@RequestParam(defaultValue="all") String game_abb) {
+		Game game = gameService.getOne(game_abb);
+       
+		//게임 이름 불러오기 comnav
+		List<Game> gameList = gameService.getList(game.getGenre());
 		model.addAttribute("gameList",gameList);
 		
 		return "communitywrite";
+	}
+	
+	//글쓰기 view ajax 통신
+	@PostMapping("/postWrite/gameName")
+	@ResponseBody
+	public List<Game> postWriteGameName(String genre) {
+		
+		//게임 이름 불러오기 comnav
+        List<Game> gameList = gameService.getList(genre);
+		
+		return gameList;
 	}
 	
 	//글 데이터베이스로 보냄
@@ -117,17 +136,21 @@ public class PageController {
 						@RequestParam(required=false) String game_abb) {
 		Post post = postService.getPost(id);
 		
-		String searchParam = "";
-		if(option != null) {
-			searchParam = "&option="+option+"&text="+text;
-		}
-		
-        Paging paging = getPaging(page);
-        
-        
-        List<Post> postList = postService.getList(option,text,paging); // 여기에 paging을 넣어서 DB에 접근해야한다.
-        
-        paging.setTotalCount(postService.getSize(option,text,game_abb));
+		//페이징 한세트
+				String searchParam = "";
+				if(option != null) {
+					searchParam = "&option="+option+"&text="+text;
+				}
+		        Paging paging = getPaging(page);
+		        paging.setTotalCount(postService.getSize(option,text,game_abb));
+		        List<Post> postList = null;
+		        //game_abb가 없으면 전체 리스트 불러오기
+		        if(game_abb==null) {
+		        	postList = postService.getAllList(option,text,paging);
+		        }else {
+		        	postList = postService.getList(option,text,paging,game_abb);
+		        }
+		        //요기까지
 		
         //게임 이름 불러오기 comnav
         List<Game> gameList = gameService.getList();

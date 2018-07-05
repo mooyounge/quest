@@ -6,7 +6,12 @@
 	<select id="getList" resultType="game">
 		select * from quest_game
 	</select>
-	
+	<select id="getListbyGenre" parameterType="String" resultType="game">
+		select * from quest_game where genre=#{value}
+	</select>
+		<select id="getOne" parameterType="String" resultType="game">
+		select * from quest_game where game_abb=#{value}
+	</select>
 	<insert id="insert" parameterType="game">
 		insert into quest_game values(#{genre},#{game_name},#{game_abb})
 	</insert>

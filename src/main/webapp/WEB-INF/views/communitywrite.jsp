@@ -38,8 +38,6 @@
 
 	<form id="writeForm" action="/postWrite" method="post"
 		enctype="multipart/form-data">
-		<input type="hidden" name="boardCd" value="free" />
-
 		<div id="write-form" class="bbs-table">
 			<div>
 				<p style="display: inline-block;">제목</p>
@@ -48,20 +46,21 @@
 						style="width: 300px; height: 30px;" />
 				</p>
 			</div>
-			<select id="" name=""
+			
+			<select id="genre" name="genre" onchange="changeGameName()"
 				style="display: inline-block; width: 150px; height: 30px;">
-				<option value="FPS" selected="selected">FPS</option>
+				<option value="ALL">전체</option>
+				<option value="FPS">FPS</option>
 				<option value="RPG">RPG</option>
 				<option value="AOS">AOS</option>
 				<option value="rhythm">리듬게임</option>
 				<option value="indie">인디게임</option>
 			</select>
-			<select id="" name=""
+			<select id="game_abb" name="game_abb"
 				style="display: inline-block; width: 150px; height: 30px;">
-				<option value="" selected="selected">서든어택</option>
-				<option value="">배틀그라운드</option>
-				<option value="">더 디비전</option>
-				<option value="">레인보우식스 시즈</option>
+				<c:forEach var="game" items="${gameList}">
+				<option value="${game.game_abb}">${game.game_name}</option>
+				</c:forEach>
 			</select>
 			<div>
 				<textarea id="post_content" name="post_content" class="form-control"
@@ -91,6 +90,15 @@
 	<script
 		src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/lang/summernote-ko-KR.min.js"></script>
 	<script>
+	
+		$(document).ready(function(){
+			$("#genre").val("${gameList[0].genre}").prop("selected",true);
+			if(${param.game_abb!=null}){
+				$("#game_abb").val("${param.game_abb}").prop("selected",true);
+			}
+		});
+	
+	
 		$("#post_content").summernote({
 			height : 300,
 			focus : true,
@@ -101,26 +109,28 @@
 				}
 			}
 		});
-
-		function sendFile(file, editor, welEditable) {
-			var data = new FormData();
-			data.append('upload', file);
-
+	
+		function changeGameName(){
+			var genre = $("#genre").val();
+			
 			$.ajax({
-				url : "/ch30_summernote/fileupload",
-				contentType : false,
-				processData : false,
-				data : data,
-				type : "post",
-				success : function(data) {
-					var $img = $('<img>').attr('src', data.url);
-					$('#content').summernote('insertNode', $img);
-				},
-				error : function(error) {
-					console.log(error);
+				url:"/postWrite/gameName",
+				type:"post",
+				data:{"genre":genre},
+				success:function(gameList){
+					$("#game_abb").empty();
+					for(var game of gameList){
+						var $option = $("<option>");
+						$option.val(game.game_abb);
+						$option.text(game.game_name);
+						$("#game_abb").append($option);
+					}
+					
 				}
 			});
 		}
+		
+
 	</script>
 
 </body>

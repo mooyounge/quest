@@ -19,4 +19,10 @@ public interface PostService {
 
 	List<Post> getList(String option, String text, Paging paging);
 
+	List<Post> getAllList(String option, String text, Paging paging);
+
+	int getSize(String option, String text, String game_abb, String name);
+
+	List<Post> getList(String option, String text, Paging paging, String game_abb, String name);
+
 }

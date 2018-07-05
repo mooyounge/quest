@@ -30,8 +30,8 @@
 
 <div class="menuleft col-sm-2">
 	<ul>
-		<li><a href="">전체게시판</a></li>
-		<li><a href="">정보게시판</a></li>
-		<li><a href="">자유게시판</a></li>
+		<li><a href="/community?<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if>">전체게시판</a></li>
+		<li><a href="/community?name=free<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if>">자유게시판</a></li>
+		<li><a href="/community?name=info<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if>">정보게시판</a></li>
 	</ul>
 </div>

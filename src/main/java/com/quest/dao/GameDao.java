@@ -21,4 +21,12 @@ public class GameDao {
 	public void insert(Game game) {
 		session.insert("game.insert",game);
 	}
+
+	public Game getOne(String game_abb) {
+		return session.selectOne("game.getOne",game_abb);
+	}
+
+	public List<Game> getList(String genre) {
+		return session.selectList("game.getListbyGenre",genre);
+	}
 }
