@@ -28,7 +28,7 @@
 
 </head>
 <body>
-	<header id="header" style="height:84px;">
+	<header id="header" style="height: 84px;">
 		<jsp:include page="include/mainnav.jsp" />
 	</header>
 
@@ -46,7 +46,7 @@
 						style="width: 300px; height: 30px;" />
 				</p>
 			</div>
-			
+
 			<select id="genre" name="genre" onchange="changeGameName()"
 				style="display: inline-block; width: 150px; height: 30px;">
 				<option value="ALL">전체</option>
@@ -55,11 +55,10 @@
 				<option value="AOS">AOS</option>
 				<option value="rhythm">리듬게임</option>
 				<option value="indie">인디게임</option>
-			</select>
-			<select id="game_abb" name="game_abb"
+			</select> <select id="game_abb" name="game_abb"
 				style="display: inline-block; width: 150px; height: 30px;">
 				<c:forEach var="game" items="${gameList}">
-				<option value="${game.game_abb}">${game.game_name}</option>
+					<option value="${game.game_abb}">${game.game_name}</option>
 				</c:forEach>
 			</select>
 			<div>
@@ -69,8 +68,9 @@
 
 		</div>
 		<div style="text-align: center; padding-bottom: 15px;">
-			<input type="submit" value="전송" /> <input type="button"
-				onclick="location.href='/community'" value="취소" />
+			<input type="submit" value="전송" style="background-color: #9f9f9f;" />
+			<input type="button" onclick="location.href='/community'" value="취소"
+				style="background-color: #9f9f9f;" />
 		</div>
 	</form>
 	<!-- 본문 끝 -->

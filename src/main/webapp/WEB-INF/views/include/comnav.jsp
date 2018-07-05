@@ -5,7 +5,7 @@
 .menubar li {
 	display: inline-block;
 	width: 16%;
-	background: #25a2c3;
+	background: #606060;
 }
 
 .menubar li ul {
@@ -26,10 +26,10 @@
 .menubar li ul li {
 	width: 100%;
 	display: block;
-	background: #3ec5f0;
+	background: #787878;
 	border-width : 1px;
 	border-style: solid;
-	border-color: #25a2c3;
+	border-color: #606060;
 }
 
 .menubar {
