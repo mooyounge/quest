@@ -65,8 +65,11 @@ create table quest_board(
 insert into quest_board values('all',quest_board_id.nextval,'정보');
 delete from quest_board where board_id > 5;
 select * from quest_board;
+delete from quest_board where board_id = 99;
 create sequence quest_board_id;
 drop table quest_board;
+update quest_board set board_name = 'info' where board_name = '정보';
+commit;
 -- 글 
 create table quest_post(
     post_id number primary key,

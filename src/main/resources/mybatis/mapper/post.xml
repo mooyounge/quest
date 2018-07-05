@@ -15,6 +15,11 @@
 		        					game_abb = 'all'
 		        				</otherwise>
 		        			</choose>
+		        		
+		        		<if test="board_id != 0">
+		        		and board_id = #{board_id}
+		        		</if>
+		        		
 						<if test="option != null">
 						and
 			        	<choose>
@@ -65,7 +70,18 @@
 			        			post_content like '%'||#{text}||'%')
 			        		</when>
 			        	</choose>
-			        </if> order by post_regdate desc )  a) where rnum between #{start} and #{end}
+			        </if>
+			        <if test="board_id != null">
+						<if test="option == null">
+							where
+						</if>
+						<if test="option != null">
+							and
+						</if>
+		        		board_id = #{board_id}
+	        		</if>
+	        		
+			         order by post_regdate desc )  a) where rnum between #{start} and #{end}
 	</select>
 	
 	
@@ -84,6 +100,11 @@
 		        					game_abb = 'all'
 		        				</otherwise>
 		        			</choose>
+		        			
+						<if test="board_id != 0">
+		        		and board_id = #{board_id}
+		        		</if>
+		        			
 						<if test="option != null">
 						and
 			        	<choose>

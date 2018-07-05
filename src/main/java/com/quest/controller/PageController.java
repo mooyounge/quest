@@ -50,10 +50,9 @@ public class PageController {
 							@RequestParam(required=false) String option,
 							@RequestParam(required=false) String text,
 							@RequestParam(defaultValue="1") int page,
-							@RequestParam(required=false) String game_abb //game_abb
+							@RequestParam(defaultValue="all") String game_abb,
+							@RequestParam(defaultValue="all") String name
 							) {
-		
-		
 		
 		//페이징 한세트
 		String searchParam = "";
@@ -61,13 +60,13 @@ public class PageController {
 			searchParam = "&option="+option+"&text="+text;
 		}
         Paging paging = getPaging(page);
-        paging.setTotalCount(postService.getSize(option,text,game_abb));
+        paging.setTotalCount(postService.getSize(option,text,game_abb,name));
         List<Post> postList = null;
         //game_abb가 없으면 전체 리스트 불러오기
         if(game_abb==null) {
         	postList = postService.getAllList(option,text,paging);
         }else {
-        	postList = postService.getList(option,text,paging,game_abb);
+        		postList = postService.getList(option,text,paging,game_abb,name);
         }
         //요기까지
         

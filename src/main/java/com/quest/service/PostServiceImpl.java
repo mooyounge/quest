@@ -90,5 +90,42 @@ public class PostServiceImpl implements PostService {
 		return postDao.getAllList(map);
 	}
 
+	@Override
+	public int getSize(String option, String text, String game_abb, String name) {
+		
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("option", option);
+		map.put("text", text);
+		map.put("game_abb", game_abb);
+		map.put("name",name);
+		
+		//name 으로 all,free,info 중 파악해서 전달해야함.
+		int board_id = 0;
+		if("free".equals(name)||"info".equals(name)) {
+			board_id = boardDao.getBoardId(map);
+		}
+		map.put("board_id",board_id);
+		
+		return postDao.getSize(map);
+	}
+
+	@Override
+	public List<Post> getList(String option, String text, Paging paging, String game_abb, String name) {
+		Map<String,Object> map = getSearchMap(paging);
+		map.put("option", option);
+		map.put("text", text);
+		map.put("game_abb", game_abb);
+		map.put("name",name);
+		
+		//name 으로 all,free,info 중 파악해서 전달해야함.
+		int board_id = 0;
+		if("free".equals(name)||"info".equals(name)) {
+			board_id = boardDao.getBoardId(map);
+		}
+		map.put("board_id",board_id);
+		
+		return postDao.getList(map);
+	}
+
 
 }
