@@ -39,7 +39,7 @@
 					<tr>
 						<td>${post.rnum}</td>
 						<td><a
-							href="/community/view?id=${post.post_id}&page=${param.page}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if><c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if>">${post.post_title}</a></td>
+							href="/community/view?id=${post.post_id}&page=${param.page}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if><c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.name!=null}">&name=${param.name}</c:if>">${post.post_title}</a></td>
 						<td>${post.user_id}</td>
 						<td>${post.post_regdate}</td>
 						<td>${post.post_lookup}</td>
@@ -103,7 +103,7 @@
 				return;
 			}
 			
-			location.href ="/community?option="+option+"&text="+text<c:if test="${param.game_abb!=null}">+"&game_abb=${param.game_abb}"</c:if>;
+			location.href ="/community?option="+option+"&text="+text<c:if test="${param.game_abb!=null}">+"&game_abb=${param.game_abb}"</c:if><c:if test="${param.name!=null}">+"&name=${param.name}"</c:if>;
 		}
 		
 		$(function(){

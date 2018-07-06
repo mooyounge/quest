@@ -60,14 +60,10 @@ public class PageController {
 			searchParam = "&option="+option+"&text="+text;
 		}
         Paging paging = getPaging(page);
-        paging.setTotalCount(postService.getSize(option,text,game_abb,name));
         List<Post> postList = null;
         //game_abb가 없으면 전체 리스트 불러오기
-        if(game_abb==null) {
-        	postList = postService.getAllList(option,text,paging);
-        }else {
         		postList = postService.getList(option,text,paging,game_abb,name);
-        }
+        		paging.setTotalCount(postService.getSize(option,text,game_abb,name));
         //요기까지
         
         
@@ -105,14 +101,17 @@ public class PageController {
 	
 	//글 데이터베이스로 보냄
 	@PostMapping("/postWrite")
-	public String postWritepost(@ModelAttribute @Valid Post post,BindingResult result) {
+	public String postWritepost(@ModelAttribute @Valid Post post,BindingResult result,
+								@RequestParam(required=false) String game_abb) {
 		
 		if(result.hasErrors()) {
 			return "communitywrite";
 		}
 		
 		postService.insert(post);
-		
+		if(game_abb != null) {
+			return "redirect:/community?game_abb="+game_abb;
+		}
 		return "redirect:/community";
 	}
 	
@@ -133,7 +132,8 @@ public class PageController {
 						@RequestParam(required=false) String option,
 						@RequestParam(required=false) String text,
 						@RequestParam(defaultValue="1") int page,
-						@RequestParam(required=false) String game_abb) {
+						@RequestParam(defaultValue="all") String game_abb,
+						@RequestParam(defaultValue="all") String name) {
 		Post post = postService.getPost(id);
 		
 		//페이징 한세트
@@ -142,14 +142,10 @@ public class PageController {
 					searchParam = "&option="+option+"&text="+text;
 				}
 		        Paging paging = getPaging(page);
-		        paging.setTotalCount(postService.getSize(option,text,game_abb));
 		        List<Post> postList = null;
 		        //game_abb가 없으면 전체 리스트 불러오기
-		        if(game_abb==null) {
-		        	postList = postService.getAllList(option,text,paging);
-		        }else {
-		        	postList = postService.getList(option,text,paging,game_abb);
-		        }
+        		postList = postService.getList(option,text,paging,game_abb,name);
+        		paging.setTotalCount(postService.getSize(option,text,game_abb,name));
 		        //요기까지
 		
         //게임 이름 불러오기 comnav
@@ -166,12 +162,14 @@ public class PageController {
 	@ResponseBody
 	public Map<String,Object> ajaxlist(@RequestParam(required=false) String option,
 			@RequestParam(required=false) String text,
-			@RequestParam(defaultValue="1") int page) {
+			@RequestParam(defaultValue="1") int page,
+			@RequestParam(defaultValue="all") String game_abb,
+			@RequestParam(defaultValue="all") String name) {
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		Paging paging = getPaging(page);
 		
-        List<Post> postList = postService.getList(option, text,paging);
+        List<Post>  postList = postService.getList(option,text,paging,game_abb,name);
 
 		map.put("postList", postList);
 		map.put("page", page);

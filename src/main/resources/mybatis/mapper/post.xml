@@ -8,14 +8,20 @@
 		from (select * from quest_post
 						where
 		        			<choose>
-		        			 	<when test="game_abb != null">
+		        			 	<when test="game_abb != 'all'">
 		        					game_abb = #{game_abb}
 		        				</when>
 		        				<otherwise>
-		        					game_abb = 'all'
+		        					game_abb like('%')
 		        				</otherwise>
 		        			</choose>
-		        		
+		        		<if test="board_idList != null">
+		        			and
+		        			<foreach collection="board_idList" item="board_idList" index="i" open="(" close=")" separator="or">
+		        				board_id = #{board_idList.value}
+		        			</foreach>
+		        			
+		        		</if>
 		        		<if test="board_id != 0">
 		        		and board_id = #{board_id}
 		        		</if>
@@ -78,6 +84,9 @@
 						<if test="option != null">
 							and
 						</if>
+					<if test="board_id == 0">
+						board_id >= 1
+					</if>
 		        		board_id = #{board_id}
 	        		</if>
 	        		
@@ -93,16 +102,31 @@
 		select count(post_id) from quest_post
 						where
 		        			<choose>
-		        			 	<when test="game_abb != null">
+		        			 	<when test="game_abb != 'all'">
 		        					game_abb = #{game_abb}
 		        				</when>
 		        				<otherwise>
-		        					game_abb = 'all'
+		        					game_abb like('%')
 		        				</otherwise>
 		        			</choose>
+		        		<if test="board_idList != null">
+		        			and
+		        			<foreach collection="board_idList" item="board_idList" index="index" open="(" close=")" separator="or">
+		        				board_id = #{board_idList.value}
+		        			</foreach>
+		        		</if>
 		        			
 						<if test="board_id != 0">
-		        		and board_id = #{board_id}
+		        		and 
+		        		<choose>
+		        		<when test="board_id == 0">
+							board_id >= 1
+						</when>
+						<when test="board_id != 0">
+							board_id = #{board_id}
+						</when>
+						</choose>
+		        		
 		        		</if>
 		        			
 						<if test="option != null">
