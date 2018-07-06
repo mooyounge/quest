@@ -48,34 +48,7 @@ public class PostServiceImpl implements PostService {
 		
 		return postDao.getSize(map);
 	}
-	@Override
-	public int getSize(String option, String text, String game_abb, String name) {
-		
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("option", option);
-		map.put("text", text);
-		map.put("game_abb", game_abb);
-		map.put("name",name);
-		
-		//여기서는 board_id 가 아니라 board_id list 를 받아야한다.
-		int board_id = 0;
-		if("all".equals(game_abb)) {
-			List<Integer> list = null;
-			list = boardDao.getBoardIdList(name);
-			map.put("board_id",board_id);
-			map.put("board_idList", list);
-			return postDao.getSize(map);
-		}
-		//여기서는 board_id 가 아니라 board_id list 를 받아야한다.
-		
-		//name 으로 all,free,info 중 파악해서 전달해야함.
-		if("free".equals(name)||"info".equals(name)) {
-			board_id = boardDao.getBoardId(map);
-		}
-		map.put("board_id",board_id);
-		
-		return postDao.getSize(map);
-	}
+	
 	
 	@Override
 	public List<Post> getList(String option, String text, Paging paging) {
@@ -132,17 +105,11 @@ public class PostServiceImpl implements PostService {
 		map.put("game_abb", game_abb);
 		map.put("name",name);
 		
-		
-		
 		//여기서는 board_id 가 아니라 board_id list 를 받아야한다.
 		int board_id = 0;
 		if("all".equals(game_abb)) {
 			List<Integer> list = null;
 			list = boardDao.getBoardIdList(name);
-			
-			for( int a : list) {
-				System.out.println(a);
-			}
 			
 			map.put("board_id",board_id);
 			map.put("board_idList", list);
@@ -159,6 +126,34 @@ public class PostServiceImpl implements PostService {
 		
 		return postDao.getList(map);
 	}
-
+	
+	@Override
+	public int getSize(String option, String text, String game_abb, String name) {
+		
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("option", option);
+		map.put("text", text);
+		map.put("game_abb", game_abb);
+		map.put("name",name);
+		
+		//여기서는 board_id 가 아니라 board_id list 를 받아야한다.
+		int board_id = 0;
+		if("all".equals(game_abb)) {
+			List<Integer> list = null;
+			list = boardDao.getBoardIdList(name);
+			map.put("board_id",board_id);
+			map.put("board_idList", list);
+			return postDao.getSize(map);
+		}
+		//여기서는 board_id 가 아니라 board_id list 를 받아야한다.
+		
+		//name 으로 all,free,info 중 파악해서 전달해야함.
+		if("free".equals(name)||"info".equals(name)) {
+			board_id = boardDao.getBoardId(map);
+		}
+		map.put("board_id",board_id);
+		
+		return postDao.getSize(map);
+	}
 
 }

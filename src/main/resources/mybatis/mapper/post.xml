@@ -22,9 +22,9 @@
 		        			</foreach>
 		        			
 		        		</if>
-		        		<!-- <if test="board_id != 0">
+		        		<if test="board_id != 0">
 		        		and board_id = #{board_id}
-		        		</if> -->
+		        		</if>
 		        		
 						<if test="option != null">
 						and
