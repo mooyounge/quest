@@ -132,7 +132,7 @@ public class PageController {
 						@RequestParam(required=false) String option,
 						@RequestParam(required=false) String text,
 						@RequestParam(defaultValue="1") int page,
-						@RequestParam(required=false) String game_abb,
+						@RequestParam(defaultValue="all") String game_abb,
 						@RequestParam(defaultValue="all") String name) {
 		Post post = postService.getPost(id);
 		
@@ -142,7 +142,6 @@ public class PageController {
 					searchParam = "&option="+option+"&text="+text;
 				}
 		        Paging paging = getPaging(page);
-		        paging.setTotalCount(postService.getSize(option,text,game_abb));
 		        List<Post> postList = null;
 		        //game_abb가 없으면 전체 리스트 불러오기
         		postList = postService.getList(option,text,paging,game_abb,name);
