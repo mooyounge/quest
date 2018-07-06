@@ -162,12 +162,14 @@ public class PageController {
 	@ResponseBody
 	public Map<String,Object> ajaxlist(@RequestParam(required=false) String option,
 			@RequestParam(required=false) String text,
-			@RequestParam(defaultValue="1") int page) {
+			@RequestParam(defaultValue="1") int page,
+			@RequestParam(defaultValue="all") String game_abb,
+			@RequestParam(defaultValue="all") String name) {
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		Paging paging = getPaging(page);
 		
-        List<Post> postList = postService.getList(option, text,paging);
+        List<Post>  postList = postService.getList(option,text,paging,game_abb,name);
 
 		map.put("postList", postList);
 		map.put("page", page);
