@@ -14,7 +14,7 @@
 		        				<otherwise>
 		        					game_abb like('%')
 		        				</otherwise>
-		        			</choose>
+		        			</choose> <!-- Choose는 나중에 resultMap으로 관리해서 게임을 가져올 때 해당하는 게시물을 가져오는것으로 바꿔보자! -->
 		        		<if test="board_idList != null">
 		        			and
 		        			<foreach collection="board_idList" item="board_idList" index="i" open="(" close=")" separator="or">

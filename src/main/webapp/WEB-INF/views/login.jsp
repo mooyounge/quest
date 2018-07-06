@@ -29,8 +29,8 @@
         <form accept-charset="UTF-8" role="form" method="post" action="">
             <legend>로그인</legend>
             <div class="form-group">
-                <label for="username-email">이메일 or 아이디</label>
-                <input name="user_id" value='' id="username-email" placeholder="E-mail or Username" type="text" class="form-control" />
+                <label for="username-email">아이디</label>
+                <input name="id" value='' id="id" placeholder="User Id" type="text" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="password">비밀번호</label>
