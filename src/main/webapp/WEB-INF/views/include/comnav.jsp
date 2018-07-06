@@ -27,13 +27,14 @@
 	width: 100%;
 	display: block;
 	background: #787878;
-	border-width : 1px;
+	border-width: 1px;
 	border-style: solid;
 	border-color: #606060;
 }
 
 .menubar {
 	text-align: center;
+	margin-top: 10px;
 }
 
 .menubar li a {
@@ -43,50 +44,47 @@
 </style>
 
 <div class="menubar">
-	
-		<ul>
-			
-			<li id="FPS"><a href="#">FPS</a>
-					<ul>
-						<c:forEach var="game" items="${gameList}">
-						<c:if test="${game.genre=='FPS'}">
+	<ul>
+		<li id="FPS"><a href="#">FPS</a>
+			<ul>
+				<c:forEach var="game" items="${gameList}">
+					<c:if test="${game.genre=='FPS'}">
 						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
-						</c:if>
-						</c:forEach>
-					</ul>
-			</li>
-			
-			<li id="RPG"><a href="#">RPG</a>
-				<ul>
-					<c:forEach var="game" items="${gameList}">
-						<c:if test="${game.genre=='RPG'}">
+					</c:if>
+				</c:forEach>
+			</ul></li>
+
+		<li id="RPG"><a href="#">RPG</a>
+			<ul>
+				<c:forEach var="game" items="${gameList}">
+					<c:if test="${game.genre=='RPG'}">
 						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
-						</c:if>
-						</c:forEach>
-				</ul></li>
-			<li id="AOS"><a href="#">AOS</a>
-				<ul>
-					<c:forEach var="game" items="${gameList}">
-						<c:if test="${game.genre=='AOS'}">
+					</c:if>
+				</c:forEach>
+			</ul></li>
+		<li id="AOS"><a href="#">AOS</a>
+			<ul>
+				<c:forEach var="game" items="${gameList}">
+					<c:if test="${game.genre=='AOS'}">
 						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
-						</c:if>
-					</c:forEach>
-				</ul></li>
-			<li id="RHYTHM"><a href="#">리듬게임</a>
-				<ul>
-					<c:forEach var="game" items="${gameList}">
-						<c:if test="${game.genre=='rhythm'}">
+					</c:if>
+				</c:forEach>
+			</ul></li>
+		<li id="RHYTHM"><a href="#">리듬게임</a>
+			<ul>
+				<c:forEach var="game" items="${gameList}">
+					<c:if test="${game.genre=='rhythm'}">
 						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
-						</c:if>
-					</c:forEach>
-				</ul></li>
-			<li id="INDIE"><a href="#">인디게임</a>
-				<ul>
-					<c:forEach var="game" items="${gameList}">
-						<c:if test="${game.genre=='indie'}">
+					</c:if>
+				</c:forEach>
+			</ul></li>
+		<li id="INDIE"><a href="#">인디게임</a>
+			<ul>
+				<c:forEach var="game" items="${gameList}">
+					<c:if test="${game.genre=='indie'}">
 						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
-						</c:if>
-					</c:forEach>
-				</ul></li>
-		</ul>
+					</c:if>
+				</c:forEach>
+			</ul></li>
+	</ul>
 </div>
