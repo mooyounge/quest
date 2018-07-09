@@ -94,11 +94,17 @@ create table quest_comment(
     comment_id number primary key,
     post_id references quest_post(post_id),
     user_id references quest_user(id),
+    user_name varchar(10) not null,
+    password varchar(10) not null,
     comment_content clob not null,
     comment_regdate date not null,
     comment_like number default 0,
     comment_dislike number default 0
 );
+select * from quest_comment;
+create sequence quest_comment_id;
+insert into quest_comment values(quest_comment_id.nextval,38,null,'현호','1111','내용입니다',sysdate,0,0);
+commit;
 drop table quest_comment;
 --신고
 

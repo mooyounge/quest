@@ -92,15 +92,18 @@
 				</div>
 				<!-- 댓글창 -->
 				<hr />
-				<div style="text-align: left;">
-					아이디 : <input type="text"
-						style="display: inline-block; width: 90px; height: 30px;" /> 비밀번호
-					: <input type="password"
-						style="display: inline-block; width: 90px; height: 30px;" />
-					<textarea name="" id="" cols="30" rows="10"
-						style="height: 120px; margin-top: 10px; resize: none;"></textarea>
-					<input type="button" value="댓글 입력" style="background:black; margin-top: 10px;"/>
-				</div>
+				<form action="/community/comment/insert" method="post">
+					<input type="hidden" name="post_id" value="${post.post_id }" >
+					<div style="text-align: left;">
+						아이디 : <input type="text" name="user_name"
+							style="display: inline-block; width: 90px; height: 30px;" />
+						 비밀번호 : <input type="password" name="password"
+							style="display: inline-block; width: 90px; height: 30px;" />
+						<textarea name="comment_content" id="" cols="30" rows="10"
+							style="height: 120px; margin-top: 10px; resize: none;"></textarea>
+						<input type="submit" value="댓글 입력" style="background:black; margin-top: 10px;"/>
+					</div>
+				</form>
 				<!-- for문 댓글 불러오기 -->
 			</div>
 			<hr />
@@ -189,8 +192,6 @@
 			$("#search_option").val("${param.option}").prop("selected",true);
 		}
 	});
-	
-	
 	
 	
 	</script>

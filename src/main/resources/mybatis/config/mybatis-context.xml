@@ -11,6 +11,7 @@
   	<mapper resource="mybatis/mapper/game.xml" />
   	<mapper resource="mybatis/mapper/board.xml" />
   	<mapper resource="mybatis/mapper/user.xml" />
+  	<mapper resource="mybatis/mapper/comment.xml" />
   </mappers>
 </configuration>
 

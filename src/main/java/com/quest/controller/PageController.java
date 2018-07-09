@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.quest.service.BoardService;
+import com.quest.service.CommentService;
 import com.quest.service.GameService;
 import com.quest.service.PostService;
 import com.quest.service.UserService;
 import com.quest.util.Paging;
 import com.quest.vo.Board;
+import com.quest.vo.Comment;
 import com.quest.vo.Game;
 import com.quest.vo.Post;
 import com.quest.vo.User;
@@ -43,6 +45,9 @@ public class PageController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	//메인
 	@GetMapping("/")
@@ -160,7 +165,8 @@ public class PageController {
 	}
 
 	@GetMapping("/community/view")
-	public String comview(Model model,@RequestParam int id,
+	public String comview(Model model,
+						@RequestParam(defaultValue="") int id,
 						@RequestParam(required=false) String option,
 						@RequestParam(required=false) String text,
 						@RequestParam(defaultValue="1") int page,
@@ -188,6 +194,19 @@ public class PageController {
 		model.addAttribute("post",post);
 		model.addAttribute("postList",postList);
 		return "communityView";
+	}
+	
+	//댓글 POST
+	@PostMapping("/community/comment/insert")
+	public String commentInsert(@RequestParam(defaultValue="0") int id,
+								@RequestParam(defaultValue="0") int page,
+								@RequestParam(required=false) String option,
+								@RequestParam(required=false) String text,
+								@RequestParam(defaultValue="all") String game_abb,
+			@ModelAttribute Comment comment,HttpServletRequest request) {
+		
+		commentService.insert(comment);
+		return "redirect:"+request.getHeader("referer");
 	}
 	
 	@PostMapping("/community/ajaxlist")
@@ -241,6 +260,8 @@ public class PageController {
 		
 		return "redirect:/community/admin";
 	}
+	
+	
 	
 	
 }
