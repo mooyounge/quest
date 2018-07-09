@@ -198,15 +198,15 @@ public class PageController {
 	
 	//댓글 POST
 	@PostMapping("/community/comment/insert")
-	public String commentInsert(@RequestParam(defaultValue="0") int id,
-								@RequestParam(defaultValue="0") int page,
-								@RequestParam(required=false) String option,
-								@RequestParam(required=false) String text,
-								@RequestParam(defaultValue="all") String game_abb,
-			@ModelAttribute Comment comment,HttpServletRequest request) {
+	public String commentInsert(@ModelAttribute Comment comment,BindingResult result,HttpServletRequest request) {
 		
+		String url = request.getHeader("referer");
+		
+		if(result.hasErrors()) {
+			return "communityView";
+		}
 		commentService.insert(comment);
-		return "redirect:"+request.getHeader("referer");
+		return "redirect:"+url;
 	}
 	
 	@PostMapping("/community/ajaxlist")
