@@ -73,7 +73,7 @@ commit;
 -- ±Û 
 create table quest_post(
     post_id number primary key,
-    game_abb varchar2(10) references quest_game(game_abb), 
+    game_abb varchar2(10) references quest_game(game_abb),
     board_id number references quest_board(board_id),
     user_id varchar2(15) references quest_user(id),
     post_title varchar2(50) not null,
@@ -122,8 +122,5 @@ select * from quest_post where game_abb like('%');
 select * from quest_post where game_abb = 'all' and (board_id ='65' or board_id='64');
 select count(post_id) from quest_post where game_abb like '%' and board_id >= 0;
     
-    
-    100
-    97
-    94
+
     

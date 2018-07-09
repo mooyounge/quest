@@ -10,6 +10,7 @@
   	<mapper resource="mybatis/mapper/post.xml" />
   	<mapper resource="mybatis/mapper/game.xml" />
   	<mapper resource="mybatis/mapper/board.xml" />
+  	<mapper resource="mybatis/mapper/user.xml" />
   </mappers>
 </configuration>
 
