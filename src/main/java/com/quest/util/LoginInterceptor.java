@@ -9,12 +9,18 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Component
-public class IncodingInterceptor extends HandlerInterceptorAdapter{
+public class LoginInterceptor extends HandlerInterceptorAdapter{
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-			request.setCharacterEncoding("utf-8");
+		if(request.getSession().getAttribute("user") == null) {
+			request.setAttribute("msg", "로그인 후 이용 가능합니다.");
+			request.setAttribute("url", "/login");
+			request.getRequestDispatcher("/WEB-INF/views/error.jsp")
+			       .forward(request, response);
+			return false;
+		}
 			return true;
 	}
 }
