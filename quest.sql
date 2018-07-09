@@ -26,9 +26,11 @@ create table quest_game(
     game_abb varchar2(10) not null
 );
 ALTER TABLE quest_game modify(game_abb varchar2(10) unique);
-
+select * from quest_game;
 update quest_game set GAME_ABB = 'all' where genre = 'ALL';
+update quest_game set game_name = '전체 게시글' where game_abb = 'all';
 
+commit;
 
 select * from quest_game;
 insert into quest_game values('FPS','서든어택','sudden');

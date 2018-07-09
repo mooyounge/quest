@@ -24,7 +24,7 @@
 
 	<div class="container" style="margin-top: 50px;">
 		<span>
-			<h2>~~~~갤러리</h2>
+			<h2>${game.game_name}</h2>
 		</span>
 		<table class="table table-striped table-hover">
 			<thead>

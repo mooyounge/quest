@@ -59,6 +59,8 @@ public class PageController {
 							@RequestParam(defaultValue="all") String game_abb,
 							@RequestParam(defaultValue="all") String name
 							) {
+		Game game = gameService.getOne(game_abb);
+		
 		
 		//페이징 한세트
 		String searchParam = "";
@@ -68,15 +70,15 @@ public class PageController {
         Paging paging = getPaging(page);
         List<Post> postList = null;
         //game_abb가 없으면 전체 리스트 불러오기
-        		postList = postService.getList(option,text,paging,game_abb,name);
-        		paging.setTotalCount(postService.getSize(option,text,game_abb,name));
+		postList = postService.getList(option,text,paging,game_abb,name);
+		paging.setTotalCount(postService.getSize(option,text,game_abb,name));
         //요기까지
         
         
         //게임 이름 불러오기 comnav
         List<Game> gameList = gameService.getList();
+        model.addAttribute("game",game);
 		model.addAttribute("gameList",gameList);
-        
         model.addAttribute("paging",paging);
 		model.addAttribute("postList",postList);
 		return "community";
