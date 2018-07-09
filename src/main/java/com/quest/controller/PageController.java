@@ -198,12 +198,12 @@ public class PageController {
 	
 	//댓글 POST
 	@PostMapping("/community/comment/insert")
-	public String commentInsert(@ModelAttribute Comment comment,BindingResult result,HttpServletRequest request) {
+	public String commentInsert(@ModelAttribute @Valid Comment comment,BindingResult result,HttpServletRequest request) {
 		
 		String url = request.getHeader("referer");
 		
 		if(result.hasErrors()) {
-			return "communityView";
+			return "redirect:"+url;
 		}
 		commentService.insert(comment);
 		return "redirect:"+url;
