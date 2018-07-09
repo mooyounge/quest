@@ -51,6 +51,7 @@
 			        </if> order by post_regdate desc )  a) where rnum between #{start} and #{end}
 	</select>
 	
+	
 	<select id="getAllList" resultType="post" parameterType="map">
 		select * from (select rownum as rnum, a.* 
 		from (select * from quest_post
@@ -94,10 +95,19 @@
 	</select>
 	
 	
-	<select id="getPost" resultType="post" parameterType="int">
+	<select id="getPost" parameterType="int" resultMap="postMap" >
 		select * from quest_post where post_id = #{value}
 	</select>
-
+	
+	<resultMap type="post" id="postMap">
+		<id property="post_id" column="post_id"/>
+		<collection select="comment.selectList"
+		            column="post_id"
+		            ofType="comment"
+		            property="commentList"/>
+	</resultMap>
+	
+	
 	<select id="getSize" resultType="int">
 		select count(post_id) from quest_post
 						where

@@ -1,6 +1,9 @@
 package com.quest.vo;
 
+import java.util.List;
+
 import javax.validation.constraints.Size;
+
 
 public class Post {
 	private int rnum;
@@ -22,7 +25,15 @@ public class Post {
 	private int post_dislike;
 	private int post_lookup;
 	
+	private List<Comment> commentList;
 	
+	
+	public List<Comment> getCommentList() {
+		return commentList;
+	}
+	public void setCommentList(List<Comment> commentList) {
+		this.commentList = commentList;
+	}
 	public String getGame_abb() {
 		return game_abb;
 	}

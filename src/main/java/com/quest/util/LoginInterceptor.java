@@ -17,7 +17,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		if(request.getSession().getAttribute("user") == null) {
 			request.setAttribute("msg", "로그인 후 이용 가능합니다.");
 			request.setAttribute("url", "/login");
-			request.getRequestDispatcher("/WEB-INF/views/error.jsp")
+			request.getRequestDispatcher("/WEB-INF/views/errorpage.jsp")
 			       .forward(request, response);
 			return false;
 		}
