@@ -19,14 +19,14 @@
 </head>
 <body>
 
-	<header id="header" style="height:84px;">
+	<header id="header" style="height: 84px;">
 		<jsp:include page="include/mainnav.jsp" />
 	</header>
 
 	<jsp:include page="include/comnav.jsp" />
 
 	<jsp:include page="include/commenu.jsp" />
-	
+
 	<div class="container">
 
 		<!-- 선택한 글 보기 -->
@@ -83,8 +83,27 @@
 						src="/images/down.png" alt="" />
 					</a> <br /> ${post.post_dislike}
 				</div>
-				<!-- 정보글 추천버튼 필요 -->
+				<div style="display: inline-block; text-align: center;">
+					<a href="javascript:;" id="recommend_vote_up"
+						class="b_re_up fixed_name_box" title="추천"
+						style="width: 30px; heigth: 30px;"> <img src="/images/up2.png"
+						alt="" />
+					</a> <br /> ${post.post_dislike}
+				</div>
+				<!-- 댓글창 -->
+				<hr />
+				<div style="text-align: left;">
+					아이디 : <input type="text"
+						style="display: inline-block; width: 90px; height: 30px;" /> 비밀번호
+					: <input type="password"
+						style="display: inline-block; width: 90px; height: 30px;" />
+					<textarea name="" id="" cols="30" rows="10"
+						style="height: 120px; margin-top: 10px; resize: none;"></textarea>
+					<input type="button" value="댓글 입력" style="background : black;"/>
+				</div>
+				<!-- for문 댓글 불러오기 -->
 			</div>
+			<hr />
 
 			<table class="table table-striped table-hover" id="post_table">
 				<thead>
@@ -97,8 +116,6 @@
 					</tr>
 				</thead>
 				<tbody id="posts">
-
-					<!-- 여기에 포문돌리면됨 -->
 					<c:forEach var="post" varStatus="status" items="${postList}">
 						<tr>
 							<td>${status.count}</td>

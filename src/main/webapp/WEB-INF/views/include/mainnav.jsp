@@ -4,9 +4,9 @@
 <nav class="left">
 	<a href="#menu"><span>Menu</span></a>
 </nav>
-<a href="/" class="logo"><img src="images/Quest.png" alt="" style="height:70px;" /></a>
+<a href="/" class="logo"><img src="/images/Quest.png" alt="" style="height:70px;" /></a>
 <nav class="right">
-	<a href="/login" class="button alt"><img src="images/login.png" alt="" style="height:40px;" /></a>
+	<a href="/login" class="button alt"><img src="/images/login.png" alt="" style="height:40px;" /></a>
 </nav>
 
 

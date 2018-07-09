@@ -29,15 +29,15 @@
         <form accept-charset="UTF-8" role="form" method="post" action="">
             <legend>로그인</legend>
             <div class="form-group">
-                <label for="username-email">이메일 or 아이디</label>
-                <input name="user_id" value='' id="username-email" placeholder="E-mail or Username" type="text" class="form-control" />
+                <label for="username-email">아이디</label>
+                <input name="user_id" value='' id="username-email" placeholder="Username" type="text" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="password">비밀번호</label>
                 <input name="password" id="password" value='' placeholder="Password" type="password" class="form-control" />
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-default btn-login-submit btn-block m-t-md" value="Login" />
+                <input type="submit" class="btn btn-success btn-login-submit btn-block m-t-md" value="Login" />
             </div>
             <span class='text-center'><a href="/bbs/index.php?mid=index&act=dispMemberFindAccount" class="text-sm">비밀번호 찾기</a></span>
             <hr />

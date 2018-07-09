@@ -17,12 +17,15 @@
 	<header id="header" style="height: 84px;">
 		<jsp:include page="include/mainnav.jsp" />
 	</header>
-	
+
 	<jsp:include page="include/comnav.jsp" />
-	
+
 	<jsp:include page="include/commenu.jsp" />
 
 	<div class="container" style="margin-top: 50px;">
+		<span>
+			<h2>~~~~갤러리</h2>
+		</span>
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
@@ -63,15 +66,16 @@
 				</select> <input type="text" id="search_text"
 					style="width: 200px; height: 30px; display: inline-block;"
 					value="${param.text}" />
-				<button class="btn writebtn" onclick="location.href='/community'"
-					style="width: 80px; height: 30px; display: inline-block; margin-left: 10px; background-color: #9f9f9f;">전체목록
+				<button class="btn btn-success writebtn"
+					onclick="location.href='/community'"
+					style="width: 80px; height: 30px; display: inline-block; margin-left: 10px;">전체목록
 				</button>
-				<button class="btn writebtn" onclick="search()"
-					style="width: 70px; height: 30px; display: inline-block; margin-left: 10px; background-color: #9f9f9f;">검색</button>
+				<button class="btn btn-success writebtn" onclick="search()"
+					style="width: 70px; height: 30px; display: inline-block; margin-left: 10px;">검색</button>
 			</div>
-			<button class="btn writebtn"
+			<button class="btn btn-success writebtn"
 				onclick="location.href='/postWrite<c:if test="${param.game_abb!=null}">?game_abb=${param.game_abb}</c:if>'"
-				style="height: 30px; background-color: #9f9f9f;">글쓰기</button>
+				style="height: 30px;">글쓰기</button>
 			<jsp:include page="include/paging.jsp" flush="flase">
 				<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
 				<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
