@@ -7,7 +7,7 @@ public class Comment {
     private String user_name;
     private String password;
     private String comment_content;
-    private String regdate;
+    private String comment_regdate;
     private int comment_like;
     private int comment_dislike;
     
@@ -47,11 +47,12 @@ public class Comment {
 	public void setComment_content(String comment_content) {
 		this.comment_content = comment_content;
 	}
-	public String getRegdate() {
-		return regdate;
+	
+	public String getComment_regdate() {
+		return comment_regdate;
 	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setComment_regdate(String comment_regdate) {
+		this.comment_regdate = comment_regdate;
 	}
 	public int getComment_like() {
 		return comment_like;
