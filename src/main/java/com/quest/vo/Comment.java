@@ -12,7 +12,7 @@ public class Comment {
     private String password;
 	@Size(min=3,max=200,message="3~200글자 이내로 작성해 주세요")
     private String comment_content;
-    private String regdate;
+    private String comment_regdate;
     private int comment_like;
     private int comment_dislike;
     
@@ -52,11 +52,12 @@ public class Comment {
 	public void setComment_content(String comment_content) {
 		this.comment_content = comment_content;
 	}
-	public String getRegdate() {
-		return regdate;
+	
+	public String getComment_regdate() {
+		return comment_regdate;
 	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setComment_regdate(String comment_regdate) {
+		this.comment_regdate = comment_regdate;
 	}
 	public int getComment_like() {
 		return comment_like;

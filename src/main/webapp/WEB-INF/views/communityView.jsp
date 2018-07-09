@@ -98,9 +98,9 @@
 						style="display: inline-block; width: 90px; height: 30px;" /> 
 					비밀번호 : <input type="password" name="password"
 						style="display: inline-block; width: 90px; height: 30px;" />
-					<textarea name="comment_content" id="" cols="30" rows="10" style="height:120px; margin-top:10px;resize:none;">
-					</textarea>
-					<button class="btn btn-success" style="height: 30px; margin-top:10px;">댓글 입력</button>
+						<textarea name="comment_content" id="" cols="30" rows="10"
+							style="height: 120px; margin-top: 10px; resize: none;"></textarea>
+						<button class="btn btn-success" style="height: 30px; margin-top:10px;">댓글 입력</button>
 				</div>
 				</form>
 				<br />
