@@ -72,22 +72,20 @@
 
 				<div style="display: inline-block; text-align: center;">
 					<a href="javascript:;" id="recommend_vote_up"
-						class="b_re_up fixed_name_box" title="추천"
-						style="width: 30px; heigth: 30px;"> <img src="/images/up.png"
-						alt="" />
+						class="b_re_up fixed_name_box" title="추천"> <img
+						src="/images/up.png" alt="" style="width: 70px; heigth: 70px;" />
 					</a> <br /> ${post.post_like}
 				</div>
 				<div style="display: inline-block; text-align: center;">
 					<a href="javascript:;" id="recommend_vote_down" class="b_re_down"
-						title="비추천" style="width: 30px; heigth: 30px;"> <img
-						src="/images/down.png" alt="" />
+						title="비추천"> <img src="/images/down.png" alt=""
+						style="width: 70px; heigth: 70px;" />
 					</a> <br /> ${post.post_dislike}
 				</div>
 				<div style="display: inline-block; text-align: center;">
 					<a href="javascript:;" id="recommend_vote_up"
-						class="b_re_up fixed_name_box" title="추천"
-						style="width: 30px; heigth: 30px;"> <img src="/images/up2.png"
-						alt="" />
+						class="b_re_up fixed_name_box" title="추천"> <img
+						src="/images/up2.png" alt="" style="width: 70px; heigth: 70px;" />
 					</a> <br /> ${post.post_dislike}
 				</div>
 				<!-- 댓글창 -->
@@ -96,12 +94,46 @@
 					아이디 : <input type="text"
 						style="display: inline-block; width: 90px; height: 30px;" /> 비밀번호
 					: <input type="password"
-						style="display: inline-block; width: 90px; height: 30px;" />
-					<textarea name="" id="" cols="30" rows="10"
-						style="height: 120px; margin-top: 10px; resize: none;"></textarea>
-					<input type="button" value="댓글 입력" style="background:black; margin-top: 10px;"/>
+						style="display: inline-block; width: 90px; height: 30px;" /> 내용 :
+					<textarea name="comment_content" id="" cols="30" rows="10" style="height:120px; margin-top:10px;resize:none;">
+					</textarea>
+					<button class="btn btn-success" style="height: 30px; margin-top:10px;">댓글
+						입력</button>
 				</div>
+				<br />
 				<!-- for문 댓글 불러오기 -->
+				<table>
+					<thead>
+						<tr>
+							<th style="width: 80px">아이디</th>
+							<th>내용</th>
+							<th style="width: 150px">시간</th>
+							<th style="width: 100px">추천,비추천</th>
+							<th style="width: 80px">신고</th>
+							<th style="width: 50px">삭제</th>
+						</tr>
+					</thead>
+					<thead>
+						<tr>
+							<th>admin</th>
+							<th>Lorem ipsum dolor.</th>
+							<th>2018-07-09</th>
+							<th><a href="javascript:;" id="recommend_vote_up"
+								class="b_re_up fixed_name_box" title="추천"> <img
+									src="/images/up.png" alt="" style="width: 30px; heigth: 30px;" />
+							</a> <a href="javascript:;" id="recommend_vote_down"
+								class="b_re_down" title="비추천"> <img src="/images/down.png"
+									alt="" style="width: 30px; heigth: 30px;" />
+							</a></th>
+							<th><a href="javascript:;" id="recommend_vote_down"
+								class="b_re_down" title="신고"> <img src="/images/siren.png"
+									alt="" style="width: 30px; heigth: 30px;" />
+							</a></th>
+							<!-- c:if문으로 자신이 쓴 것에만 보이기, 유저가 아닐 경우 비밀번호와 일치 -->
+							<th><a href="">삭제</a></th>
+						</tr>
+					</thead>
+				</table>
 			</div>
 			<hr />
 
@@ -126,9 +158,7 @@
 							<td>${post.post_lookup}</td>
 						</tr>
 					</c:forEach>
-
 				</tbody>
-
 			</table>
 			<div class="text-center">
 				<div class="search actions" style="display: inline-block;">
