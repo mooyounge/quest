@@ -32,8 +32,6 @@
 		<jsp:include page="include/mainnav.jsp" />
 	</header>
 
-
-
 	<h3>새 글쓰기</h3>
 
 	<form id="writeForm" action="/postWrite" method="post"
@@ -129,7 +127,7 @@
 				}
 			});
 		}
-		
+		$('.note-statusbar').hide(); 
 
 	</script>
 

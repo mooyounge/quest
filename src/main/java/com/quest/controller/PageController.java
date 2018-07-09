@@ -144,6 +144,12 @@ public class PageController {
 		
 		return "redirect:/community";
 	}
+	//로그인
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:/";
+	}
 	
 	//회원가입
 	@GetMapping("/signup")

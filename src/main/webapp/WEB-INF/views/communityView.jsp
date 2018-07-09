@@ -99,7 +99,7 @@
 						style="display: inline-block; width: 90px; height: 30px;" />
 					<textarea name="" id="" cols="30" rows="10"
 						style="height: 120px; margin-top: 10px; resize: none;"></textarea>
-					<input type="button" value="댓글 입력" style="background : black;"/>
+					<input type="button" value="댓글 입력" style="background:black; margin-top: 10px;"/>
 				</div>
 				<!-- for문 댓글 불러오기 -->
 			</div>
