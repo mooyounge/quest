@@ -1,11 +1,20 @@
 package com.quest.vo;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Comment {
     private int comment_id;
     private int post_id;
     private String user_id;
+    @NotNull
+	@Size(min=2,max=10,message="2~10글자 이내로 작성해 주세요.")
     private String user_name;
+    @NotNull
+	@Size(min=4,max=10,message="4~10글자 이내로 작성해 주세요.")
     private String password;
+    @NotNull
+	@Size(min=3,max=200,message="3~200글자 이내로 작성해 주세요")
     private String comment_content;
     private String comment_regdate;
     private int comment_like;

@@ -26,8 +26,10 @@ import com.quest.service.UserService;
 import com.quest.util.Paging;
 import com.quest.vo.Board;
 import com.quest.vo.Comment;
+import com.quest.vo.Comment_like;
 import com.quest.vo.Game;
 import com.quest.vo.Post;
+import com.quest.vo.Post_like;
 import com.quest.vo.User;
 
 
@@ -128,6 +130,84 @@ public class PageController {
 		return "redirect:/community";
 	}
 	
+	//글 좋아요 ajaxPost
+	@PostMapping("/community/post/like")
+	@ResponseBody
+	public String postlike(HttpServletRequest request,@ModelAttribute Post_like post_like,@RequestParam String type) {
+		
+		//ip 구하기
+		String ip = request.getHeader("X-FORWARDED-FOR");
+        if (ip == null) {
+            ip = request.getRemoteAddr();
+        }
+        post_like.setUser_ip(ip);
+        
+        //user id 구하기
+        User user = null;
+        user =(User)request.getSession().getAttribute("user");
+        if(user!=null) {
+        	post_like.setUser_id(user.getId());
+        }
+        
+        
+        int count = -1;
+        count = postService.getlikecount(post_like);
+        if(count==0) {
+        	//더하는 작업
+        	if("like".equals(type)) {
+        		postService.insertPost_like(post_like);
+        	}else if("dislike".equals(type)) {
+        		postService.insertPost_dislike(post_like);
+        	}
+        	return "success";
+        }else if(count==-1) {
+        	//서버오류
+        	return "error";
+        }else {
+        	//이미 추천한거
+        	return "fail";
+        }
+        
+	}
+	//댓글 좋아요 ajaxPost
+	@PostMapping("/community/comment/like")
+	@ResponseBody
+	public String commentlike(HttpServletRequest request,@ModelAttribute Comment_like comment_like,@RequestParam String type) {
+		
+		//ip 구하기
+		String ip = request.getHeader("X-FORWARDED-FOR");
+		if (ip == null) {
+			ip = request.getRemoteAddr();
+		}
+		comment_like.setUser_ip(ip);
+		
+		//user id 구하기
+		User user = null;
+		user =(User)request.getSession().getAttribute("user");
+		if(user!=null) {
+			comment_like.setUser_id(user.getId());
+		}
+		
+		int count = -1;
+		count = commentService.getlikecount(comment_like);
+		if(count==0) {
+			//더하는 작업
+			if("like".equals(type)) {
+				commentService.insertComment_like(comment_like);
+			}else if("dislike".equals(type)) {
+				commentService.insertComment_dislike(comment_like);
+			}
+			return "success";
+		}else if(count==-1) {
+			//서버오류
+			return "error";
+		}else {
+			//이미 추천한거
+			return "fail";
+		}
+		
+	}
+	
 	//로그인
 	@GetMapping("/login")
 	public String loginGet() {
@@ -198,15 +278,15 @@ public class PageController {
 	
 	//댓글 POST
 	@PostMapping("/community/comment/insert")
-	public String commentInsert(@RequestParam(defaultValue="0") int id,
-								@RequestParam(defaultValue="0") int page,
-								@RequestParam(required=false) String option,
-								@RequestParam(required=false) String text,
-								@RequestParam(defaultValue="all") String game_abb,
-			@ModelAttribute Comment comment,HttpServletRequest request) {
+	public String commentInsert(@ModelAttribute @Valid Comment comment,BindingResult result,HttpServletRequest request) {
 		
+		String url = request.getHeader("referer");
+		
+		if(result.hasErrors()) {
+			return "redirect:"+url;
+		}
 		commentService.insert(comment);
-		return "redirect:"+request.getHeader("referer");
+		return "redirect:"+url;
 	}
 	
 	@PostMapping("/community/ajaxlist")

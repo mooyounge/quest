@@ -12,6 +12,8 @@
   	<mapper resource="mybatis/mapper/board.xml" />
   	<mapper resource="mybatis/mapper/user.xml" />
   	<mapper resource="mybatis/mapper/comment.xml" />
+  	<mapper resource="mybatis/mapper/post_like.xml" />
+  	<mapper resource="mybatis/mapper/comment_like.xml" />
   </mappers>
 </configuration>
 

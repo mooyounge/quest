@@ -168,6 +168,12 @@
 		insert into quest_post values(quest_post_id.nextval,#{game_abb},#{board_id},'admin',#{post_title},#{post_content},sysdate,0,0,0)
 	</insert>
 	
+	<update id="plusLike" parameterType="post_like">
+		update quest_post set post_like = post_like+1 where post_id = #{post_id} 
+	</update>
+	<update id="plusdisLike" parameterType="post_like">
+		update quest_post set post_dislike = post_dislike+1 where post_id = #{post_id} 
+	</update>
 </mapper>
 
 
