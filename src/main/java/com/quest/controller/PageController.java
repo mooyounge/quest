@@ -26,6 +26,7 @@ import com.quest.service.UserService;
 import com.quest.util.Paging;
 import com.quest.vo.Board;
 import com.quest.vo.Comment;
+import com.quest.vo.Comment_like;
 import com.quest.vo.Game;
 import com.quest.vo.Post;
 import com.quest.vo.Post_like;
@@ -167,6 +168,44 @@ public class PageController {
         	return "fail";
         }
         
+	}
+	//댓글 좋아요 ajaxPost
+	@PostMapping("/community/comment/like")
+	@ResponseBody
+	public String commentlike(HttpServletRequest request,@ModelAttribute Comment_like comment_like,@RequestParam String type) {
+		
+		//ip 구하기
+		String ip = request.getHeader("X-FORWARDED-FOR");
+		if (ip == null) {
+			ip = request.getRemoteAddr();
+		}
+		comment_like.setUser_ip(ip);
+		
+		//user id 구하기
+		User user = null;
+		user =(User)request.getSession().getAttribute("user");
+		if(user!=null) {
+			comment_like.setUser_id(user.getId());
+		}
+		
+		int count = -1;
+		count = commentService.getlikecount(comment_like);
+		if(count==0) {
+			//더하는 작업
+			if("like".equals(type)) {
+				commentService.insertComment_like(comment_like);
+			}else if("dislike".equals(type)) {
+				commentService.insertComment_dislike(comment_like);
+			}
+			return "success";
+		}else if(count==-1) {
+			//서버오류
+			return "error";
+		}else {
+			//이미 추천한거
+			return "fail";
+		}
+		
 	}
 	
 	//로그인

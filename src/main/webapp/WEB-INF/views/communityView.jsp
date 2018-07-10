@@ -71,13 +71,13 @@
 
 
 				<div style="display: inline-block; text-align: center;">
-					<a href="javascript:like('like');" id="recommend_vote_up"
+					<a href="javascript:like('like');" id="post_like"
 						class="b_re_up fixed_name_box" title="추천"> <img
 						src="/images/up.png" alt="" style="width: 70px; heigth: 70px;" />
 					</a> <br /> ${post.post_like}
 				</div>
 				<div style="display: inline-block; text-align: center;">
-					<a href="javascript:like('dislike');" id="recommend_vote_down" class="b_re_down"
+					<a href="javascript:like('dislike');" id="post_dislike" class="b_re_down"
 						title="비추천"> <img src="/images/down.png" alt=""
 						style="width: 70px; heigth: 70px;" />
 					</a> <br /> ${post.post_dislike}
@@ -122,10 +122,10 @@
 							<th>${comment.user_name}</th>
 							<th>${comment.comment_content}</th>
 							<th>${comment.comment_regdate }</th>
-							<th><a href="javascript:;" id="recommend_vote_up"
+							<th><a href="javascript:comment_like(${comment.comment_id},'like');" id="comment_like"
 								class="b_re_up fixed_name_box" title="추천"> <img
 									src="/images/up.png" alt="" style="width: 30px; heigth: 30px;" />
-							</a> <a href="javascript:;" id="recommend_vote_down"
+							</a> <a href="javascript:comment_like(${comment.comment_id},'dislike');" id="comment_dislike"
 								class="b_re_down" title="비추천"> <img src="/images/down.png"
 									alt="" style="width: 30px; heigth: 30px;" />
 							</a></th>
@@ -240,7 +240,23 @@
 					}
 			}
 		});
-		
+	}
+	
+	function comment_like(comment_id,type){
+		$.ajax({
+			url:"/community/comment/like",
+			type:"post",
+			data:{"comment_id":comment_id,"type":type},
+			success:function(data){
+					if(data=="success"){
+						alert("추천되었습니다!");
+					}else if(data=="fail"){
+						alert("이미 추천하신 글입니다.");
+					}else{
+						alert("서버오류입니다.");
+					}
+			}
+		});
 	}
 	</script>
 </body>

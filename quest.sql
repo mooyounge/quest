@@ -131,7 +131,6 @@ create table quest_comment_like(
     comment_like_id number primary key,
     user_id varchar2(15) references quest_user(id),
     user_ip varchar2(30) not null,
-    post_id number references quest_post(post_id),
     comment_id number references quest_comment(comment_id),
     comment_like varchar2(10) check(comment_like in('like','dislike'))
 );

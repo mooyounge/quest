@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comment_like">
+
+	<select id="getlikecountbyUser_id" parameterType="comment_like" resultType="int">
+		select count(*) from quest_comment_like where user_id=#{user_id} and comment_id=#{comment_id}
+	</select>
+	<select id="getlikecountbyIp" parameterType="comment_like" resultType="int">
+		select count(*) from quest_comment_like where user_ip=#{user_ip} and comment_id=#{comment_id}
+	</select>
+	
+	<insert id="insertlike" parameterType="comment_like">
+		insert into quest_comment_like values(quest_comment_like_id.nextval,
+									<choose>
+									<when test="user_id==null">null,</when>
+									<otherwise>#{user_id},</otherwise>
+									</choose>#{user_ip},#{comment_id},'like')
+	</insert>
+	
+	<insert id="insertdislike" parameterType="comment_like">
+		insert into quest_comment_like values(quest_comment_like_id.nextval,
+									<choose>
+									<when test="user_id==null">null,</when>
+									<otherwise>#{user_id},</otherwise>
+									</choose>#{user_ip},#{comment_id},'dislike')
+	</insert>
+</mapper>
+
+
+
