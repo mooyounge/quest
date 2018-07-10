@@ -133,11 +133,22 @@ public class PageController {
 	@PostMapping("/community/post/like")
 	@ResponseBody
 	public String postlike(HttpServletRequest request,@ModelAttribute Post_like post_like,@RequestParam String type) {
+		
+		//ip 구하기
 		String ip = request.getHeader("X-FORWARDED-FOR");
         if (ip == null) {
             ip = request.getRemoteAddr();
         }
         post_like.setUser_ip(ip);
+        
+        //user id 구하기
+        User user = null;
+        user =(User)request.getSession().getAttribute("user");
+        if(user!=null) {
+        	post_like.setUser_id(user.getId());
+        }
+        
+        
         int count = -1;
         count = postService.getlikecount(post_like);
         if(count==0) {

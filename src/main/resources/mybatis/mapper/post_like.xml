@@ -4,7 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="post_like">
 
-	<select id="getlikecount" parameterType="post_like" resultType="int">
+	<select id="getlikecountbyUser_id" parameterType="post_like" resultType="int">
+		select count(*) from quest_post_like where user_id=#{user_id} and post_id=#{post_id}
+	</select>
+	<select id="getlikecountbyIp" parameterType="post_like" resultType="int">
 		select count(*) from quest_post_like where user_ip=#{user_ip} and post_id=#{post_id}
 	</select>
 	

@@ -39,10 +39,6 @@ public class PostDao {
 		return session.selectList("post.getAllList",map);
 	}
 
-	public int getlikecount(Post_like post_like) {
-		return session.selectOne("post_like.getlikecount",post_like);
-	}
-
 	public void insertPost_like(Post_like post_like) {
 		session.insert("post_like.insertlike",post_like);
 	}
@@ -58,6 +54,14 @@ public class PostDao {
 
 	public void plusdisLike(Post_like post_like) {
 		session.insert("post_like.insertdislike",post_like);
+	}
+
+	public int getlikecountbyUser_id(Post_like post_like) {
+		return session.selectOne("post_like.getlikecountbyUser_id",post_like);
+	}
+
+	public int getlikecountbyIp(Post_like post_like) {
+		return session.selectOne("post_like.getlikecountbyIp",post_like);
 	}
 	
 	

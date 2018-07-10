@@ -229,7 +229,7 @@
 		$.ajax({
 			url:"/community/post/like",
 			type:"post",
-			data:{"post_id":"${post.post_id}","user_id":"${post.user_id}","type":type},
+			data:{"post_id":"${post.post_id}","type":type},
 			success:function(data){
 					if(data=="success"){
 						alert("추천되었습니다!");

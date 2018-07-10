@@ -159,7 +159,10 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public int getlikecount(Post_like post_like) {
-		return postDao.getlikecount(post_like);
+		if(post_like.getUser_id()!=null) {
+			return postDao.getlikecountbyUser_id(post_like);
+		}
+		return postDao.getlikecountbyIp(post_like);
 		
 	}
 
