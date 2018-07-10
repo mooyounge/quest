@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="post_like">
+
+	<select id="getlikecount" parameterType="post_like" resultType="int">
+		select count(*) from quest_post_like where user_ip=#{user_ip} and post_id=#{post_id}
+	</select>
+	
+	<insert id="insertlike" parameterType="post_like">
+		insert into quest_post_like values(quest_post_like_id.nextval,
+									<choose>
+									<when test="user_id==null">null,</when>
+									<otherwise>#{user_id},</otherwise>
+									</choose>#{user_ip},#{post_id},'like',null)
+	</insert>
+	
+	<insert id="insertdislike" parameterType="post_like">
+		insert into quest_post_like values(quest_post_like_id.nextval,
+									<choose>
+									<when test="user_id==null">null,</when>
+									<otherwise>#{user_id},</otherwise>
+									</choose>#{user_ip},#{post_id},'dislike',null)
+	</insert>
+</mapper>
+
+
+

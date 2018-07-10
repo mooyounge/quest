@@ -11,6 +11,7 @@ import com.quest.dao.BoardDao;
 import com.quest.dao.PostDao;
 import com.quest.util.Paging;
 import com.quest.vo.Post;
+import com.quest.vo.Post_like;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -154,6 +155,24 @@ public class PostServiceImpl implements PostService {
 		map.put("board_id",board_id);
 		
 		return postDao.getSize(map);
+	}
+
+	@Override
+	public int getlikecount(Post_like post_like) {
+		return postDao.getlikecount(post_like);
+		
+	}
+
+	@Override
+	public void insertPost_like(Post_like post_like) {
+		postDao.insertPost_like(post_like);
+		postDao.plusLike(post_like);
+	}
+	
+	@Override
+	public void insertPost_dislike(Post_like post_like) {
+		postDao.insertPost_dislike(post_like);
+		postDao.plusdisLike(post_like);
 	}
 
 }

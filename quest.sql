@@ -111,6 +111,32 @@ drop table quest_comment;
 
 --태그
 
+--글 추천
+create table quest_post_like(
+    post_like_id number primary key,
+    user_id varchar2(15) references quest_user(id),
+    user_ip varchar2(30) not null,
+    post_id number references quest_post(post_id),
+    post_like varchar2(10) check(post_like in('like','dislike')),
+    post_info_like varchar2(10) check(post_info_like in('like','dislike'))
+);
+commit;
+insert into quest_post_like values(quest_post_like_id.nextval,null,'123.51',38,'like',null);
+select * from quest_post_like;
+create sequence quest_post_like_id;
+drop table quest_post_like;
+delete quest_post_like;
+--댓글 추천
+create table quest_comment_like(
+    comment_like_id number primary key,
+    user_id varchar2(15) references quest_user(id),
+    user_ip varchar2(30) not null,
+    post_id number references quest_post(post_id),
+    comment_id number references quest_comment(comment_id),
+    comment_like varchar2(10) check(comment_like in('like','dislike'))
+);
+create sequence quest_comment_like_id;
+drop table quest_comment_like;
 
 -- Insert
 insert into quest_user values
@@ -131,4 +157,20 @@ select * from quest_post where game_abb = 'all' and (board_id ='65' or board_id=
 select count(post_id) from quest_post where game_abb like '%' and board_id >= 0;
     
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -28,6 +28,7 @@ import com.quest.vo.Board;
 import com.quest.vo.Comment;
 import com.quest.vo.Game;
 import com.quest.vo.Post;
+import com.quest.vo.Post_like;
 import com.quest.vo.User;
 
 
@@ -126,6 +127,35 @@ public class PageController {
 			return "redirect:/community?game_abb="+game_abb;
 		}
 		return "redirect:/community";
+	}
+	
+	//글 좋아요 ajaxPost
+	@PostMapping("/community/post/like")
+	@ResponseBody
+	public String postlike(HttpServletRequest request,@ModelAttribute Post_like post_like,@RequestParam String type) {
+		String ip = request.getHeader("X-FORWARDED-FOR");
+        if (ip == null) {
+            ip = request.getRemoteAddr();
+        }
+        post_like.setUser_ip(ip);
+        int count = -1;
+        count = postService.getlikecount(post_like);
+        if(count==0) {
+        	//더하는 작업
+        	if("like".equals(type)) {
+        		postService.insertPost_like(post_like);
+        	}else if("dislike".equals(type)) {
+        		postService.insertPost_dislike(post_like);
+        	}
+        	return "success";
+        }else if(count==-1) {
+        	//서버오류
+        	return "error";
+        }else {
+        	//이미 추천한거
+        	return "fail";
+        }
+        
 	}
 	
 	//로그인
