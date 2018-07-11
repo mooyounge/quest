@@ -64,7 +64,8 @@ public class PageController {
 							@RequestParam(required=false) String text,
 							@RequestParam(defaultValue="1") int page,
 							@RequestParam(defaultValue="all") String game_abb,
-							@RequestParam(defaultValue="all") String name
+							@RequestParam(defaultValue="all") String name,
+							@RequestParam(required=false) String genre
 							) {
 		Game game = gameService.getOne(game_abb);
 		
@@ -77,8 +78,15 @@ public class PageController {
         Paging paging = getPaging(page);
         List<Post> postList = null;
         //game_abb가 없으면 전체 리스트 불러오기
-		postList = postService.getList(option,text,paging,game_abb,name);
-		paging.setTotalCount(postService.getSize(option,text,game_abb,name));
+		Map<String,Object> map = getSearchMap(paging);
+		map.put("option", option);
+		map.put("text", text);
+		map.put("game_abb", game_abb);
+		map.put("name",name);
+		map.put("genre",genre);
+		
+		postList = postService.getList(map);
+		paging.setTotalCount(postService.getSize(map));
         //요기까지
         
         
@@ -296,7 +304,8 @@ public class PageController {
 						@RequestParam(required=false) String text,
 						@RequestParam(defaultValue="1") int page,
 						@RequestParam(defaultValue="all") String game_abb,
-						@RequestParam(defaultValue="all") String name) {
+						@RequestParam(defaultValue="all") String name,
+						@RequestParam(required=false) String genre) {
 		Post post = postService.getPost(id);
 		Game game = gameService.getOne(game_abb);
 		//페이징 한세트
@@ -306,9 +315,17 @@ public class PageController {
 				}
 		        Paging paging = getPaging(page);
 		        List<Post> postList = null;
+		        
 		        //game_abb가 없으면 전체 리스트 불러오기
-        		postList = postService.getList(option,text,paging,game_abb,name);
-        		paging.setTotalCount(postService.getSize(option,text,game_abb,name));
+				Map<String,Object> map = getSearchMap(paging);
+				map.put("option", option);
+				map.put("text", text);
+				map.put("game_abb", game_abb);
+				map.put("name",name);
+				map.put("genre",genre);
+				
+				postList = postService.getList(map);
+				paging.setTotalCount(postService.getSize(map));
 		        //요기까지
 		
         //게임 이름 불러오기 comnav
@@ -340,16 +357,27 @@ public class PageController {
 			@RequestParam(required=false) String text,
 			@RequestParam(defaultValue="1") int page,
 			@RequestParam(defaultValue="all") String game_abb,
-			@RequestParam(defaultValue="all") String name) {
+			@RequestParam(defaultValue="all") String name,
+			@RequestParam(required=false) String genre) {
 		
-		Map<String,Object> map = new HashMap<String,Object>();
+		Map<String,Object> returnmap = new HashMap<String,Object>();
 		Paging paging = getPaging(page);
 		
-        List<Post>  postList = postService.getList(option,text,paging,game_abb,name);
+		List<Post> postList = null;
+        //game_abb가 없으면 전체 리스트 불러오기
+		Map<String,Object> map = getSearchMap(paging);
+		map.put("option", option);
+		map.put("text", text);
+		map.put("game_abb", game_abb);
+		map.put("name",name);
+		map.put("genre",genre);
+		
+		postList = postService.getList(map);
+        //요기까지
 
-		map.put("postList", postList);
-		map.put("page", page);
-		return map;
+		returnmap.put("postList", postList);
+		returnmap.put("page", page);
+		return returnmap;
 	}
 	
 	
@@ -377,7 +405,7 @@ public class PageController {
 		//게임 집어넣고
 		gameService.insert(game);
 		
-		//게시판 제작 전체,자유,정보
+		//게시판 제작  자유,정보
 		Board board = new Board();
 		
 		board.setGame_abb(game.getGame_abb());
@@ -386,7 +414,17 @@ public class PageController {
 		return "redirect:/community/admin";
 	}
 	
+	private Map<String, Object> getSearchMap(
+			Paging paging){
+	int start = (paging.getPageNo()-1) * paging.getPageSize() +1;
+	int end = start + paging.getPageSize() -1;
 	
+	Map<String, Object> searchMap = new HashMap<>();
+	searchMap.put("start", start);
+	searchMap.put("end", end);
+	
+	return searchMap;
+	}
 	
 	
 }

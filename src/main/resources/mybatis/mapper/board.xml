@@ -32,7 +32,13 @@
 				select board_id from quest_board where board_name = #{name}
 			</otherwise>
 		</choose>
-		
+	</select>
+	
+	<select id="getBoardIdListbygameList" parameterType="map" resultType="int">
+				select board_id from quest_board where 
+							<foreach collection="gameList" item="gameList" index="i" open="(" close=")" separator="or">
+		        				game_abb = #{gameList.game_abb}
+		        			</foreach>
 	</select>
 	
 
