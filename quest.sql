@@ -77,12 +77,14 @@ create table quest_post(
     post_id number primary key,
     game_abb varchar2(10) references quest_game(game_abb),
     board_id number references quest_board(board_id),
-    user_id varchar2(15) references quest_user(id),
+    user_id varchar2(50) references quest_user(id),
     post_title varchar2(50) not null,
     post_content clob not null,
     post_regdate date not null,
     post_like number default 0,
     post_dislike number default 0,
+    post_info_like number default 0,
+    post_info_dislike number default 0,
     post_lookup number default 0
 );
 select * from quest_post;
@@ -94,8 +96,8 @@ create table quest_comment(
     comment_id number primary key,
     post_id references quest_post(post_id),
     user_id references quest_user(id),
-    user_name varchar(10) not null,
-    password varchar(10) not null,
+    user_name varchar(50) not null,
+    password varchar(20) not null,
     comment_content clob not null,
     comment_regdate date not null,
     comment_like number default 0,
@@ -114,7 +116,7 @@ drop table quest_comment;
 --글 추천
 create table quest_post_like(
     post_like_id number primary key,
-    user_id varchar2(15) references quest_user(id),
+    user_id varchar2(50) references quest_user(id),
     user_ip varchar2(30) not null,
     post_id number references quest_post(post_id),
     post_like varchar2(10) check(post_like in('like','dislike')),
@@ -129,7 +131,7 @@ delete quest_post_like;
 --댓글 추천
 create table quest_comment_like(
     comment_like_id number primary key,
-    user_id varchar2(15) references quest_user(id),
+    user_id varchar2(50) references quest_user(id),
     user_ip varchar2(30) not null,
     comment_id number references quest_comment(comment_id),
     comment_like varchar2(10) check(comment_like in('like','dislike'))

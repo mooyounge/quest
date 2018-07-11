@@ -165,7 +165,7 @@
 	</select>
 	
 	<insert id="insert" parameterType="post">
-		insert into quest_post values(quest_post_id.nextval,#{game_abb},#{board_id},'admin',#{post_title},#{post_content},sysdate,0,0,0)
+		insert into quest_post values(quest_post_id.nextval,#{game_abb},#{board_id},'admin',#{post_title},#{post_content},sysdate,0,0,0,0,0)
 	</insert>
 	
 	<update id="plusLike" parameterType="post_like">

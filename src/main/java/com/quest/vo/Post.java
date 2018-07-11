@@ -23,6 +23,8 @@ public class Post {
 	private String post_regdate;
 	private int post_like;
 	private int post_dislike;
+	private int post_info_like;
+	private int post_info_dislike;
 	private int post_lookup;
 	
 	private List<Comment> commentList;
@@ -97,6 +99,18 @@ public class Post {
 	}
 	public int getPost_dislike() {
 		return post_dislike;
+	}
+	public int getPost_info_like() {
+		return post_info_like;
+	}
+	public void setPost_info_like(int post_info_like) {
+		this.post_info_like = post_info_like;
+	}
+	public int getPost_info_dislike() {
+		return post_info_dislike;
+	}
+	public void setPost_info_dislike(int post_info_dislike) {
+		this.post_info_dislike = post_info_dislike;
 	}
 	public void setPost_dislike(int post_dislike) {
 		this.post_dislike = post_dislike;
