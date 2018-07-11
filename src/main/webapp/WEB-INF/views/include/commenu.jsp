@@ -5,12 +5,11 @@
 .menuleft {
 	width: 150px;
 	height: 70px;
-	display: inline-block;
 }
 
 .menuleft>ul {
 	width: 150px;
-	height: 650px;
+	height: 60px;
 }
 
 .menuleft>ul>li {
