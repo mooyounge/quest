@@ -20,9 +20,14 @@
 	display: inline-block;
 }
 
+#top1 {
+	display:block;
+}
+
 #top2 {
 	border: 0;
-	width: 70%;
+	width: 60%;
+	height: 88px;
 	display: inline-block;
 	float: left;
 	background: #c7c7c7;
@@ -30,7 +35,8 @@
 
 #top3 {
 	border: 0;
-	width: 30%;
+	width: 40%;
+	height: 88px;
 	display: inline-block;
 	float: left;
 	background: #c7c7c7;
@@ -49,7 +55,7 @@
 
 	<div class="container">
 		<!-- 선택한 글 보기 -->
-		<div class="re_gall_top_1">
+		<div id="top1" class="col-sm-12">
 			<!--  w_top_left -->
 			<div id="top2">
 				<dl class="wt_subject">
