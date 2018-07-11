@@ -39,6 +39,9 @@
 							<foreach collection="gameList" item="gameList" index="i" open="(" close=")" separator="or">
 		        				game_abb = #{gameList.game_abb}
 		        			</foreach>
+       						<if test="name != 'all'">
+       							and board_name = #{name}
+       						</if>
 	</select>
 	
 
