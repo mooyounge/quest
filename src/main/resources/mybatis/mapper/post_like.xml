@@ -5,10 +5,17 @@
 <mapper namespace="post_like">
 
 	<select id="getlikecountbyUser_id" parameterType="post_like" resultType="int">
-		select count(*) from quest_post_like where user_id=#{user_id} and post_id=#{post_id}
+		select count(*) from quest_post_like where user_id=#{user_id} and post_id=#{post_id} and post_info_like is null
 	</select>
 	<select id="getlikecountbyIp" parameterType="post_like" resultType="int">
-		select count(*) from quest_post_like where user_ip=#{user_ip} and post_id=#{post_id}
+		select count(*) from quest_post_like where user_ip=#{user_ip} and post_id=#{post_id} and post_info_like is null
+	</select>
+	
+	<select id="getinfolikecountbyUser_id" parameterType="post_like" resultType="int">
+		select count(*) from quest_post_like where user_id=#{user_id} and post_id=#{post_id} and post_like is null
+	</select>
+	<select id="getinfolikecountbyIp" parameterType="post_like" resultType="int">
+		select count(*) from quest_post_like where user_ip=#{user_ip} and post_id=#{post_id} and post_like is null
 	</select>
 	
 	<insert id="insertlike" parameterType="post_like">
@@ -25,6 +32,22 @@
 									<when test="user_id==null">null,</when>
 									<otherwise>#{user_id},</otherwise>
 									</choose>#{user_ip},#{post_id},'dislike',null)
+	</insert>
+	
+	<insert id="insertinfolike" parameterType="post_like">
+		insert into quest_post_like values(quest_post_like_id.nextval,
+									<choose>
+									<when test="user_id==null">null,</when>
+									<otherwise>#{user_id},</otherwise>
+									</choose>#{user_ip},#{post_id},null,'like')
+	</insert>
+	
+	<insert id="insertinfodislike" parameterType="post_like">
+		insert into quest_post_like values(quest_post_like_id.nextval,
+									<choose>
+									<when test="user_id==null">null,</when>
+									<otherwise>#{user_id},</otherwise>
+									</choose>#{user_ip},#{post_id},null,'dislike')
 	</insert>
 </mapper>
 

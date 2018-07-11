@@ -149,7 +149,6 @@ public class PageController {
         	post_like.setUser_id(user.getId());
         }
         
-        
         int count = -1;
         count = postService.getlikecount(post_like);
         if(count==0) {
@@ -169,6 +168,45 @@ public class PageController {
         }
         
 	}
+	
+	//정보글 좋아요 ajaxPost
+	@PostMapping("/community/post/infolike")
+	@ResponseBody
+	public String postinfolike(HttpServletRequest request,@ModelAttribute Post_like post_like,@RequestParam String type) {
+		
+		//ip 구하기
+		String ip = request.getHeader("X-FORWARDED-FOR");
+		if (ip == null) {
+			ip = request.getRemoteAddr();
+		}
+		post_like.setUser_ip(ip);
+		
+		//user id 구하기
+		User user = null;
+		user =(User)request.getSession().getAttribute("user");
+		if(user!=null) {
+			post_like.setUser_id(user.getId());
+		}
+		
+		int count = -1;
+		count = postService.getinfolikecount(post_like);
+		if(count==0) {
+			//더하는 작업
+			if("like".equals(type)) {
+				postService.insertPost_infolike(post_like);
+			}else if("dislike".equals(type)) {
+				postService.insertPost_infodislike(post_like);
+			}
+			return "success";
+		}else if(count==-1) {
+			//서버오류
+			return "error";
+		}else {
+			//이미 추천한거
+			return "fail";
+		}
+	}
+	
 	//댓글 좋아요 ajaxPost
 	@PostMapping("/community/comment/like")
 	@ResponseBody

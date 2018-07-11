@@ -174,6 +174,13 @@
 	<update id="plusdisLike" parameterType="post_like">
 		update quest_post set post_dislike = post_dislike+1 where post_id = #{post_id} 
 	</update>
+	
+	<update id="plusinfoLike" parameterType="post_like">
+		update quest_post set post_info_like = post_info_like+1 where post_id = #{post_id} 
+	</update>
+	<update id="plusinfodisLike" parameterType="post_like">
+		update quest_post set post_info_dislike = post_info_dislike+1 where post_id = #{post_id} 
+	</update>
 </mapper>
 
 

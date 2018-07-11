@@ -103,16 +103,16 @@
 				</a> <br /> ${post.post_dislike}
 			</div>
 			<div style="display: inline-block; text-align: center;">
-				<a href="javascript:;" id="recommend_vote_up"
+				<a href="javascript:infolike('like');" id="post_info_like"
 					class="b_re_up fixed_name_box" title="추천"> <img
 					src="/images/up2.png" alt="" style="width: 70px; heigth: 70px;" />
-				</a> <br /> ${post.post_dislike}
+				</a> <br /> ${post.post_info_like}
 			</div>
 			<div style="display: inline-block; text-align: center;">
-				<a href="javascript:;" id="recommend_vote_down"
+				<a href="javascript:infolike('dislike');" id="post_info_dislike"
 					class="b_re_down fixed_name_box" title="추천"> <img
 					src="/images/down2.png" alt="" style="width: 70px; heigth: 70px;" />
-				</a> <br /> ${post.post_dislike}
+				</a> <br /> ${post.post_info_dislike}
 			</div>
 			<!-- 댓글창 -->
 			<hr />
@@ -259,6 +259,23 @@
 	function like(type){
 		$.ajax({
 			url:"/community/post/like",
+			type:"post",
+			data:{"post_id":"${post.post_id}","type":type},
+			success:function(data){
+					if(data=="success"){
+						alert("추천되었습니다!");
+					}else if(data=="fail"){
+						alert("이미 추천하신 글입니다.");
+					}else{
+						alert("서버오류입니다.");
+					}
+			}
+		});
+	}
+	
+	function infolike(type){
+		$.ajax({
+			url:"/community/post/infolike",
 			type:"post",
 			data:{"post_id":"${post.post_id}","type":type},
 			success:function(data){

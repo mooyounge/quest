@@ -178,4 +178,24 @@ public class PostServiceImpl implements PostService {
 		postDao.plusdisLike(post_like);
 	}
 
+	@Override
+	public int getinfolikecount(Post_like post_like) {
+		if(post_like.getUser_id()!=null) {
+			return postDao.getinfolikecountbyUser_id(post_like);
+		}
+		return postDao.getinfolikecountbyIp(post_like);
+	}
+
+	@Override
+	public void insertPost_infolike(Post_like post_like) {
+		postDao.insertPost_infolike(post_like);
+		postDao.plusinfoLike(post_like);
+	}
+
+	@Override
+	public void insertPost_infodislike(Post_like post_like) {
+		postDao.insertPost_infodislike(post_like);
+		postDao.plusinfodisLike(post_like);
+	}
+
 }
