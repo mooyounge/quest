@@ -9,7 +9,7 @@
 	style="height: 70px;" /></a>
 <nav class="right">
 	<c:choose>
-		<c:when test="${user == null}">
+		<c:when test="${sessionScope.user == null}">
 			<a href="/login" class="button alt"><img src="/images/login.png"
 				alt="" style="height: 40px;" /></a>
 		</c:when>

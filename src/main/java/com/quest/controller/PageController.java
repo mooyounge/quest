@@ -248,7 +248,8 @@ public class PageController {
 	
 	//로그인
 	@GetMapping("/login")
-	public String loginGet() {
+	public String loginGet(@ModelAttribute User user,BindingResult result,Model model) {
+		model.addAttribute("user",user);
 		return "login";
 	}
 	//로그인 Post
@@ -260,12 +261,18 @@ public class PageController {
 		}
 		
 		if(result.hasErrors()) {
-			//model.addAttribute(member);
+			// 그냥 오류 뜨게 하기
+			model.addAttribute("user",user);
 			return "login";
+			
+			// alert 방식으로 오류 띄우기
+			//model.addAttribute("msg","존재하지 않는 아이디 이거나 비밀번호가 일치하지 않습니다.");
+			//model.addAttribute("url","/login");
+			//return "errorpage";
 		}
 		
 		request.getSession().invalidate();
-		request.getSession().setAttribute("user",user);
+		request.getSession().setAttribute("user",saveduser);
 		
 		return "redirect:/community";
 	}

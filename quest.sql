@@ -125,6 +125,7 @@ create table quest_post_like(
 commit;
 insert into quest_post_like values(quest_post_like_id.nextval,null,'123.51',38,'like',null);
 select * from quest_post_like;
+select count(*) from quest_post_like where user_id is null and post_id = 43 and post_info_like is null;
 create sequence quest_post_like_id;
 drop table quest_post_like;
 delete quest_post_like;

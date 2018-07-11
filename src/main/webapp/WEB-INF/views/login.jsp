@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,25 +27,26 @@
         </div>
         <div class="col-sm-offset-4 col-md-3">
           <div class="login-box well">
-        <form accept-charset="UTF-8" role="form" method="post" action="">
+        <form:form modelAttribute="user" method="post" action="/login">
             <legend>로그인</legend>
             <div class="form-group">
                 <label for="username-email">아이디</label>
-                <input name="id" value='' id="id" placeholder="User Id" type="text" class="form-control" />
+                <form:input name="id" path="id" value='' id="id" placeholder="User Id" type="text" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="password">비밀번호</label>
-                <input name="password" id="password" value='' placeholder="Password" type="password" class="form-control" />
+                <form:input path="password" name="password" id="password" placeholder="Password" type="password" class="form-control" />
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-success btn-login-submit btn-block m-t-md" value="Login" />
+            	<form:errors path="id"></form:errors>
+                <form:button type="submit" class="btn btn-success btn-login-submit btn-block m-t-md">Login</form:button>
             </div>
             <span class='text-center'><a href="/bbs/index.php?mid=index&act=dispMemberFindAccount" class="text-sm">비밀번호 찾기</a></span>
             <hr />
             <div class="form-group">
                 <a href="/signup" class="btn btn-default btn-block m-t-md">회원가입</a>
             </div>
-        </form>
+        </form:form>
           </div>
         </div>
       </div>
