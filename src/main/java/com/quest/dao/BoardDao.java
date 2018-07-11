@@ -37,4 +37,8 @@ public class BoardDao {
 		map.put("name",name);
 		return session.selectList("board.getBoardIdList",map);
 	}
+
+	public List<Integer> getBoardIdListbygameList(Map<String, Object> map) {
+		return session.selectList("board.getBoardIdListbygameList",map);
+	}
 }

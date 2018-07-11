@@ -14,3 +14,8 @@
 <c:if test="${param.name!=null}">&name=${param.name}</c:if>
 <!-- 게시판 특성 조건 js -->
 <c:if test="${param.name!=null}">+"&name=${param.name}"</c:if>
+
+<!-- 장르조건 -->
+<c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>
+<!-- 장르조건 js -->
+<c:if test="${param.genre!=null}">+"&genre=${param.genre}"</c:if>

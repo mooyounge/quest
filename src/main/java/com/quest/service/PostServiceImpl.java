@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.quest.dao.BoardDao;
+import com.quest.dao.GameDao;
 import com.quest.dao.PostDao;
 import com.quest.util.Paging;
+import com.quest.vo.Game;
 import com.quest.vo.Post;
 import com.quest.vo.Post_like;
 
@@ -21,6 +23,9 @@ public class PostServiceImpl implements PostService {
 
 	@Autowired
 	private BoardDao boardDao;
+	
+	@Autowired
+	private GameDao gameDao;
 	
 	@Override
 	public void insert(Post post) {
@@ -49,19 +54,6 @@ public class PostServiceImpl implements PostService {
 		
 		return postDao.getSize(map);
 	}
-	
-	
-	@Override
-	public List<Post> getList(String option, String text, Paging paging) {
-		
-		Map<String,Object> map = getSearchMap(paging);
-		
-		map.put("option", option);
-		map.put("text", text);
-		
-		return postDao.getList(map);
-	}
-	
 	
 	
 	private Map<String, Object> getSearchMap(
@@ -196,6 +188,70 @@ public class PostServiceImpl implements PostService {
 	public void insertPost_infodislike(Post_like post_like) {
 		postDao.insertPost_infodislike(post_like);
 		postDao.plusinfodisLike(post_like);
+	}
+
+	@Override
+	public List<Post> getList(Map<String, Object> map) {
+				
+				//여기서는 board_id 가 아니라 board_id list 를 받아야한다.
+				int board_id = 0;
+				if("all".equals((String)map.get("game_abb"))) {
+					List<Integer> list = null;
+					if(map.get("genre")!=null) {
+						List<Game> gameList = gameDao.getList((String)map.get("genre"));
+						map.put("gameList",gameList);
+						list = boardDao.getBoardIdListbygameList(map);
+					}else {
+						list = boardDao.getBoardIdList((String) map.get("name"));
+					}
+					
+					
+					map.put("board_id",board_id);
+					map.put("board_idList", list);
+					return postDao.getList(map);
+				}
+				//여기서는 board_id 가 아니라 board_id list 를 받아야한다.
+
+				//name 으로 all,free,info 중 파악해서 전달해야함.
+				if("free".equals((String) map.get("name"))||"info".equals((String) map.get("name"))) {
+					board_id = boardDao.getBoardId(map);
+					
+				}
+				map.put("board_id",board_id);
+				
+				return postDao.getList(map);
+	}
+
+	@Override
+	public int getSize(Map<String, Object> map) {
+		
+		//여기서는 board_id 가 아니라 board_id list 를 받아야한다.
+		int board_id = 0;
+		if("all".equals(map.get("game_abb"))) {
+			List<Integer> list = null;
+			
+			//장르로 리스트 구하기
+			if(map.get("genre")!=null) {
+				List<Game> gameList = gameDao.getList((String)map.get("genre"));
+				map.put("gameList",gameList);
+				list = boardDao.getBoardIdListbygameList(map);
+			}else {
+				list = boardDao.getBoardIdList((String) map.get("name"));
+			}
+			
+			map.put("board_id",board_id);
+			map.put("board_idList", list);
+			return postDao.getSize(map);
+		}
+		//여기서는 board_id 가 아니라 board_id list 를 받아야한다.
+		
+		//name 으로 all,free,info 중 파악해서 전달해야함.
+		if("free".equals((String)map.get("name"))||"info".equals((String)map.get("name"))) {
+			board_id = boardDao.getBoardId(map);
+		}
+		map.put("board_id",board_id);
+		
+		return postDao.getSize(map);
 	}
 
 }

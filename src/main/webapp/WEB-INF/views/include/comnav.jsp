@@ -45,7 +45,7 @@
 
 <div class="menubar">
 	<ul>
-		<li id="FPS"><a href="#">FPS</a>
+		<li id="FPS"><a href="/community?genre=FPS">FPS</a>
 			<ul>
 				<c:forEach var="game" items="${gameList}">
 					<c:if test="${game.genre=='FPS'}">
@@ -54,7 +54,7 @@
 				</c:forEach>
 			</ul></li>
 
-		<li id="RPG"><a href="#">RPG</a>
+		<li id="RPG"><a href="/community?genre=RPG">RPG</a>
 			<ul>
 				<c:forEach var="game" items="${gameList}">
 					<c:if test="${game.genre=='RPG'}">
@@ -62,7 +62,7 @@
 					</c:if>
 				</c:forEach>
 			</ul></li>
-		<li id="AOS"><a href="#">AOS</a>
+		<li id="AOS"><a href="/community?genre=AOS">AOS</a>
 			<ul>
 				<c:forEach var="game" items="${gameList}">
 					<c:if test="${game.genre=='AOS'}">
@@ -70,7 +70,7 @@
 					</c:if>
 				</c:forEach>
 			</ul></li>
-		<li id="RHYTHM"><a href="#">리듬게임</a>
+		<li id="RHYTHM"><a href="/community?genre=rhythm">리듬게임</a>
 			<ul>
 				<c:forEach var="game" items="${gameList}">
 					<c:if test="${game.genre=='rhythm'}">
@@ -78,7 +78,7 @@
 					</c:if>
 				</c:forEach>
 			</ul></li>
-		<li id="INDIE"><a href="#">인디게임</a>
+		<li id="INDIE"><a href="/community?genre=indie">인디게임</a>
 			<ul>
 				<c:forEach var="game" items="${gameList}">
 					<c:if test="${game.genre=='indie'}">

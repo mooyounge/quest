@@ -1,8 +1,7 @@
 package com.quest.service;
 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
+import java.util.Map;
 
 import com.quest.util.Paging;
 import com.quest.vo.Post;
@@ -17,8 +16,6 @@ public interface PostService {
 	Post getPost(int id);
 	
 	int getSize(String option, String text, String game_abb);
-
-	List<Post> getList(String option, String text, Paging paging);
 
 	List<Post> getAllList(String option, String text, Paging paging);
 
@@ -37,6 +34,10 @@ public interface PostService {
 	void insertPost_infolike(Post_like post_like);
 
 	void insertPost_infodislike(Post_like post_like);
+
+	List<Post> getList(Map<String, Object> map);
+
+	int getSize(Map<String, Object> map);
 
 
 }
