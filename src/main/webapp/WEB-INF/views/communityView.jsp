@@ -22,6 +22,7 @@
 
 #top1 {
 	display:block;
+	margin-bottom:5px;
 }
 
 #top2 {
@@ -56,9 +57,8 @@
 	<div class="container">
 		<!-- 선택한 글 보기 -->
 		<div id="top1" class="col-sm-12">
-			<!--  w_top_left -->
 			<div id="top2">
-				<dl class="wt_subject">
+				<dl>
 					<dt>제 목</dt>
 					<dd>${post.post_title }</dd>
 					<br />
@@ -138,7 +138,7 @@
 			</form>
 			<br />
 			<!-- for문 댓글 불러오기 -->
-			<table>
+			<table class="col-sm-12">
 				<thead>
 					<tr>
 						<th style="width: 80px">아이디</th>
@@ -158,13 +158,13 @@
 							<th><a
 								href="javascript:comment_like(${comment.comment_id},'like');"
 								id="comment_like" class="b_re_up fixed_name_box" title="추천">
-									<img src="/images/up.png" alt=""
-									style="width: 30px; heigth: 30px;" />
+									<img src="/images/up2.png" alt=""
+									style="width: 15px; heigth: 15px;" />${comment.comment_like}
 							</a> <a
 								href="javascript:comment_like(${comment.comment_id},'dislike');"
 								id="comment_dislike" class="b_re_down" title="비추천"> <img
-									src="/images/down.png" alt=""
-									style="width: 30px; heigth: 30px;" />
+									src="/images/down2.png" alt=""
+									style="width: 15px; heigth: 15px;" />${comment.comment_dislike}
 							</a></th>
 							<th><a href="javascript:;" id="recommend_vote_down"
 								class="b_re_down" title="신고"> <img src="/images/siren.png"

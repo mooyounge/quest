@@ -33,6 +33,7 @@
 }
 
 .menubar {
+	z-index:9998;
 	text-align: center;
 	margin-top: 10px;
 }
@@ -43,7 +44,7 @@
 }
 </style>
 
-<div class="menubar">
+<div class="menubar col-sm-12">
 	<ul>
 		<li id="FPS"><a href="#">FPS</a>
 			<ul>
