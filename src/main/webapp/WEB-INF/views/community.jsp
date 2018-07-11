@@ -11,6 +11,15 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<style>
+#downnav>button {
+	text-align: center;
+	width: 80px;
+	height: 30px;
+	display: inline-block;
+	margin-left: 10px;
+}
+</style>
 </head>
 <body>
 
@@ -55,7 +64,10 @@
 
 
 		<div class="text-center">
-			<div class="search actions" style="display: inline-block;">
+			<div id="downnav" class="search actions"
+				style="display: inline-block;">
+				<button class="btn btn-danger writebtn" onclick="search()">자유</button>
+				<button class="btn btn-danger writebtn" onclick="search()">정보</button>
 				<select id="search_option"
 					style="display: inline-block; width: 150px; height: 30px;">
 					<option value="all" selected="selected">전체</option>
@@ -67,11 +79,8 @@
 					style="width: 200px; height: 30px; display: inline-block;"
 					value="${param.text}" />
 				<button class="btn btn-success writebtn"
-					onclick="location.href='/community'"
-					style="width: 80px; height: 30px; display: inline-block; margin-left: 10px;">전체목록
-				</button>
-				<button class="btn btn-success writebtn" onclick="search()"
-					style="width: 70px; height: 30px; display: inline-block; margin-left: 10px;">검색</button>
+					onclick="location.href='/community'">전체목록</button>
+				<button class="btn btn-success writebtn" onclick="search()">검색</button>
 			</div>
 			<button class="btn btn-success writebtn"
 				onclick="location.href='/postWrite<c:if test="${param.game_abb!=null}">?game_abb=${param.game_abb}</c:if>'"

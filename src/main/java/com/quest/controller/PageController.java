@@ -257,7 +257,7 @@ public class PageController {
 	public String loginPost(@ModelAttribute User user,BindingResult result,HttpServletRequest request,Model model) {
 		User saveduser = userService.getOne(user.getId()); 
 		if(saveduser == null || !saveduser.getPassword().equals(user.getPassword()) ) {
-			result.addError(new FieldError("notExsitId", "id", "존재하지 않는 아이디 이거나 비밀번호가 일치하지 않습니다."));
+			result.addError(new FieldError("notExsitId", "id", ""));
 		}
 		
 		if(result.hasErrors()) {
@@ -298,7 +298,7 @@ public class PageController {
 						@RequestParam(defaultValue="all") String game_abb,
 						@RequestParam(defaultValue="all") String name) {
 		Post post = postService.getPost(id);
-		
+		Game game = gameService.getOne(game_abb);
 		//페이징 한세트
 				String searchParam = "";
 				if(option != null) {
@@ -314,7 +314,7 @@ public class PageController {
         //게임 이름 불러오기 comnav
         List<Game> gameList = gameService.getList();
 		model.addAttribute("gameList",gameList);
-		
+		model.addAttribute("game",game);
         model.addAttribute("paging",paging);
 		model.addAttribute("post",post);
 		model.addAttribute("postList",postList);

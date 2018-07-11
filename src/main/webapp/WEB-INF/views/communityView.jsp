@@ -56,6 +56,9 @@
 
 	<div class="container">
 		<!-- 선택한 글 보기 -->
+		<span>
+			<h2>${game.game_name}</h2>
+		</span>
 		<div id="top1" class="col-sm-12">
 			<div id="top2">
 				<dl>

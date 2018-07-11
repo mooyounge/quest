@@ -15,6 +15,9 @@
 .center{
 	text-align: center;
 }
+#errorid{
+	color:red;
+}
 </style>
 <body>
 	<header id="header" style="height:84px;">
@@ -38,7 +41,7 @@
                 <form:input path="password" name="password" id="password" placeholder="Password" type="password" class="form-control" />
             </div>
             <div class="form-group">
-            	<form:errors path="id"></form:errors>
+            	<form:errors path="id"><div id="errorid">존재하지 않는 아이디 이거나,<br />비밀번호가 일치하지 않습니다.</div></form:errors>
                 <form:button type="submit" class="btn btn-success btn-login-submit btn-block m-t-md">Login</form:button>
             </div>
             <span class='text-center'><a href="/bbs/index.php?mid=index&act=dispMemberFindAccount" class="text-sm">비밀번호 찾기</a></span>
