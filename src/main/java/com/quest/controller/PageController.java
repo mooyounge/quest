@@ -69,7 +69,6 @@ public class PageController {
 							) {
 		Game game = gameService.getOne(game_abb);
 		
-		
 		//페이징 한세트
 		String searchParam = "";
 		if(option != null) {
@@ -126,7 +125,6 @@ public class PageController {
 	@PostMapping("/postWrite")
 	public String postWritepost(@ModelAttribute @Valid Post post,BindingResult result,
 								@RequestParam(required=false) String game_abb) {
-		
 		if(result.hasErrors()) {
 			return "communitywrite";
 		}

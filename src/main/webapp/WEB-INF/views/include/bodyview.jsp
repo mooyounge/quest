@@ -72,7 +72,8 @@
 			style="width: 200px; height: 30px; display: inline-block;"
 			value="${param.text}" />
 		<button class="btn btn-success" onclick="search()">검색</button>
-		<button class="btn btn-success" onclick="location.href='/community'">전체목록</button>
+		<a class="btn btn-success"
+			href="/community?name=all<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">전체목록</a>
 	</div>
 	<button class="btn btn-success writebtn"
 		onclick="location.href='/postWrite<c:if test="${param.game_abb!=null}">?game_abb=${param.game_abb}</c:if>'"
