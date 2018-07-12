@@ -19,12 +19,20 @@
 	display: inline-block;
 	margin-left: 10px;
 }
+
 #downnav>a {
 	text-align: center;
 	width: 80px;
 	height: 30px;
 	display: inline-block;
 	margin-left: 10px;
+}
+
+#search_option {
+	display: inline-block;
+	width: 150px;
+	height: 30px;
+	margin-left:10px;
 }
 </style>
 </head>
@@ -73,12 +81,11 @@
 		<div class="text-center">
 			<div id="downnav" class="search actions"
 				style="display: inline-block;">
-				<a class="btn btn-danger writebtn"
-					href="/community?name=free<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">자유</a>
-				<a class="btn btn-danger writebtn"
+				<a class="btn btn-danger"
 					href="/community?name=info<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">정보</a>
-				<select id="search_option"
-					style="display: inline-block; width: 150px; height: 30px;">
+				<a class="btn btn-danger"
+					href="/community?name=free<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">자유</a>
+				<select id="search_option">
 					<option value="all" selected="selected">전체</option>
 					<option value="title">제목</option>
 					<option value="content">내용</option>
@@ -87,9 +94,8 @@
 				</select> <input type="text" id="search_text"
 					style="width: 200px; height: 30px; display: inline-block;"
 					value="${param.text}" />
-				<button class="btn btn-success writebtn"
-					onclick="location.href='/community'">전체목록</button>
-				<button class="btn btn-success writebtn" onclick="search()">검색</button>
+				<button class="btn btn-success" onclick="search()">검색</button>
+				<button class="btn btn-success" onclick="location.href='/community'">전체목록</button>
 			</div>
 			<button class="btn btn-success writebtn"
 				onclick="location.href='/postWrite<c:if test="${param.game_abb!=null}">?game_abb=${param.game_abb}</c:if>'"
