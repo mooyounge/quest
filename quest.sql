@@ -11,13 +11,6 @@ create table quest_user(
     ban_time date
 );
 
--- 게임 장르
-create table quest_genre(
-    genre varchar2(20) primary key,
-    genre_number number unique
-);
-
-drop table quest_genre; -- 이거 삭제하고 게임 이름에 걍 집어넣어도 될거같음
 
 -- 게임 이름
 create table quest_game(
