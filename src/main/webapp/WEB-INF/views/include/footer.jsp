@@ -1,12 +1,13 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <div class="inner">
-	<h2>Get In Touch</h2>
+	<h2>Quest info</h2>
 	<ul class="actions">
-		<li><span class="icon fa-phone"></span> <a href="#">(000)
-				000-0000</a></li>
-		<li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
-		<li><span class="icon fa-map-marker"></span> 123 Somewhere Road,
-			Nashville, TN 00000</li>
+		<li><span class="icon fa-phone"></span> <a href="#">(02)
+				869-1080</a></li>
+		<li><span class="icon fa-envelope"></span> <a href="#">asfwrebcx1233@gmail.com</a></li>
+		<li><span class="icon fa-map-marker"></span>서울특별시 관악구 신림동 서울특별시
+			관악구 조원동 1655-24</li>
 	</ul>
 </div>
 <div class="copyright">

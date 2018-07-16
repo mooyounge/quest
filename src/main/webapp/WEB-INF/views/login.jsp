@@ -8,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>Quest</title>
 <jsp:include page="include/headercss.jsp"/>
 </head>
 <style>
