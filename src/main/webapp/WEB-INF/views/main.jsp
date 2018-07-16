@@ -40,7 +40,7 @@
 			</div>
 			<div class="flex-item right">
 				<div>
-					<a href="streaming.html"><h3>Streaming</h3></a>
+					<a href="/vod/main"><h3>Streaming</h3></a>
 					<p>
 						Sed adipiscing ornare risus. Morbi estes<br /> blandit sit et
 						amet, sagittis magna.

@@ -18,7 +18,7 @@ public class VodController {
 		return "vod/fileupload";
 	}
 	
-	@PostMapping("/file/upload")
+	/*@PostMapping("/file/upload")
 	@ResponseBody
 	public List<FileMeta> upload(
 	    @RequestParam(value = "files[]", required = false) MultipartFile[] files) throws IllegalStateException, IOException {
@@ -32,6 +32,13 @@ public class VodController {
 	  }
 
 	  return fileMetas;
+	}*/
+	
+	@GetMapping("/vod/main")
+	public String main() {
+		
+		return "vod/vodmain";
 	}
+	
 	
 }
