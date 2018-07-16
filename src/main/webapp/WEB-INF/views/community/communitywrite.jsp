@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<title>Insert title here</title>
+<title>Quest</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link
@@ -29,7 +29,7 @@
 </head>
 <body>
 	<header id="header" style="height: 84px;">
-		<jsp:include page="include/mainnav.jsp" />
+		<jsp:include page="../include/mainnav.jsp" />
 	</header>
 
 	<h3>새 글쓰기</h3>
@@ -76,7 +76,7 @@
 
 
 	<footer id="footer">
-		<jsp:include page="include/footer.jsp" />
+		<jsp:include page="../include/footer.jsp" />
 	</footer>
 
 	<!-- script libary -->

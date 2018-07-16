@@ -7,22 +7,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<jsp:include page="include/headercss.jsp" />
-<title>Insert title here</title>
+<jsp:include page="../include/headercss.jsp" />
+<title>Quest</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<style>
-</style>
 </head>
 <body>
 
 	<header id="header" style="height: 84px;">
-		<jsp:include page="include/mainnav.jsp" />
+		<jsp:include page="../include/mainnav.jsp" />
 	</header>
 
 	<jsp:include page="include/comnav.jsp" />
 
-	<jsp:include page="include/commenu.jsp" />
+	<%-- <jsp:include page="include/commenu.jsp" /> --%>
 
 	<div class="container" style="margin-top: 50px;">
 		<span>
@@ -33,7 +31,7 @@
 	</div>
 
 	<footer id="footer">
-		<jsp:include page="include/footer.jsp" />
+		<jsp:include page="../include/footer.jsp" />
 	</footer>
 
 	<!-- script libary -->

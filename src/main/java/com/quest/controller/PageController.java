@@ -95,7 +95,7 @@ public class PageController {
 		model.addAttribute("gameList",gameList);
         model.addAttribute("paging",paging);
 		model.addAttribute("postList",postList);
-		return "community";
+		return "community/community";
 	}
 	
 	//글쓰기 view로 보냄
@@ -107,7 +107,7 @@ public class PageController {
 		List<Game> gameList = gameService.getList(game.getGenre());
 		model.addAttribute("gameList",gameList);
 		
-		return "communitywrite";
+		return "community/communitywrite";
 	}
 	
 	//글쓰기 view ajax 통신
@@ -280,7 +280,7 @@ public class PageController {
 		request.getSession().invalidate();
 		request.getSession().setAttribute("user",saveduser);
 		
-		return "redirect:/community";
+		return "redirect:/";
 	}
 	//로그인
 	@GetMapping("/logout")
@@ -333,7 +333,7 @@ public class PageController {
         model.addAttribute("paging",paging);
 		model.addAttribute("post",post);
 		model.addAttribute("postList",postList);
-		return "communityView";
+		return "community/communityView";
 	}
 	
 	//댓글 POST
@@ -394,7 +394,7 @@ public class PageController {
         List<Game> gameList = gameService.getList();
 		model.addAttribute("gameList",gameList);
 		
-		return "adminpage";
+		return "community/adminpage";
 	}
 	
 	@PostMapping("/community/admin/gameinsert")

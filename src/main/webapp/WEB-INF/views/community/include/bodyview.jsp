@@ -31,11 +31,11 @@
 <table class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>번호</th>
+			<th style="width:100px;">번호</th>
 			<th>제목</th>
-			<th>글쓴이</th>
-			<th>날짜</th>
-			<th>조회수</th>
+			<th style="width:160px;">글쓴이</th>
+			<th style="width:200px;">날짜</th>
+			<th style="width:80px;">조회수</th>
 		</tr>
 	</thead>
 	<tbody>
