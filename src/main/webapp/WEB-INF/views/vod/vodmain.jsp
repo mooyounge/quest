@@ -13,11 +13,18 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-	
+
 	<header id="header" style="height: 84px;">
 		<jsp:include page="../include/mainnav.jsp" />
 	</header>
-	
+	<jsp:include page="include/vodmainnav.jsp" />
+	<div class="col-sm-offset-1">
+		<br />
+		<a href="/vod/in"><img src="/video/images/DyingLight.png" alt="" style="height: 120px;" /></a>
+		<br />
+		<br />
+	</div>
+	<!-- for 문으로 있는 영상들 불러오기 -->
 	<footer id="footer">
 		<jsp:include page="../include/footer.jsp" />
 	</footer>

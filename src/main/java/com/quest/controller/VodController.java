@@ -61,5 +61,8 @@ public class VodController {
 		return "vod/vodmain";
 	}
 	
-	
+	@GetMapping("/vod/in")
+	public String vodin() {
+		return "vod/vodin";
+	}
 }
