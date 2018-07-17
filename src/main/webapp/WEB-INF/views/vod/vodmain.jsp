@@ -17,7 +17,13 @@
 	<header id="header" style="height: 84px;">
 		<jsp:include page="../include/mainnav.jsp" />
 	</header>
+	<jsp:include page="include/vodmainnav.jsp"/>
 	
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<!-- for 문으로 있는 영상들 불러오기 -->
 	<footer id="footer">
 		<jsp:include page="../include/footer.jsp" />
 	</footer>
