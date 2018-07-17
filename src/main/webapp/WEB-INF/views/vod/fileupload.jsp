@@ -16,18 +16,19 @@
 	            <div class="panel-heading">
 	                <h3 class="panel-title">파일 업로드</h3>
 	            </div>
-	            <form  class="form-horizontal video-upload-file" role="form" method="POST" action=""
-	     				     enctype="multipart/form-data" form_target="video-iframe">
+	            <form  id="upload-file-form" class="form-horizontal video-upload-file" role="form" method="POST" action="/vod/upload"
+	     				     enctype="multipart/form-data" >
 	            <div class="panel-body">
 		        <div class="form-group">
-		            <label class="control-label col-md-2" for="file">파일</label>
+		            
 		            <div class="col-md-10">
-		                <input type="file" name="file" id="file" required>
+		            	<label for="">이름 : <input type="text" name="name" id="name" /></label> <br />
+		                <input type="file" name="file" id="file" formenctype="multipart/form-data"  data-url="/vod/upload" />
 		                <span class="help-block">파일 크기,시간,화질 설명하는 칸.</span>
 		            </div>
 		        </div>
 				</div>
-				</form>
+				
 	            <div class="panel-footer">
 	                <div class="btn-group btn-group-justified">
 	                    <a href="/" class="btn btn-default "  data-pjax>
@@ -39,12 +40,14 @@
 	                        </button>
 	                    </div>
 	                </div>
-			</div>
+				</div>
+				</form>
 		</div>
 	</div>
-        
+	
 <!-- script libary -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
