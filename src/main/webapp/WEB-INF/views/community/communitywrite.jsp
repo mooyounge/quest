@@ -36,6 +36,7 @@
 
 	<form id="writeForm" action="/postWrite" method="post"
 		enctype="multipart/form-data">
+		<input type="hidden" name="name" value="${param.name }" >
 		<div id="write-form" class="bbs-table">
 			<div>
 				<p style="display: inline-block;">제목</p>

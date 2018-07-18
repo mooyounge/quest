@@ -76,7 +76,7 @@
 			href="/community?name=all<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">전체목록</a>
 	</div>
 	<button class="btn btn-success writebtn"
-		onclick="location.href='/postWrite<c:if test="${param.game_abb!=null}">?game_abb=${param.game_abb}</c:if>'"
+		onclick="location.href='/postWrite?<c:if test="${param.game_abb!=null}">game_abb=${param.game_abb}</c:if><c:if test="${param.name!=null}">&name=${param.name}</c:if>'"
 		style="height: 30px;">글쓰기</button>
 	<jsp:include page="paging.jsp" flush="flase">
 		<jsp:param name="firstPageNo" value="${map.paging.firstPageNo}" />

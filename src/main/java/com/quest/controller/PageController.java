@@ -101,12 +101,15 @@ public class PageController {
 	//글 데이터베이스로 보냄
 	@PostMapping("/postWrite")
 	public String postWritepost(@ModelAttribute @Valid Post post,BindingResult result,
-								@RequestParam(required=false) String game_abb) {
+								@RequestParam(required=false) String game_abb,
+								@RequestParam(defaultValue="free") String name
+								) {
 		if(result.hasErrors()) {
 			return "communitywrite";
 		}
 		
-		postService.insert(post);
+		postService.insert(post,name);
+		
 		if(game_abb != null) {
 			return "redirect:/community?game_abb="+game_abb;
 		}
@@ -249,8 +252,6 @@ public class PageController {
 		//사전작업
 		Map map = before(option, text, page, game_abb, name, genre);
 		model.addAttribute("map",map);
-		
-		System.out.println(map.get("post"));
 		
 		return "community/communityView";
 	}

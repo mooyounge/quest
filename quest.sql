@@ -154,10 +154,7 @@ select * from quest_post where game_abb like('%');
 select * from quest_post where game_abb = 'all' and (board_id ='65' or board_id='64');
 select count(post_id) from quest_post where game_abb like '%' and board_id >= 0;
 
-
-
 select a.*, (select count(*) from quest_post_like where a.post_id = post_id and post_like='like') as post_like from quest_post a where post_id = 59;
-
 
 
 

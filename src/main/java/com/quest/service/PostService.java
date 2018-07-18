@@ -11,7 +11,7 @@ public interface PostService {
 	
 	List<Post> getList(String option, String text, Paging paging, String game_abb);
 
-	void insert(Post post);
+	void insert(Post post, String name);
 
 	Post getPost(int id);
 	

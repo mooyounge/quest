@@ -28,8 +28,14 @@ public class PostServiceImpl implements PostService {
 	private GameDao gameDao;
 	
 	@Override
-	public void insert(Post post) {
-		int board_id = boardDao.getBoardFreeId(post.getGame_abb());
+	public void insert(Post post,String name) {
+		int board_id = 1;
+		if("info".equals(name)) {
+			board_id = boardDao.getBoardInfoId(post.getGame_abb());
+		}else {
+			board_id = boardDao.getBoardFreeId(post.getGame_abb());
+		}
+		
 		post.setBoard_id(board_id);
 		postDao.insert(post);
 		
@@ -231,5 +237,6 @@ public class PostServiceImpl implements PostService {
 		
 		return postDao.getSize(map);
 	}
+
 
 }
