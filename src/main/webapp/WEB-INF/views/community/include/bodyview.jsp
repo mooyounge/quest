@@ -40,7 +40,7 @@
 	</thead>
 	<tbody>
 		<!-- 여기에 포문돌리면됨 -->
-		<c:forEach var="post" varStatus="status" items="${postList}">
+		<c:forEach var="post" varStatus="status" items="${map.postList}">
 			<tr>
 				<td>${post.rnum}</td>
 				<td><a
@@ -79,13 +79,13 @@
 		onclick="location.href='/postWrite<c:if test="${param.game_abb!=null}">?game_abb=${param.game_abb}</c:if>'"
 		style="height: 30px;">글쓰기</button>
 	<jsp:include page="paging.jsp" flush="flase">
-		<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
-		<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
-		<jsp:param name="startPageNo" value="${paging.startPageNo}" />
-		<jsp:param name="pageNo" value="${paging.pageNo}" />
-		<jsp:param name="endPageNo" value="${paging.endPageNo}" />
-		<jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
-		<jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
+		<jsp:param name="firstPageNo" value="${map.paging.firstPageNo}" />
+		<jsp:param name="prevPageNo" value="${map.paging.prevPageNo}" />
+		<jsp:param name="startPageNo" value="${map.paging.startPageNo}" />
+		<jsp:param name="pageNo" value="${map.paging.pageNo}" />
+		<jsp:param name="endPageNo" value="${map.paging.endPageNo}" />
+		<jsp:param name="nextPageNo" value="${map.paging.nextPageNo}" />
+		<jsp:param name="finalPageNo" value="${map.paging.finalPageNo}" />
 	</jsp:include>
 </div>
 

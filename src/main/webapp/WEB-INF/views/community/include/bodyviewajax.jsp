@@ -38,7 +38,7 @@
 		</tr>
 	</thead>
 	<tbody id="posts">
-		<c:forEach var="post" varStatus="status" items="${postList}">
+		<c:forEach var="post" varStatus="status" items="${map.postList}">
 			<tr>
 				<td>${status.count}</td>
 				<td><a
@@ -73,13 +73,13 @@
 		onclick="location.href='/postWrite'" style="height: 30px;">글쓰기</button>
 
 	<jsp:include page="pagingwithajax.jsp" flush="flase">
-		<jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
-		<jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
-		<jsp:param name="startPageNo" value="${paging.startPageNo}" />
-		<jsp:param name="pageNo" value="${paging.pageNo}" />
-		<jsp:param name="endPageNo" value="${paging.endPageNo}" />
-		<jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
-		<jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
+		<jsp:param name="firstPageNo" value="${map.paging.firstPageNo}" />
+		<jsp:param name="prevPageNo" value="${map.paging.prevPageNo}" />
+		<jsp:param name="startPageNo" value="${map.paging.startPageNo}" />
+		<jsp:param name="pageNo" value="${map.paging.pageNo}" />
+		<jsp:param name="endPageNo" value="${map.paging.endPageNo}" />
+		<jsp:param name="nextPageNo" value="${map.paging.nextPageNo}" />
+		<jsp:param name="finalPageNo" value="${map.paging.finalPageNo}" />
 	</jsp:include>
 </div>
 

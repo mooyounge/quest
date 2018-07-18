@@ -4,7 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="post">
 	<select id="getList" resultType="post" parameterType="map">
-		select * from (select rownum as rnum, a.* 
+		select * from 
+		(select rownum as rnum, a.* 
 		from (select * from quest_post
 						where
 		        			<choose>
@@ -51,6 +52,34 @@
 			        </if> order by post_regdate desc )  a) where rnum between #{start} and #{end}
 	</select>
 	
+	<select id="getList2" resultType="post" parameterType="map">
+		select * from (select rownum as rnum, a.* 
+		from (select * from quest_post
+		        			
+						<if test="option != null">
+						where
+			        	<choose>
+			        		<when test="option == 'all'">
+			        			(user_id like '%'||#{text}||'%' or
+			        			post_title like '%'||#{text}||'%' or
+			        			post_content like '%'||#{text}||'%')
+			        		</when>
+			        		<when test="option == 'name'">
+			        			user_id like '%'||#{text}||'%'
+			        		</when>
+			        		<when test="option == 'title'">
+			        			post_title like '%'||#{text}||'%'
+			        		</when>
+			        		<when test="option == 'content'">
+			        			post_content like '%'||#{text}||'%'
+			        		</when>
+			        		<when test="option == 'title_content'">
+			        			(post_title like '%'||#{text}||'%' or
+			        			post_content like '%'||#{text}||'%')
+			        		</when>
+			        	</choose>
+			        </if> order by post_regdate desc )  a) where rnum between #{start} and #{end}
+	</select>
 	
 	<select id="getAllList" resultType="post" parameterType="map">
 		select * from (select rownum as rnum, a.* 
@@ -96,8 +125,11 @@
 	
 	
 	<select id="getPost" parameterType="int" resultMap="postMap" >
-		select * from quest_post where post_id = #{value}
+		select a.*, (select count(*) from quest_post_like where a.post_id = post_id and post_like='like') as post_like,
+				(select count(*) from quest_post_like where a.post_id = post_id and post_like='dislike') as post_like
+				  from quest_post a where post_id = #{value}
 	</select>
+	
 	
 	<resultMap type="post" id="postMap">
 		<id property="post_id" column="post_id"/>
@@ -168,19 +200,6 @@
 		insert into quest_post values(quest_post_id.nextval,#{game_abb},#{board_id},'admin',#{post_title},#{post_content},sysdate,0,0,0,0,0)
 	</insert>
 	
-	<update id="plusLike" parameterType="post_like">
-		update quest_post set post_like = post_like+1 where post_id = #{post_id} 
-	</update>
-	<update id="plusdisLike" parameterType="post_like">
-		update quest_post set post_dislike = post_dislike+1 where post_id = #{post_id} 
-	</update>
-	
-	<update id="plusinfoLike" parameterType="post_like">
-		update quest_post set post_info_like = post_info_like+1 where post_id = #{post_id} 
-	</update>
-	<update id="plusinfodisLike" parameterType="post_like">
-		update quest_post set post_info_dislike = post_info_dislike+1 where post_id = #{post_id} 
-	</update>
 </mapper>
 
 

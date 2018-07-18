@@ -24,7 +24,7 @@
 
 	<div class="container" style="margin-top: 50px;">
 		<span>
-			<h2>${game.game_name}</h2>
+			<h2>${map.game.game_name}</h2>
 		</span>
 		<jsp:include page="include/bodyview.jsp"></jsp:include>
 

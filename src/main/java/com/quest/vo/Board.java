@@ -1,10 +1,13 @@
 package com.quest.vo;
 
+import java.util.List;
+
 public class Board {
 	private String game_abb;
 	private int board_id;
 	private String board_name;
-
+	
+	private List<Post> postList;
 	
 	
 	public String getGame_abb() {
@@ -24,6 +27,12 @@ public class Board {
 	}
 	public void setBoard_name(String board_name) {
 		this.board_name = board_name;
+	}
+	public List<Post> getPostList() {
+		return postList;
+	}
+	public void setPostList(List<Post> postList) {
+		this.postList = postList;
 	}
 	
 	

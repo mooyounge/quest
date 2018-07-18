@@ -1,6 +1,7 @@
 package com.quest.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,9 @@ public class GameDao {
 
 	public List<Game> getList(String genre) {
 		return session.selectList("game.getListbyGenre",genre);
+	}
+
+	public Game getOne2(Map<String, Object> map) {
+		return session.selectOne("game.getOne2",map);
 	}
 }

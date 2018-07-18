@@ -29,12 +29,6 @@ public interface PostService {
 
 	void insertPost_dislike(Post_like post_like);
 
-	int getinfolikecount(Post_like post_like);
-
-	void insertPost_infolike(Post_like post_like);
-
-	void insertPost_infodislike(Post_like post_like);
-
 	List<Post> getList(Map<String, Object> map);
 
 	int getSize(Map<String, Object> map);

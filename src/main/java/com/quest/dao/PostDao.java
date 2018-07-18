@@ -43,16 +43,8 @@ public class PostDao {
 		session.insert("post_like.insertlike",post_like);
 	}
 
-	public void plusLike(Post_like post_like) {
-		session.insert("post.plusLike",post_like);
-	}
-
 	public void insertPost_dislike(Post_like post_like) {
 		session.insert("post_like.insertdislike",post_like);
-	}
-
-	public void plusdisLike(Post_like post_like) {
-		session.insert("post.plusdisLike",post_like);
 	}
 
 	public int getlikecountbyUser_id(Post_like post_like) {
@@ -63,30 +55,4 @@ public class PostDao {
 		return session.selectOne("post_like.getlikecountbyIp",post_like);
 	}
 
-	public int getinfolikecountbyUser_id(Post_like post_like) {
-		return session.selectOne("post_like.getinfolikecountbyUser_id",post_like);
-	}
-
-	public int getinfolikecountbyIp(Post_like post_like) {
-		return session.selectOne("post_like.getinfolikecountbyIp",post_like);
-	}
-
-	public void insertPost_infolike(Post_like post_like) {
-		session.insert("post_like.insertinfolike",post_like);		
-	}
-
-	public void insertPost_infodislike(Post_like post_like) {
-		session.insert("post_like.insertinfodislike",post_like);		
-	}
-
-	public void plusinfoLike(Post_like post_like) {
-		session.insert("post.plusinfoLike",post_like);
-	}
-
-	public void plusinfodisLike(Post_like post_like) {
-		session.insert("post.plusinfodisLike",post_like);
-	}
-	
-	
-	
 }

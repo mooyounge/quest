@@ -83,6 +83,7 @@ create table quest_post(
 select * from quest_post;
 create sequence quest_post_id;
 drop table quest_post;
+ALTER TABLE quest_post DROP COLUMN post_dislike;
 
 --댓글
 create table quest_comment(
@@ -101,6 +102,8 @@ create sequence quest_comment_id;
 insert into quest_comment values(quest_comment_id.nextval,38,null,'현호','1111','내용입니다',sysdate,0,0);
 commit;
 drop table quest_comment;
+ALTER TABLE quest_comment DROP COLUMN comment_like;
+
 --신고
 
 
@@ -150,9 +153,10 @@ select * from quest_board;
 select * from quest_post where game_abb like('%');
 select * from quest_post where game_abb = 'all' and (board_id ='65' or board_id='64');
 select count(post_id) from quest_post where game_abb like '%' and board_id >= 0;
-    
 
 
+
+select a.*, (select count(*) from quest_post_like where a.post_id = post_id and post_like='like') as post_like from quest_post a where post_id = 59;
 
 
 

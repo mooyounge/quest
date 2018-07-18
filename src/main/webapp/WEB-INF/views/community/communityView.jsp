@@ -57,7 +57,7 @@
 	<div class="container">
 		<!-- 선택한 글 보기 -->
 		<span>
-			<h2>${game.game_name}</h2>
+			<h2>${map.game.game_name}</h2>
 		</span>
 		<div id="top1" class="col-sm-12">
 			<div id="top2">
@@ -110,18 +110,6 @@
 					class="b_re_down" title="비추천"> <img src="/images/down.png"
 					alt="" style="width: 70px; heigth: 70px;" />
 				</a> <br /> ${post.post_dislike}
-			</div>
-			<div style="display: inline-block; text-align: center;">
-				<a href="javascript:infolike('like');" id="post_info_like"
-					class="b_re_up fixed_name_box" title="추천"> <img
-					src="/images/up2.png" alt="" style="width: 70px; heigth: 70px;" />
-				</a> <br /> ${post.post_info_like}
-			</div>
-			<div style="display: inline-block; text-align: center;">
-				<a href="javascript:infolike('dislike');" id="post_info_dislike"
-					class="b_re_down fixed_name_box" title="추천"> <img
-					src="/images/down2.png" alt="" style="width: 70px; heigth: 70px;" />
-				</a> <br /> ${post.post_info_dislike}
 			</div>
 			<!-- 댓글창 -->
 			<hr />

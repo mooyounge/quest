@@ -67,34 +67,11 @@ public class PageController {
 							@RequestParam(defaultValue="all") String name,
 							@RequestParam(required=false) String genre
 							) {
-		Game game = gameService.getOne(game_abb);
 		
-		//페이징 한세트
-		String searchParam = "";
-		if(option != null) {
-			searchParam = "&option="+option+"&text="+text;
-		}
-        Paging paging = getPaging(page);
-        List<Post> postList = null;
-        //game_abb가 없으면 전체 리스트 불러오기
-		Map<String,Object> map = getSearchMap(paging);
-		map.put("option", option);
-		map.put("text", text);
-		map.put("game_abb", game_abb);
-		map.put("name",name);
-		map.put("genre",genre);
+		Map map = before(option, text, page, game_abb, name, genre);
+        
+		model.addAttribute("map",map);
 		
-		postList = postService.getList(map);
-		paging.setTotalCount(postService.getSize(map));
-        //요기까지
-        
-        
-        //게임 이름 불러오기 comnav
-        List<Game> gameList = gameService.getList();
-        model.addAttribute("game",game);
-		model.addAttribute("gameList",gameList);
-        model.addAttribute("paging",paging);
-		model.addAttribute("postList",postList);
 		return "community/community";
 	}
 	
@@ -173,44 +150,6 @@ public class PageController {
         	return "fail";
         }
         
-	}
-	
-	//정보글 좋아요 ajaxPost
-	@PostMapping("/community/post/infolike")
-	@ResponseBody
-	public String postinfolike(HttpServletRequest request,@ModelAttribute Post_like post_like,@RequestParam String type) {
-		
-		//ip 구하기
-		String ip = request.getHeader("X-FORWARDED-FOR");
-		if (ip == null) {
-			ip = request.getRemoteAddr();
-		}
-		post_like.setUser_ip(ip);
-		
-		//user id 구하기
-		User user = null;
-		user =(User)request.getSession().getAttribute("user");
-		if(user!=null) {
-			post_like.setUser_id(user.getId());
-		}
-		
-		int count = -1;
-		count = postService.getinfolikecount(post_like);
-		if(count==0) {
-			//더하는 작업
-			if("like".equals(type)) {
-				postService.insertPost_infolike(post_like);
-			}else if("dislike".equals(type)) {
-				postService.insertPost_infodislike(post_like);
-			}
-			return "success";
-		}else if(count==-1) {
-			//서버오류
-			return "error";
-		}else {
-			//이미 추천한거
-			return "fail";
-		}
 	}
 	
 	//댓글 좋아요 ajaxPost
@@ -305,34 +244,14 @@ public class PageController {
 						@RequestParam(defaultValue="all") String name,
 						@RequestParam(required=false) String genre) {
 		Post post = postService.getPost(id);
-		Game game = gameService.getOne(game_abb);
-		//페이징 한세트
-				String searchParam = "";
-				if(option != null) {
-					searchParam = "&option="+option+"&text="+text;
-				}
-		        Paging paging = getPaging(page);
-		        List<Post> postList = null;
-		        
-		        //game_abb가 없으면 전체 리스트 불러오기
-				Map<String,Object> map = getSearchMap(paging);
-				map.put("option", option);
-				map.put("text", text);
-				map.put("game_abb", game_abb);
-				map.put("name",name);
-				map.put("genre",genre);
-				
-				postList = postService.getList(map);
-				paging.setTotalCount(postService.getSize(map));
-		        //요기까지
-		
-        //게임 이름 불러오기 comnav
-        List<Game> gameList = gameService.getList();
-		model.addAttribute("gameList",gameList);
-		model.addAttribute("game",game);
-        model.addAttribute("paging",paging);
 		model.addAttribute("post",post);
-		model.addAttribute("postList",postList);
+		
+		//사전작업
+		Map map = before(option, text, page, game_abb, name, genre);
+		model.addAttribute("map",map);
+		
+		System.out.println(map.get("post"));
+		
 		return "community/communityView";
 	}
 	
@@ -424,5 +343,36 @@ public class PageController {
 	return searchMap;
 	}
 	
+	public Map<String,Object> before(String option,String text,int page,String game_abb,String name,String genre){
+		Game game = gameService.getOne(game_abb);
+		
+		//페이징 한세트
+        Paging paging = getPaging(page);
+
+        //game_abb가 없으면 전체 리스트 불러오기
+		Map<String,Object> map = getSearchMap(paging);
+		map.put("option", option);
+		map.put("text", text);
+		map.put("game_abb", game_abb);
+		map.put("name",name);
+		map.put("genre",genre);
+		
+        List<Post> postList = null;
+		postList = postService.getList(map);
+		paging.setTotalCount(postService.getSize(map));
+        //요기까지
+        
+        //게임 이름 불러오기 comnav
+        List<Game> gameList = gameService.getList();
+        
+        Map<String,Object> returnmap = new HashMap<String, Object>();
+        
+        returnmap.put("game",game);
+        returnmap.put("gameList",gameList);
+        returnmap.put("paging",paging);
+        returnmap.put("postList",postList);
+		
+		return returnmap;
+	}
 	
 }

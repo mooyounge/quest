@@ -15,6 +15,20 @@
 	<insert id="insert" parameterType="game">
 		insert into quest_game values(#{genre},#{game_name},#{game_abb})
 	</insert>
+	
+	<!-- 연습코드 -->
+	<select id="getOne2" parameterType="map" resultMap="gameMap">
+		select a.*, #{option} "option", #{text} "text", #{start} "start", #{end} "end", #{board_id} "board_id" from quest_game a where game_abb=#{game_abb} 
+	</select>
+	<resultMap type="game" id="gameMap">
+		<id property="game_abb" column="game_abb"/>
+		<collection select="board.getBoardList"
+		            column="{game_abb=game_abb, opti=option, text=text, start=start, end=end, board_id=board_id}"
+		            ofType="board"
+		            property="boardList"/>
+	</resultMap>
+	
+	
 </mapper>
 
 

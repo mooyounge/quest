@@ -1,10 +1,13 @@
 package com.quest.vo;
 
+import java.util.List;
+
 public class Game {
 	private String genre;
 	private String game_name;
 	private String game_abb;
 	
+	public List<Board> boardList;
 	
 	public String getGame_abb() {
 		return game_abb;
@@ -23,6 +26,12 @@ public class Game {
 	}
 	public void setGame_name(String game_name) {
 		this.game_name = game_name;
+	}
+	public List<Board> getBoardList() {
+		return boardList;
+	}
+	public void setBoardList(List<Board> boardList) {
+		this.boardList = boardList;
 	}
 	
 }

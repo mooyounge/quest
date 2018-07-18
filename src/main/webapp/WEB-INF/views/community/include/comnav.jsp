@@ -48,7 +48,7 @@
 	<ul>
 		<li id="FPS"><a href="/community?genre=FPS">FPS</a>
 			<ul>
-				<c:forEach var="game" items="${gameList}">
+				<c:forEach var="game" items="${map.gameList}">
 					<c:if test="${game.genre=='FPS'}">
 						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
 					</c:if>
@@ -57,7 +57,7 @@
 
 		<li id="RPG"><a href="/community?genre=RPG">RPG</a>
 			<ul>
-				<c:forEach var="game" items="${gameList}">
+				<c:forEach var="game" items="${map.gameList}">
 					<c:if test="${game.genre=='RPG'}">
 						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
 					</c:if>
@@ -65,7 +65,7 @@
 			</ul></li>
 		<li id="AOS"><a href="/community?genre=AOS">AOS</a>
 			<ul>
-				<c:forEach var="game" items="${gameList}">
+				<c:forEach var="game" items="${map.gameList}">
 					<c:if test="${game.genre=='AOS'}">
 						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
 					</c:if>
@@ -73,7 +73,7 @@
 			</ul></li>
 		<li id="RHYTHM"><a href="/community?genre=rhythm">리듬게임</a>
 			<ul>
-				<c:forEach var="game" items="${gameList}">
+				<c:forEach var="game" items="${map.gameList}">
 					<c:if test="${game.genre=='rhythm'}">
 						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
 					</c:if>
@@ -81,7 +81,7 @@
 			</ul></li>
 		<li id="INDIE"><a href="/community?genre=indie">인디게임</a>
 			<ul>
-				<c:forEach var="game" items="${gameList}">
+				<c:forEach var="game" items="${map.gameList}">
 					<c:if test="${game.genre=='indie'}">
 						<li><a href="/community?game_abb=${game.game_abb}">${game.game_name }</a></li>
 					</c:if>
