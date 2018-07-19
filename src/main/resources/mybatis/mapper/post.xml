@@ -140,6 +140,11 @@
 		            column="post_id"
 		            ofType="comment"
 		            property="commentList"/>
+		<collection select="tag.list"
+		            column="post_id"
+		            ofType="tag"
+		            property="tagList"/> 
+		            
 	</resultMap>
 	
 	

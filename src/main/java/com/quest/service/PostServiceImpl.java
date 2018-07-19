@@ -46,8 +46,8 @@ public class PostServiceImpl implements PostService {
 		post.setBoard_id(board_id);
 		postDao.insert(post);
 		
-		if(post.getTags()!=null) {
-			for(Tag tag : post.getTags()) {
+		if(post.getTagList()!=null) {
+			for(Tag tag : post.getTagList()) {
 				tag.setPost_id(post.getPost_id());
 				tagDao.add(tag);
 			}
