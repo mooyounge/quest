@@ -74,10 +74,6 @@ create table quest_post(
     post_title varchar2(50) not null,
     post_content clob not null,
     post_regdate date not null,
-    post_like number default 0,
-    post_dislike number default 0,
-    post_info_like number default 0,
-    post_info_dislike number default 0,
     post_lookup number default 0
 );
 select * from quest_post;
@@ -165,6 +161,9 @@ create table post_tag(
     color varchar2(10) default 'default' not null
 );
 create sequence post_tag_id;
+
+select * from post_tag;
+
 
 (select count(*) from quest_post_like where a.post_id = post_id and post_like='like') as post_like,
 				(select count(*) from quest_post_like where a.post_id = post_id and post_like='dislike') as post_dislike,;

@@ -41,15 +41,17 @@ public class PostServiceImpl implements PostService {
 			board_id = boardDao.getBoardFreeId(post.getGame_abb());
 		}
 		
-		if(post.getTags()!=null) {
-			for(Tag tag : post.getTags()) {
+		
+		
+		post.setBoard_id(board_id);
+		postDao.insert(post);
+		
+		if(post.getTagList()!=null) {
+			for(Tag tag : post.getTagList()) {
 				tag.setPost_id(post.getPost_id());
 				tagDao.add(tag);
 			}
 		}
-		
-		post.setBoard_id(board_id);
-		postDao.insert(post);
 		
 	}
 

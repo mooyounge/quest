@@ -27,7 +27,7 @@ public class Post {
 	private int post_lookup;
 	
 	private List<Comment> commentList;
-	private List<Tag> tags;
+	private List<Tag> tagList;
 	
 	public List<Comment> getCommentList() {
 		return commentList;
@@ -103,11 +103,11 @@ public class Post {
 	public void setPost_dislike(int post_dislike) {
 		this.post_dislike = post_dislike;
 	}
-	public List<Tag> getTags() {
-		return tags;
+	public List<Tag> getTagList() {
+		return tagList;
 	}
-	public void setTags(List<Tag> tags) {
-		this.tags = tags;
+	public void setTagList(List<Tag> tagList) {
+		this.tagList = tagList;
 	}
 	
 	

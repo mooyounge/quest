@@ -55,4 +55,8 @@ public class PostDao {
 		return session.selectOne("post_like.getlikecountbyIp",post_like);
 	}
 
+	public int getPost_id(Post post) {
+		return session.selectOne("post.getPost_id",post);
+	}
+
 }
