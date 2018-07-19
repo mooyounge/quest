@@ -201,7 +201,11 @@
 	
 	<insert id="insert" parameterType="post">
 		insert into quest_post values(quest_post_id.nextval,#{game_abb},#{board_id},'admin',#{post_title},#{post_content},sysdate,0)
+		<selectKey resultType="int" keyProperty="post_id" order="AFTER">
+			select quest_post_id.currval from dual
+		</selectKey>
 	</insert>
+	
 	
 </mapper>
 

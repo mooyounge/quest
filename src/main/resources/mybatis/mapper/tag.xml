@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tag">
 
-	<insert id="insert" parameterType="tag">
-		insert into tag 
+	<insert id="add" parameterType="tag">
+		insert into post_tag 
 		values(post_tag_id.nextval, #{post_id}, #{name}, #{color})
 	</insert>
 	
 	<select id="list" resultType="tag" parameterType="int">
-		select * from tag where post_id = #{value}
+		select * from post_tag where post_id = #{value}
 	</select>
 	
 </mapper>
