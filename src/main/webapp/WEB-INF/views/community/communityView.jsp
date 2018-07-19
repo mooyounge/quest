@@ -97,7 +97,9 @@
 					</table>
 				</div>
 			</div>
-			<!-- 댓글창 -->
+			<!-- 태그창 -->
+			
+			<!-- 추천창 -->
 			<hr />
 			<div style="display: inline-block; text-align: center;">
 				<a href="javascript:like('like');" id="post_like"
