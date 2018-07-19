@@ -158,15 +158,21 @@ select a.*, (select count(*) from quest_post_like where a.post_id = post_id and 
 
 
 
+create table post_tag(
+    tag_id number primary key,
+    post_id number references quest_post(post_id),
+    name varchar2(30) not null,
+    color varchar2(10) default 'default' not null
+);
+create sequence post_tag_id;
 
-
-
-
-
-
-
-
-
-
-
-
+(select count(*) from quest_post_like where a.post_id = post_id and post_like='like') as post_like,
+				(select count(*) from quest_post_like where a.post_id = post_id and post_like='dislike') as post_dislike,;
+                
+select * from
+(select rownum as rnum, b.* 
+ from 
+    (select (select count(*) from quest_post_like where a.post_id = post_id and post_like='like') as post_like,
+            (select count(*) from quest_post_like where a.post_id = post_id and post_like='dislike') as post_dislike,
+            a.* 
+     from (select * from quest_post order by post_regdate desc) a ) b where post_like >= 1)  where rnum between 1 and 3 ;

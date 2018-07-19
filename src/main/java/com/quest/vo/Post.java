@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.constraints.Size;
 
 
+
 public class Post {
 	private int rnum;
 	
@@ -26,7 +27,7 @@ public class Post {
 	private int post_lookup;
 	
 	private List<Comment> commentList;
-	
+	private List<Tag> tags;
 	
 	public List<Comment> getCommentList() {
 		return commentList;
@@ -102,5 +103,12 @@ public class Post {
 	public void setPost_dislike(int post_dislike) {
 		this.post_dislike = post_dislike;
 	}
+	public List<Tag> getTags() {
+		return tags;
+	}
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+	
 	
 }

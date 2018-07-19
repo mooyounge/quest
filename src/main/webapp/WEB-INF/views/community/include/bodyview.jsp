@@ -57,7 +57,7 @@
 
 
 <div class="text-center">
-	<button class="btn btn-success col-sm-1" onclick="location.href='/community?name=best'"
+	<button class="btn btn-success col-sm-1" onclick="location.href='/community?view_like=9999'"
 		style="height: 30px;">베스트</button>
 	<div id="downnav" class="search actions" style="display: inline-block;">
 		<a class="btn btn-danger"

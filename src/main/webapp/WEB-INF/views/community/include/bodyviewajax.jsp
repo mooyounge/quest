@@ -52,7 +52,7 @@
 </table>
 <div class="text-center">
 	<button class="btn btn-success col-sm-1"
-		onclick="location.href='/community?name=best'" style="height: 30px;">베스트</button>
+		onclick="location.href='/community?view_like=9999'" style="height: 30px;">베스트</button>
 	<div id="downnav" class="search actions" style="display: inline-block;">
 		<a class="btn btn-danger"
 			href="/community?name=info<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">정보</a>

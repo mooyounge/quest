@@ -40,7 +40,7 @@
 		enctype="multipart/form-data">
 		<input type="hidden" name="name" value="${param.name }">
 		<div id="write-form" class="bbs-table">
-			<div style="display:inline-block;">
+			<div style="display: inline-block;">
 				<label style="display: inline-block;">제목</label>
 				<p style="display: inline-block;">
 					<input type="text" id="post_title" name="post_title"
@@ -62,8 +62,7 @@
 					<option value="${game.game_abb}">${game.game_name}</option>
 				</c:forEach>
 			</select>
-			<div class="form-group"
-				style="height: 20px; text-align: left;">
+			<div class="form-group" style="height: 20px; text-align: left;">
 				<label class="control-label col-sm-2">Tagging</label>
 				<div class="col-sm-10">
 					<div class="row">
@@ -158,33 +157,34 @@
 		}
 		var idx = 0;
 		function addTag(){
-			var name = $("#tag-name").val();
+			var $span = $("<span onclick='deletetag("+idx+");'></span>");
+			var tag = $("#tag-name");
+			var name = tag.val();
 			var color = $("#tag-color").val();
-			var $tag = $("<span onclick='deletetag(tag"+this+");' name='tag"+idx+"'></span>");
-			var div = $("<div id='tag"+idx+"></div>");
-			$tag.text(name);
-			$tag.addClass("label");
-			$tag.addClass("label-"+color);
-			$tag.addClass("btn");
-			console.log($tag);
+			var labelcolor = "label-"+color;
+			var $div = $("<div id=tags"+idx+" style='display: inline-block;'></div>");
+			$span.addClass("label");
+			$span.addClass(labelcolor);
+			$span.addClass("btn");
+			console.log(name);
+			$span.text(name);
 			
+			$div.append($span);
+			$div.html($div.html()+"&nbsp;");
+			$div.append("<input type='hidden' name='tags["+idx+"].name' value='"+name+"' />");
+			$div.append("<input type='hidden' name='tags["+idx+"].color' value='"+color+"' />");
 			
-			$("#tags").append($tag);
-			$("#tags").html($("#tags").html()+"&nbsp;");
+			$("#tags").append($div);
 			
-			$("#tags").append(
-	"<input type='hidden' name='tags["+idx+"].name' value='"+name+"'/>");
-			$("#tags").append(
-	"<input type='hidden' name='tags["+idx+"].color' value='"+color+"'/>");
 			idx++;
-			$("#tag-name").val('');
-			div.append("#tags");
+			tag.val("");
+			tag.focus();
+			
 		}
 		
-		function deletetag(tagnum){
-			var element = $("span[name="+tagnum+"]");
-			// var element = document.getElementByName(tagnum);
-			   element.remove();
+		function deletetag(idid){
+			var $deldiv = $("#tags"+idid);
+			$deldiv.remove();
 		}
 	</script>
 
