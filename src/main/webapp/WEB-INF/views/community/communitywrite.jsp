@@ -158,35 +158,37 @@
 		}
 		var idx = 0;
 		function addTag(){
-			var name = $("#tag-name").val();
+			var $span = $("<span onclick='deletetag("+idx+");'></span>");
+			var tag = $("#tag-name");
+			var name = tag.val();
 			var color = $("#tag-color").val();
-			var $tag = $("<span onclick='deletetag(tag"+this+");' name='tag"+idx+"'></span>");
-			var div = $("<div id='tag"+idx+"></div>");
-			/* $tag.text(name);
-			$tag.addClass("label");
-			$tag.addClass("label-"+color);
-			$tag.addClass("btn");
-			console.log($tag);
+			var labelcolor = "label-"+color;
 			
-	
-			div.append($tag);
-			div.html($("#tags").html()+"&nbsp;");
+			var $div = $("<div id=tags"+idx+"></div>");
 			
-			div.append(
-	"<input type='hidden' name='tags["+idx+"].name' value='"+name+"'/>");
-			div.append(
-	"<input type='hidden' name='tags["+idx+"].color' value='"+color+"'/>");
-			 */
-			$("#tags").append(div);
+			$span.addClass("label");
+			$span.addClass(labelcolor);
+			$span.addClass("btn");
+			console.log(name);
+			$span.text(name);
+			
+			$div.append($span);
+			$div.html($div.html()+"&nbsp;");
+			$div.append("<input type='hidden' name='tags["+idx+"].name' value='"+name+"' />");
+			$div.append("<input type='hidden' name='tags["+idx+"].color' value='"+color+"' />");
+			
+			$("#tags").append($div);
+			
 			idx++;
-			$("#tag-name").val('');
+			
+			tag.val("");
+			tag.focus();
 			
 		}
 		
-		function deletetag(tagnum){
-			var element = $("span[name="+tagnum+"]");
-			// var element = document.getElementByName(tagnum);
-			   element.remove();
+		function deletetag(idid){
+			var $deldiv = $("#tags"+idid);
+			$deldiv.remove();
 		}
 	</script>
 
