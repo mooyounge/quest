@@ -18,14 +18,19 @@
 		<jsp:include page="../include/mainnav.jsp" />
 	</header>
 	<jsp:include page="include/vodmainnav.jsp" />
-	
-	
+
+
 	<div class="col-sm-offset-1">
-		<video src="/video/DyingLight.mp4" style="height:360px; margin-top:20px;" autoplay controls poster="/video/images/DyingLight.png">지원하지 않는 브라우저입니다.</video>
+		<video style="width:854px;height: 480px; margin-top: 20px;" autoplay controls
+			poster="/video/images/DyingLight.png">
+			<source src="/video/DyingLight.mp4" type="video/mp4">
+			<source src="/video/DyingLight.ogg" type="video/ogg">
+			지원하지 않는 브라우저입니다.
+		</video>
 	</div>
-	
-	
-	
+
+
+
 	<footer id="footer">
 		<jsp:include page="../include/footer.jsp" />
 	</footer>

@@ -32,14 +32,16 @@
 		<jsp:include page="../include/mainnav.jsp" />
 	</header>
 
-	<h3>새 글쓰기</h3>
+	<h3>
+		<label>새 글쓰기</label>
+	</h3>
 
 	<form id="writeForm" action="/postWrite" method="post"
 		enctype="multipart/form-data">
-		<input type="hidden" name="name" value="${param.name }" >
+		<input type="hidden" name="name" value="${param.name }">
 		<div id="write-form" class="bbs-table">
-			<div>
-				<p style="display: inline-block;">제목</p>
+			<div style="display:inline-block;">
+				<label style="display: inline-block;">제목</label>
 				<p style="display: inline-block;">
 					<input type="text" id="post_title" name="post_title"
 						style="width: 300px; height: 30px;" />
@@ -60,6 +62,32 @@
 					<option value="${game.game_abb}">${game.game_name}</option>
 				</c:forEach>
 			</select>
+			<div class="form-group"
+				style="height: 20px; text-align: left;">
+				<label class="control-label col-sm-2">Tagging</label>
+				<div class="col-sm-10">
+					<div class="row">
+						<div class="col-sm-2">
+							<input type="text" id="tag-name" class="form-control"
+								style="width: 150px; height: 30px;" />
+						</div>
+						<div class="col-sm-2" style="width: 150px; height: 30px;">
+							<select id="tag-color" class="form-control" style="height: 30px;">
+								<option value="default">회색</option>
+								<option value="danger">빨강</option>
+								<option value="primary">파랑</option>
+								<option value="success">초록</option>
+								<option value="warning">노랑</option>
+							</select>
+						</div>
+						<div class="col-sm-1">
+							<button class="btn btn-default" type="button" onclick="addTag()"
+								style="height: 30px;">추가</button>
+						</div>
+						<div id="tags" class="col-sm-7"></div>
+					</div>
+				</div>
+			</div>
 			<div>
 				<textarea id="post_content" name="post_content" class="form-control"
 					rows="10"></textarea>
@@ -128,7 +156,38 @@
 				}
 			});
 		}
-
+		var idx = 0;
+		function addTag(){
+			var name = $("#tag-name").val();
+			var color = $("#tag-color").val();
+			var $tag = $("<span onclick='deletetag(tag"+this+");' name='tag"+idx+"'></span>");
+			var div = $("<div id='tag"+idx+"></div>");
+			/* $tag.text(name);
+			$tag.addClass("label");
+			$tag.addClass("label-"+color);
+			$tag.addClass("btn");
+			console.log($tag);
+			
+	
+			div.append($tag);
+			div.html($("#tags").html()+"&nbsp;");
+			
+			div.append(
+	"<input type='hidden' name='tags["+idx+"].name' value='"+name+"'/>");
+			div.append(
+	"<input type='hidden' name='tags["+idx+"].color' value='"+color+"'/>");
+			 */
+			$("#tags").append(div);
+			idx++;
+			$("#tag-name").val('');
+			
+		}
+		
+		function deletetag(tagnum){
+			var element = $("span[name="+tagnum+"]");
+			// var element = document.getElementByName(tagnum);
+			   element.remove();
+		}
 	</script>
 
 </body>
