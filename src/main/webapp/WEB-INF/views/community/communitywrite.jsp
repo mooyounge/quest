@@ -162,25 +162,23 @@
 			var color = $("#tag-color").val();
 			var $tag = $("<span onclick='deletetag(tag"+this+");' name='tag"+idx+"'></span>");
 			var div = $("<div id='tag"+idx+"></div>");
-			/* $tag.text(name);
+			$tag.text(name);
 			$tag.addClass("label");
 			$tag.addClass("label-"+color);
 			$tag.addClass("btn");
 			console.log($tag);
 			
-	
-			div.append($tag);
-			div.html($("#tags").html()+"&nbsp;");
 			
-			div.append(
+			$("#tags").append($tag);
+			$("#tags").html($("#tags").html()+"&nbsp;");
+			
+			$("#tags").append(
 	"<input type='hidden' name='tags["+idx+"].name' value='"+name+"'/>");
-			div.append(
+			$("#tags").append(
 	"<input type='hidden' name='tags["+idx+"].color' value='"+color+"'/>");
-			 */
-			$("#tags").append(div);
 			idx++;
 			$("#tag-name").val('');
-			
+			div.append("#tags");
 		}
 		
 		function deletetag(tagnum){
