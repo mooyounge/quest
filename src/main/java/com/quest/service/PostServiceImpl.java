@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 import com.quest.dao.BoardDao;
 import com.quest.dao.GameDao;
 import com.quest.dao.PostDao;
+import com.quest.dao.TagDao;
 import com.quest.util.Paging;
 import com.quest.vo.Game;
 import com.quest.vo.Post;
 import com.quest.vo.Post_like;
+import com.quest.vo.Tag;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -27,6 +29,9 @@ public class PostServiceImpl implements PostService {
 	@Autowired
 	private GameDao gameDao;
 	
+	@Autowired
+	private TagDao tagDao;
+	
 	@Override
 	public void insert(Post post,String name) {
 		int board_id = 1;
@@ -34,6 +39,13 @@ public class PostServiceImpl implements PostService {
 			board_id = boardDao.getBoardInfoId(post.getGame_abb());
 		}else {
 			board_id = boardDao.getBoardFreeId(post.getGame_abb());
+		}
+		
+		if(post.getTags()!=null) {
+			for(Tag tag : post.getTags()) {
+				tag.setPost_id(post.getPost_id());
+				tagDao.add(tag);
+			}
 		}
 		
 		post.setBoard_id(board_id);

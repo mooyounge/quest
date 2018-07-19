@@ -22,6 +22,7 @@ import com.quest.service.BoardService;
 import com.quest.service.CommentService;
 import com.quest.service.GameService;
 import com.quest.service.PostService;
+import com.quest.service.TagService;
 import com.quest.service.UserService;
 import com.quest.util.Paging;
 import com.quest.vo.Board;
@@ -34,7 +35,7 @@ import com.quest.vo.User;
 
 
 @Controller
-public class PageController {
+public class CommunityController {
 	
 	@Autowired
 	private PostService postService;
@@ -51,6 +52,9 @@ public class PageController {
 	@Autowired
 	private CommentService commentService;
 	
+	@Autowired
+	private TagService tagService;
+	
 	//메인
 	@GetMapping("/")
 	public String main() {
@@ -65,10 +69,11 @@ public class PageController {
 							@RequestParam(defaultValue="1") int page,
 							@RequestParam(defaultValue="all") String game_abb,
 							@RequestParam(defaultValue="all") String name,
-							@RequestParam(required=false) String genre
+							@RequestParam(required=false) String genre,
+							@RequestParam(required=false) String view_like
 							) {
 		
-		Map map = before(option, text, page, game_abb, name, genre);
+		Map map = before(option, text, page, game_abb, name, genre,view_like);
         
 		model.addAttribute("map",map);
 		
@@ -245,12 +250,13 @@ public class PageController {
 						@RequestParam(defaultValue="1") int page,
 						@RequestParam(defaultValue="all") String game_abb,
 						@RequestParam(defaultValue="all") String name,
-						@RequestParam(required=false) String genre) {
+						@RequestParam(required=false) String genre,
+						@RequestParam(required=false) String view_like) {
 		Post post = postService.getPost(id);
 		model.addAttribute("post",post);
 		
 		//사전작업
-		Map map = before(option, text, page, game_abb, name, genre);
+		Map map = before(option, text, page, game_abb, name, genre,view_like);
 		model.addAttribute("map",map);
 		
 		return "community/communityView";
@@ -344,7 +350,7 @@ public class PageController {
 	return searchMap;
 	}
 	
-	public Map<String,Object> before(String option,String text,int page,String game_abb,String name,String genre){
+	public Map<String,Object> before(String option,String text,int page,String game_abb,String name,String genre, String view_like){
 		Game game = gameService.getOne(game_abb);
 		
 		//페이징 한세트
@@ -357,6 +363,7 @@ public class PageController {
 		map.put("game_abb", game_abb);
 		map.put("name",name);
 		map.put("genre",genre);
+		map.put("view_like",view_like);
 		
         List<Post> postList = null;
 		postList = postService.getList(map);

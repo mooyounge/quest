@@ -4,8 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="post">
 	<select id="getList" resultType="post" parameterType="map">
-		select * from 
-		(select rownum as rnum, a.* 
+		select * from(select rownum as rnum,b.*
+		from 
+			(select (select count(*) from quest_post_like where a.post_id = post_id and post_like='like') as post_like,
+					(select count(*) from quest_post_like where a.post_id = post_id and post_like='dislike') as post_dislike,
+				 a.* 
 		from (select * from quest_post
 						where
 		        			<choose>
@@ -49,7 +52,7 @@
 			        			post_content like '%'||#{text}||'%')
 			        		</when>
 			        	</choose>
-			        </if> order by post_regdate desc )  a) where rnum between #{start} and #{end}
+			        </if> order by post_regdate desc )  a) b<if test="view_like!=null">where post_like >= 2</if>) where rnum between #{start} and #{end} 
 	</select>
 	
 	<select id="getList2" resultType="post" parameterType="map">
@@ -126,7 +129,7 @@
 	
 	<select id="getPost" parameterType="int" resultMap="postMap" >
 		select a.*, (select count(*) from quest_post_like where a.post_id = post_id and post_like='like') as post_like,
-				(select count(*) from quest_post_like where a.post_id = post_id and post_like='dislike') as post_like
+				(select count(*) from quest_post_like where a.post_id = post_id and post_like='dislike') as post_dislike
 				  from quest_post a where post_id = #{value}
 	</select>
 	
