@@ -31,11 +31,11 @@
 <table class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th style="width:100px;">번호</th>
+			<th style="width: 100px;">번호</th>
 			<th>제목</th>
-			<th style="width:160px;">글쓴이</th>
-			<th style="width:200px;">날짜</th>
-			<th style="width:80px;">조회수</th>
+			<th style="width: 160px;">글쓴이</th>
+			<th style="width: 200px;">날짜</th>
+			<th style="width: 80px;">조회수</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -57,6 +57,8 @@
 
 
 <div class="text-center">
+	<button class="btn btn-success col-sm-1" onclick="location.href='/community?view_like=9999'"
+		style="height: 30px;">베스트</button>
 	<div id="downnav" class="search actions" style="display: inline-block;">
 		<a class="btn btn-danger"
 			href="/community?name=info<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">정보</a>

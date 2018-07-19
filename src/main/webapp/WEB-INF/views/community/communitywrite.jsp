@@ -40,7 +40,7 @@
 		enctype="multipart/form-data">
 		<input type="hidden" name="name" value="${param.name }">
 		<div id="write-form" class="bbs-table">
-			<div style="display:inline-block;">
+			<div style="display: inline-block;">
 				<label style="display: inline-block;">제목</label>
 				<p style="display: inline-block;">
 					<input type="text" id="post_title" name="post_title"
@@ -62,8 +62,7 @@
 					<option value="${game.game_abb}">${game.game_name}</option>
 				</c:forEach>
 			</select>
-			<div class="form-group"
-				style="height: 20px; text-align: left;">
+			<div class="form-group" style="height: 20px; text-align: left;">
 				<label class="control-label col-sm-2">Tagging</label>
 				<div class="col-sm-10">
 					<div class="row">
@@ -163,9 +162,7 @@
 			var name = tag.val();
 			var color = $("#tag-color").val();
 			var labelcolor = "label-"+color;
-			
-			var $div = $("<div id=tags"+idx+"></div>");
-			
+			var $div = $("<div id=tags"+idx+" style='display: inline-block;'></div>");
 			$span.addClass("label");
 			$span.addClass(labelcolor);
 			$span.addClass("btn");
@@ -180,7 +177,6 @@
 			$("#tags").append($div);
 			
 			idx++;
-			
 			tag.val("");
 			tag.focus();
 			

@@ -51,6 +51,8 @@
 	</tbody>
 </table>
 <div class="text-center">
+	<button class="btn btn-success col-sm-1"
+		onclick="location.href='/community?view_like=9999'" style="height: 30px;">베스트</button>
 	<div id="downnav" class="search actions" style="display: inline-block;">
 		<a class="btn btn-danger"
 			href="/community?name=info<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">정보</a>
@@ -70,7 +72,8 @@
 			href="/community?name=all<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">전체목록</a>
 	</div>
 	<button class="btn btn-success writebtn"
-		onclick="location.href='/postWrite?<c:if test="${param.game_abb!=null}">game_abb=${param.game_abb}</c:if><c:if test="${param.name!=null}">&name=${param.name}</c:if>'" style="height: 30px;">글쓰기</button>
+		onclick="location.href='/postWrite?<c:if test="${param.game_abb!=null}">game_abb=${param.game_abb}</c:if><c:if test="${param.name!=null}">&name=${param.name}</c:if>'"
+		style="height: 30px;">글쓰기</button>
 
 	<jsp:include page="pagingwithajax.jsp" flush="flase">
 		<jsp:param name="firstPageNo" value="${map.paging.firstPageNo}" />
