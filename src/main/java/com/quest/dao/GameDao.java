@@ -18,6 +18,10 @@ public class GameDao {
 	public List<Game> getList() {
 		return session.selectList("game.getList");
 	}
+	
+	public List<Game> getListexceptAll() {
+		return session.selectList("game.getListexceptAll");
+	}
 
 	public void insert(Game game) {
 		session.insert("game.insert",game);
@@ -34,4 +38,5 @@ public class GameDao {
 	public Game getOne2(Map<String, Object> map) {
 		return session.selectOne("game.getOne2",map);
 	}
+
 }

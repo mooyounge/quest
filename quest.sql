@@ -18,10 +18,16 @@ create table quest_game(
     game_name varchar2(30) primary key,
     game_abb varchar2(10) not null
 );
-ALTER TABLE quest_game modify(game_abb varchar2(10) unique);
-select * from quest_game;
-update quest_game set GAME_ABB = 'all' where genre = 'ALL';
-update quest_game set game_name = '전체 게시글' where game_abb = 'all';
+ALTER TABLE quest_game ADD(game_id number UNIQUE);
+create sequence quest_game_id;
+
+ALTER TABLE quest_game RENAME COLUMN game_id TO game_line;
+
+ALTER TABLE quest_game modify(game_id number);
+select * from quest_game order by game_line;
+select * from quest_game where game_line > 1;
+update quest_game set game_line = 1 where game_abb='aosall';
+ALTER TABLE quest_game DROP CONSTRAINT SYS_C004158;
 
 commit;
 
@@ -30,6 +36,7 @@ insert into quest_game values('FPS','서든어택','sudden');
 insert into quest_game values('FPS','배틀 그라운드','bground');
 insert into quest_game values('FPS','더 디비전','thediv');
 insert into quest_game values('FPS','레인보우식스 시즈','rb6s');
+
 
 insert into quest_game values('AOS','리그오브 레전드','lol');
 insert into quest_game values('AOS','DOTA2','dota2');
@@ -45,8 +52,13 @@ insert into quest_game values('RPG','리니지','lineage');
 
 insert into quest_game values('ALL','ALL');
 
+insert into quest_game values('FPS','FPS 전체 게시글','fpsall');
+insert into quest_game values('RPG','RPG 전체 게시글','rpgall');
+insert into quest_game values('AOS','AOS 전체 게시글','aosall');
+insert into quest_game values('rhythm','리듬게임 전체 게시글','rhythmall');
+insert into quest_game values('indie','인디게임 전체 게시글','indieall');
+
 select * from quest_game;
-update quest_game set game_name = '전체게시판' where genre = 'ALL';
 commit;
 
 
@@ -57,13 +69,22 @@ create table quest_board(
     board_id number primary key,
     board_name varchar2(20) not null
 );
-insert into quest_board values('all',quest_board_id.nextval,'정보');
-delete from quest_board where board_id > 5;
+insert into quest_board values('fpsall',quest_board_id.nextval,'info');
+insert into quest_board values('fpsall',quest_board_id.nextval,'free');
+insert into quest_board values('rpgall',quest_board_id.nextval,'info');
+insert into quest_board values('rpgall',quest_board_id.nextval,'free');
+insert into quest_board values('aosall',quest_board_id.nextval,'info');
+insert into quest_board values('aosall',quest_board_id.nextval,'free');
+insert into quest_board values('rhythmall',quest_board_id.nextval,'info');
+insert into quest_board values('rhythmall',quest_board_id.nextval,'free');
+insert into quest_board values('indieall',quest_board_id.nextval,'info');
+insert into quest_board values('indieall',quest_board_id.nextval,'free');
+
 select * from quest_board;
 delete from quest_board where board_id = 99;
 create sequence quest_board_id;
 drop table quest_board;
-update quest_board set board_name = 'info' where board_name = '정보';
+
 commit;
 -- 글 
 create table quest_post(

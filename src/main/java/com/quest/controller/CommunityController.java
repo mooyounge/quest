@@ -82,11 +82,17 @@ public class CommunityController {
 	
 	//글쓰기 view로 보냄
 	@GetMapping("/postWrite")
-	public String postWrite(Model model,@RequestParam(defaultValue="all") String game_abb) {
-		Game game = gameService.getOne(game_abb);
-       
-		//게임 이름 불러오기 comnav
-		List<Game> gameList = gameService.getList(game.getGenre());
+	public String postWrite(Model model,@RequestParam(defaultValue="all") String game_abb,@RequestParam(required=false) String genre) {
+		
+		List<Game> gameList = null; 
+		//장르가 널이아니면 장르로 가져가기
+		if(genre!=null) {
+			 gameList = gameService.getList(genre);
+		}else {
+			Game game = gameService.getOne(game_abb);
+			gameList = gameService.getList(game.getGenre());
+		}
+		
 		model.addAttribute("gameList",gameList);
 		
 		return "community/communitywrite";
@@ -371,7 +377,7 @@ public class CommunityController {
         //요기까지
         
         //게임 이름 불러오기 comnav
-        List<Game> gameList = gameService.getList();
+        List<Game> gameList = gameService.getListexceptAll();
         
         Map<String,Object> returnmap = new HashMap<String, Object>();
         

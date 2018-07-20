@@ -3,12 +3,22 @@ package com.quest.vo;
 import java.util.List;
 
 public class Game {
+	private String game_line;
+	
 	private String genre;
 	private String game_name;
 	private String game_abb;
 	
 	public List<Board> boardList;
 	
+
+	
+	public String getGame_line() {
+		return game_line;
+	}
+	public void setGame_line(String game_line) {
+		this.game_line = game_line;
+	}
 	public String getGame_abb() {
 		return game_abb;
 	}
