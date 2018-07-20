@@ -83,7 +83,7 @@
 							<button class="btn btn-default" type="button" onclick="addTag()"
 								style="height: 30px;">추가</button>
 						</div>
-						<div id="tags" class="col-sm-7"></div>
+						<div id="tagList" class="col-sm-7"></div>
 					</div>
 				</div>
 			</div>
@@ -163,7 +163,7 @@
 			var name = tag.val();
 			var color = $("#tag-color").val();
 			var labelcolor = "label-"+color;
-			var $div = $("<div id=tags"+idx+" style='display: inline-block;'></div>");
+			var $div = $("<div id=tagList"+idx+" style='display: inline-block;'></div>");
 			$span.addClass("label");
 			$span.addClass(labelcolor);
 			$span.addClass("btn");
@@ -172,10 +172,10 @@
 			
 			$div.append($span);
 			$div.html($div.html()+"&nbsp;");
-			$div.append("<input type='hidden' name='tags["+idx+"].name' value='"+name+"' />");
-			$div.append("<input type='hidden' name='tags["+idx+"].color' value='"+color+"' />");
+			$div.append("<input type='hidden' name='tagList["+idx+"].name' value='"+name+"' />");
+			$div.append("<input type='hidden' name='tagList["+idx+"].color' value='"+color+"' />");
 			
-			$("#tags").append($div);
+			$("#tagList").append($div);
 			
 			idx++;
 			tag.val("");
@@ -184,7 +184,7 @@
 		}
 		
 		function deletetag(idid){
-			var $deldiv = $("#tags"+idid);
+			var $deldiv = $("#tagList"+idid);
 			$deldiv.remove();
 		}
 	</script>

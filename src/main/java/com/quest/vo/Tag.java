@@ -3,7 +3,8 @@ package com.quest.vo;
 public class Tag {
 	private int tag_id;
 	private int post_id;
-	private String name, color;
+	private String name;
+	private String color;
 	
 
 	public int getTag_id() {
