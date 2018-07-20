@@ -4,16 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="game">
 	<select id="getList" resultType="game">
-		select * from quest_game
+		select * from quest_game order by game_line
+	</select>
+	
+	<select id="getListexceptAll" resultType="game">
+		select * from quest_game where game_line > 1
 	</select>
 	<select id="getListbyGenre" parameterType="String" resultType="game">
-		select * from quest_game where genre=#{value}
+		select * from quest_game where genre=#{value} order by game_line
 	</select>
 		<select id="getOne" parameterType="String" resultType="game">
 		select * from quest_game where game_abb=#{value}
 	</select>
 	<insert id="insert" parameterType="game">
-		insert into quest_game values(#{genre},#{game_name},#{game_abb})
+		insert into quest_game values(#{genre},#{game_name},#{game_abb},null)
 	</insert>
 	
 	<!-- 연습코드 -->
@@ -27,7 +31,6 @@
 		            ofType="board"
 		            property="boardList"/>
 	</resultMap>
-	
 	
 </mapper>
 

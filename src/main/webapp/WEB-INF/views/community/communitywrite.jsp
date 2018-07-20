@@ -118,6 +118,7 @@
 	<script>
 	
 		$(document).ready(function(){
+			// 전체게시글을 0번지로 올리면됨
 			$("#genre").val("${gameList[0].genre}").prop("selected",true);
 			if(${param.game_abb!=null}){
 				$("#game_abb").val("${param.game_abb}").prop("selected",true);

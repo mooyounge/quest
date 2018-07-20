@@ -17,6 +17,9 @@ public class GameService {
 	public List<Game> getList() {
 		return gameDao.getList();
 	}
+	public List<Game> getListexceptAll() {
+		return gameDao.getListexceptAll();
+	}
 
 	public void insert(Game game) {
 		gameDao.insert(game);
@@ -30,5 +33,6 @@ public class GameService {
 	public List<Game> getList(String genre) {
 		return gameDao.getList(genre);
 	}
+
 
 }
