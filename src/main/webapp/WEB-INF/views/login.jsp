@@ -34,7 +34,7 @@
             <legend>로그인</legend>
             <div class="form-group">
                 <label for="username-email">아이디</label>
-                <form:input name="id" path="id" value='' id="id" placeholder="User Id" type="text" class="form-control" />
+                <form:input name="id" path="id" value='${user.id}' id="id" placeholder="User Id" type="text" class="form-control" />
             </div>
             <div class="form-group">
                 <label for="password">비밀번호</label>
