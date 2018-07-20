@@ -23,9 +23,15 @@
 	<%-- <jsp:include page="include/commenu.jsp" /> --%>
 
 	<div class="container" style="margin-top: 50px;">
+		<c:if test="${param.genre!=null}">
+			<jsp:include page="include/comnav2.jsp"></jsp:include>
+		</c:if>
+		
 		<span>
 			<h2>${map.game.game_name}</h2>
 		</span>
+		
+		
 		<jsp:include page="include/bodyview.jsp"></jsp:include>
 
 	</div>
