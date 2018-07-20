@@ -97,7 +97,13 @@
 					</table>
 				</div>
 			</div>
-			<!-- 댓글창 -->
+			<!-- 태그창 -->
+			<div id="tags" class="col-sm-12" style="margin-bottom: 10px;">
+				<c:forEach var="tag" items="${post.tagList}">
+					<span class="label label-${tag.color}">${tag.name}</span>
+				</c:forEach>
+			</div>
+			<!-- 추천창 -->
 			<hr />
 			<div style="display: inline-block; text-align: center;">
 				<a href="javascript:like('like');" id="post_like"
