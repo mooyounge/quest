@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 .menubar li {
+	
 	display: inline-block;
 	width: 16%;
 	background: #606060;
