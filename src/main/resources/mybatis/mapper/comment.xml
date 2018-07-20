@@ -7,7 +7,7 @@
 		select * from quest_comment where post_id = #{value}
 	</select>
 	<insert id="insert" parameterType="comment">
-		insert into quest_comment values(quest_comment_id.nextval,#{post_id},null,#{user_name},#{password},#{comment_content},sysdate,0,0)
+		insert into quest_comment values(quest_comment_id.nextval,#{post_id},null,#{user_name},#{password},#{comment_content},sysdate)
 	</insert>
 	
 	<update id="plusLike" parameterType="comment_like">

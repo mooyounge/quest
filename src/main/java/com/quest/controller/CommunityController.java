@@ -274,6 +274,7 @@ public class CommunityController {
 		
 		String url = request.getHeader("referer");
 		
+		
 		if(result.hasErrors()) {
 			return "redirect:"+url;
 		}
