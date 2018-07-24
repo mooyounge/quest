@@ -1,9 +1,17 @@
 package com.quest.vo;
 
+import javax.validation.constraints.Pattern;
+
 public class User {
+	@Pattern(regexp="[A-Za-z0-9]{4,15}", 
+			 message="아이디는 영대소문자 및 숫자만 가능, 길이:4~15글자")
 	private String id;
+	@Pattern(regexp="[A-Za-z0-9]{4,15}", 
+			 message="아이디는 영대소문자 및 숫자만 가능, 길이:4~15글자")
 	private String password;
 	private String number;
+	@Pattern(regexp="[A-Za-z0-9가-힣]{2,30}", 
+			 message="닉네임은 한글, 영대소문자 및 숫자만 가능, 길이:2~30글자")
 	private String nicname;
 	private String email;
 	private int phoneNumber;

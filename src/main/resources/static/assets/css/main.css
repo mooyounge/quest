@@ -2416,7 +2416,7 @@
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			background-color: #f78a76;
+			background-color: #c6c6c6;
 		}
 
 		input[type="submit"]:active,
@@ -2629,7 +2629,7 @@
 		}
 
 		.wrapper.style1 {
-			background: #f6755e;
+			background: #606060;
 			color: #fcdcd6;
 		}
 
@@ -3144,9 +3144,6 @@
 			color: #fff;
 		}
 
-		#footer .icon {
-			color: #f6755e;
-		}
 
 		#footer a {
 			color: #c8e7f0;

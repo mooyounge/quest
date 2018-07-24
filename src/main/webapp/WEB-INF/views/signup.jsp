@@ -13,7 +13,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-	<header id="header" style="height:84px;">
+	<header id="header" style="height: 84px;">
 		<jsp:include page="include/mainnav.jsp" />
 	</header>
 	<article class="container">
@@ -23,8 +23,15 @@
 		<div class="col-md-6 col-md-offset-3">
 			<form role="form">
 				<div class="form-group">
-					<label for="username">아이디</label> <input type="text"
-						class="form-control" id="username" placeholder="아이디">
+					<label for="username">아이디</label>
+					<div class="input-group">
+						<input type="text" class="form-control" id="username"
+							placeholder="아이디"><span class="input-group-btn">
+							<button class="btn btn-success">
+								중복 체크<i class="fa fa-edit spaceLeft"></i>
+							</button>
+						</span>
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="InputPassword1">비밀번호</label> <input type="password"
@@ -71,10 +78,10 @@
 					</div>
 				</div>
 				<div class="form-group text-center">
-					<button type="submit" class="btn btn-info">
+					<button type="button" class="btn btn-info" onclick="allCheck()">
 						회원가입<i class="fa fa-check spaceLeft"></i>
 					</button>
-					<button type="submit" class="btn btn-warning">
+					<button type="button" class="btn btn-warning" onclick="location.href='/'">
 						가입취소<i class="fa fa-times spaceLeft"></i>
 					</button>
 				</div>
@@ -88,5 +95,37 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script>
+		function allCheck() {
+			var ipReg = /^[A-Za-z0-9]{4,15}$/;
+			var ipReg2 = /^[A-Za-z0-9가-힣]{2,30}$/;
+			var nicN = $("#nicName").val();
+			var id = $("#username").val();
+			var pwd1 = $("#InputPassword1").val();
+			var pwd2 = $("#InputPassword2").val();
+			if (id == "") {
+				alert("아이디를 입력해 주세요");
+				$("#username").focus();
+			} else if (!ipReg.test(id)) {
+				alert("아이디는 영문 대소문자와 숫자만 사용 가능하며 4~15글자여야 합니다");
+				$("#username").focus();
+			} else if (pwd1 != pwd2) {
+				alert("비밀번호와 비밀번호 확인이 다릅니다.");
+				$("#InputPassword1").focus();
+			} else if (!ipReg.test(pwd1)) {
+				alert("비밀번호는 영문 대소문자와 숫자만 사용 가능하며 4~15글자여야 합니다");
+				console.log(pwd1)
+				$("#InputPassword1").focus();
+			} else if (nicN == "") {
+				alert("닉네임을 입력해 주세요");
+				$("#nicName").focus();
+			} else if (!ipReg2.test(nicN)) {
+				alert("닉네임은 한글,영대소문자 ,숫자만 가능하며 2~30글자여야 합니다.");
+				$("#nicName").focus();
+			} else {
+				//회원가입 성공
+			}
+		};
+	</script>
 </body>
 </html>
