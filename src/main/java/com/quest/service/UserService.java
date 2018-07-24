@@ -1,5 +1,7 @@
 package com.quest.service;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class UserService {
 	public User getOne(String id) {
 		
 		return userDao.getOne(id);
+	}
+
+	public void insert(User user) {
+		userDao.insert(user);
 	}
 	
 	
