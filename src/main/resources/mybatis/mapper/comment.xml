@@ -6,6 +6,9 @@
 	<select id="selectList" parameterType="int" resultType="comment">
 		select * from quest_comment where post_id = #{value}
 	</select>
+	<select id="getPassword" parameterType="int" resultType="String">
+		select password from quest_comment where comment_id = #{value}
+	</select>
 	<insert id="insert" parameterType="comment">
 		insert into quest_comment values(quest_comment_id.nextval,#{post_id},null,#{user_name},#{password},#{comment_content},sysdate)
 	</insert>
@@ -16,6 +19,10 @@
 	<update id="plusdisLike" parameterType="comment_like">
 		update quest_comment set comment_dislike = commentt_dislike+1 where comment_id = #{comment_id} 
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from quest_comment where comment_id = #{value}
+	</delete>
 	
 </mapper>
 

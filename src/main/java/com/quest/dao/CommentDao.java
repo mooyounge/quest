@@ -40,6 +40,14 @@ public class CommentDao {
 		session.insert("comment.plusdisLike",comment_like);
 	}
 
+	public String getPassword(int comment_id) {
+		return session.selectOne("comment.getPassword",comment_id);
+	}
+
+	public void delete(int comment_id) {
+		session.delete("comment.delete",comment_id);
+	}
+
 	
 	
 }

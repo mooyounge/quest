@@ -11,6 +11,9 @@
 <title>Quest</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
 <style>
 .menuleft li {
 	display: inline-block;
@@ -42,6 +45,8 @@
 	float: left;
 	background: #c7c7c7;
 }
+
+
 </style>
 </head>
 <body>
@@ -168,7 +173,7 @@
 									alt="" style="width: 30px; heigth: 30px;" />
 							</a></th>
 							<!-- c:if문으로 자신이 쓴 것에만 보이기, 유저가 아닐 경우 비밀번호와 일치 -->
-							<th><a href="">삭제</a></th>
+							<th><a href="javascript:comment_del(${comment.comment_id});">삭제</a></th>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -176,8 +181,19 @@
 		</div>
 		<hr />
 
+		<div id="ppModal" class="box_pp modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<p class="pp_title">비밀번호를 입력해주세요.</p>
+			<div class="content">
+				<input id="commentid_hidden" type="hidden"/>
+				<input type="password" id="pp_password" name="pp_password" placeholder="비밀번호 입력" />
+				<button class="btn btn-small btn-default" onclick="checkpassword()">삭제</button>
+			</div>
+		</div>
+		
 		<jsp:include page="include/bodyviewajax.jsp"></jsp:include>
+		
 	</div>
+	
 	<footer id="footer">
 		<jsp:include page="../include/footer.jsp" />
 	</footer>
@@ -186,7 +202,12 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<!-- modal -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+	
 	<script>
+	
 	$(function(){
 		if(${param.option != null}){
 			$("#search_option").val("${param.option}").prop("selected",true);
@@ -242,6 +263,35 @@
 					}
 			}
 		});
+	}
+	function checkpassword(){
+		var comment_id = $("#commentid_hidden").val();
+		console.log("com:"+comment_id);
+		var password = $("#pp_password").val();
+		
+		$.ajax({
+			url:"/community/comment/del",
+			type:"post",
+			data:{"comment_id":comment_id,"password":password},
+			success:function(data){
+					if(data=="success"){
+						alert("삭제되었습니다!");
+						location.reload();
+					}else if(data=="fail"){
+						alert("비밀번호가 틀렸습니다.");
+						location.reload();
+					}else{
+						alert("서버오류입니다.");
+						location.reload();
+					}
+			}
+		});
+	}
+	
+	function comment_del(comment_id){
+		$("#ppModal").modal();
+		$("#commentid_hidden").val(comment_id);
+		console.log(comment_id);
 	}
 	</script>
 </body>

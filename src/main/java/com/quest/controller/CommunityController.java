@@ -166,6 +166,26 @@ public class CommunityController {
         
 	}
 	
+	//comment삭제
+		@PostMapping("/community/comment/del")
+		@ResponseBody
+		public String commentdel(@RequestParam int comment_id,
+								@RequestParam String password) {
+			
+			String realpwd = commentService.getPassword(comment_id);
+			//비밀번호가  일치하는지 확인하는 작업
+	        
+			if(password != null) {
+				if(password.equals(realpwd)) {
+					commentService.delete(comment_id);
+					return "success";
+				}
+				return "fail";
+			}
+			return "fail";
+		}
+	
+	
 	//댓글 좋아요 ajaxPost
 	@PostMapping("/community/comment/like")
 	@ResponseBody

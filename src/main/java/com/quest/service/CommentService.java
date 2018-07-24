@@ -33,4 +33,12 @@ public class CommentService {
 		commentDao.insertcomment_dislike(comment_like);
 		commentDao.plusdisLike(comment_like);
 	}
+
+	public String getPassword(int comment_id) {
+		return commentDao.getPassword(comment_id);
+	}
+
+	public void delete(int comment_id) {
+		commentDao.delete(comment_id);
+	}
 }
