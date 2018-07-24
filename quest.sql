@@ -3,14 +3,11 @@ create table quest_user(
     id varchar2(15) primary key,
     password varchar2(15) not null,
     nicname varchar2(30) not null,
-    email varchar2(30) not null unique,
-    phoneNumber number not null,
-    name varchar2(10) not null,
-    birth varchar2(15) not null,
     ban_confirm number(1),
     ban_time date
 );
-
+select * from quest_user;
+alter table quest_user drop column email;
 
 -- 게임 이름
 create table quest_game(

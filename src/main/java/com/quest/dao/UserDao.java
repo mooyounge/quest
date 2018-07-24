@@ -14,6 +14,10 @@ public class UserDao {
 	public User getOne(String id) {
 		return session.selectOne("user.getOne",id);
 	}
+
+	public void insert(User user) {
+		session.insert("user.signup",user);
+	}
 	
 	
 	

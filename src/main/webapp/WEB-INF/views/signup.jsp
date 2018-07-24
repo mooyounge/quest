@@ -21,20 +21,20 @@
 			<h1>회원가입</h1>
 		</div>
 		<div class="col-md-6 col-md-offset-3">
-			<form role="form">
+			<form method="post" action="/signup" id="signupForm">
 				<div class="form-group">
 					<label for="username">아이디</label>
 					<div class="input-group">
-						<input type="text" class="form-control" id="username"
+						<input type="text" class="form-control" id="id" name="id" onkeypress="dctrue=false"
 							placeholder="아이디"><span class="input-group-btn">
-							<button class="btn btn-success">
+							<button class="btn btn-success" type="button" onclick="dualcheck();">
 								중복 체크<i class="fa fa-edit spaceLeft"></i>
 							</button>
 						</span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="InputPassword1">비밀번호</label> <input type="password"
+					<label for="InputPassword1">비밀번호</label> <input type="password" name="password"
 						class="form-control" id="InputPassword1" placeholder="비밀번호">
 				</div>
 				<div class="form-group">
@@ -43,10 +43,11 @@
 					<p class="help-block">비밀번호 확인을 위해 다시한번 입력 해 주세요</p>
 				</div>
 				<div class="form-group">
-					<label for="nicName">닉네임</label> <input type="text"
-						class="form-control" id="nicName" placeholder="닉네임을 입력해 주세요">
+					<label for="nicName">닉네임</label> <input type="text" name="nicname"
+						class="form-control" id="nicname" placeholder="닉네임을 입력해 주세요">
 				</div>
-				<div class="form-group">
+				
+				<!-- <div class="form-group">
 					<label for="email">이메일 인증</label>
 					<div class="input-group">
 						<input type="email" class="form-control" id="email"
@@ -57,6 +58,7 @@
 						</span>
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<label for="sendnumber">인증번호 입력</label>
 					<div class="input-group">
@@ -67,8 +69,9 @@
 							</button>
 						</span>
 					</div>
-				</div>
-				<div class="form-group">
+				</div> -->
+				
+				<!-- <div class="form-group">
 					<label>약관 동의</label>
 					<div data-toggle="buttons">
 						<label class="btn btn-primary active"> <span
@@ -76,7 +79,8 @@
 							autocomplete="off" checked>
 						</label> <a href="#">이용약관</a>에 동의합니다.
 					</div>
-				</div>
+				</div> -->
+				
 				<div class="form-group text-center">
 					<button type="button" class="btn btn-info" onclick="allCheck()">
 						회원가입<i class="fa fa-check spaceLeft"></i>
@@ -96,11 +100,30 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script>
+		var dctrue = false;
+		function dualcheck(){
+			var id = $("#id").val();
+			$.ajax({
+				url:"/signup/dctrue",
+				type:"post",
+				data:{"id":id},
+				success:function(data){
+					if(data == "true"){
+						alert("중복되지 않은 이름입니다");
+						dctrue = true;
+					}
+					if(data == "false"){
+						alert("중복되는 이름입니다");
+					}
+				}
+			});
+		}
+	
 		function allCheck() {
 			var ipReg = /^[A-Za-z0-9]{4,15}$/;
 			var ipReg2 = /^[A-Za-z0-9가-힣]{2,30}$/;
-			var nicN = $("#nicName").val();
-			var id = $("#username").val();
+			var nicN = $("#nicname").val();
+			var id = $("#id").val();
 			var pwd1 = $("#InputPassword1").val();
 			var pwd2 = $("#InputPassword2").val();
 			if (id == "") {
@@ -122,8 +145,11 @@
 			} else if (!ipReg2.test(nicN)) {
 				alert("닉네임은 한글,영대소문자 ,숫자만 가능하며 2~30글자여야 합니다.");
 				$("#nicName").focus();
+			} else if(!dctrue){
+				alert("아이디 중복체크를 해주세요");
 			} else {
 				//회원가입 성공
+				$("#signupForm").submit();
 			}
 		};
 	</script>

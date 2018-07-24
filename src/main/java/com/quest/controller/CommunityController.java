@@ -184,6 +184,21 @@ public class CommunityController {
 			}
 			return "fail";
 		}
+		
+		//회원가입 듀얼체크
+		@PostMapping("/signup/dctrue")
+		@ResponseBody
+		public String dctrue(@RequestParam String id) {
+			
+			User user = null;
+			user = userService.getOne(id);
+			
+			if(user==null) {
+				return "true";
+			}else {
+				return "false";
+			}
+		}
 	
 	
 	//댓글 좋아요 ajaxPost
@@ -266,6 +281,17 @@ public class CommunityController {
 	@GetMapping("/signup")
 	public String signup() {
 		return "signup";
+	}
+	
+	@PostMapping("/signup")
+	public String signupPost(@ModelAttribute @Valid User user,BindingResult result) {
+		if(result.hasErrors()) {
+			return "redirect:/";
+		}
+		
+		userService.insert(user);
+		
+		return "redirect:/login";
 	}
 
 	@GetMapping("/community/view")
