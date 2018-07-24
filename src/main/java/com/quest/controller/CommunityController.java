@@ -116,7 +116,7 @@ public class CommunityController {
 								@RequestParam(defaultValue="free") String name
 								) {
 		if(result.hasErrors()) {
-			return "communitywrite";
+			return "community/communitywrite";
 		}
 		
 		postService.insert(post,name);
