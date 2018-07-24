@@ -98,7 +98,7 @@
 	<script>
 		function allCheck() {
 			var ipReg = /^[A-Za-z0-9]{4,15}$/;
-			var ipReg2 = /^[A-Za-z0-9가-힣]{2,30}$/;
+			var ipReg2 = /^[A-Za-z0-9ㄱ-힣]{2,30}$/;
 			var nicN = $("#nicName").val();
 			var id = $("#username").val();
 			var pwd1 = $("#InputPassword1").val();

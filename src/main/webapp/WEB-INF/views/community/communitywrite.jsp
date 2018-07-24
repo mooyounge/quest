@@ -94,8 +94,9 @@
 
 		</div>
 		<div style="text-align: center; padding-bottom: 15px;">
-			<input type="submit" value="전송" style="background-color: #9f9f9f;" />
-			<input type="button" onclick="location.href='/community'" value="취소"
+			<input type="button" value="전송" style="background-color: #9f9f9f;"
+				onclick="check()" /> <input type="button"
+				onclick="location.href='/community'" value="취소"
 				style="background-color: #9f9f9f;" />
 		</div>
 	</form>
@@ -116,6 +117,28 @@
 	<script
 		src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/lang/summernote-ko-KR.min.js"></script>
 	<script>
+	function check(f){
+		var ipReg = /^[A-Za-z0-9ㄱ-힣]{2,40}$/;
+		var ipReg2 = /^[A-Za-z0-9ㄱ-힣<>/]{9,500}$/;
+		var titleval = $("#post_title").val();
+		var content = $("#post_content").val();
+		if(titleval == ""){
+			alert("제목을 입력해 주세요");
+			$("#post_title").focus();	
+		}else if(!ipReg.test(titleval)){
+			alert("제목은 영어, 숫자로 2~40글자 한글로 1~20글자여야 합니다.");
+			$("#post_title").focus();
+		}else if(content == ""){
+			alert("내용을 입력해 주세요");
+			$("#post_content").focus();
+		}else if(!ipReg2.test(content)){
+			alert("내용은 영어, 숫자로 2~500글자 한글로 1~250글자여야 합니다.");
+			console.log(content);
+			$("#post_content").focus();
+		}else{
+			$("#writeForm").submit();
+		}
+	}
 	
 		$(document).ready(function(){
 			// 전체게시글을 0번지로 올리면됨
@@ -158,6 +181,16 @@
 		}
 		var idx = 0;
 		function addTag(){
+			var ipReg = /^[A-Za-z0-9가-힣]{1,10}$/;
+			var tagval = $("#tag-name").val();
+			if(tagval == ""){
+				alert("태그를 입력해 주세요");
+				$("#tag-name").focus();	
+			}else if(!ipReg.test(tagval)){
+				alert("태그는 영어, 숫자로 2~10글자 한글로 1~5글자여야 합니다.");
+				$("#tag-name").val("");
+				$("#tag-name").focus();
+			}else{
 			var $span = $("<span onclick='deletetag("+idx+");'></span>");
 			var tag = $("#tag-name");
 			var name = tag.val();
@@ -180,7 +213,7 @@
 			idx++;
 			tag.val("");
 			tag.focus();
-			
+			}
 		}
 		
 		function deletetag(idid){
