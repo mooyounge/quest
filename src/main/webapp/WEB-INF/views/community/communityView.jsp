@@ -71,7 +71,7 @@
 					<dd>${post.post_title }</dd>
 					<br />
 					<dt>글쓴이</dt>
-					<dd>${post.user_id }</dd>
+					<dd>${post.nicname }</dd>
 				</dl>
 			</div>
 			<div id="top3">

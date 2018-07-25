@@ -99,6 +99,13 @@ create sequence quest_post_id;
 drop table quest_post;
 ALTER TABLE quest_post DROP COLUMN post_dislike;
 
+SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME FROM
+         USER_CONSTRAINTS where table_name = 'QUEST_POST';
+alter table quest_post drop constraint SYS_C004131;
+SELECT * FROM ALL_CONSTRAINTS WHERE TABLE_NAME = 'QUEST_POST';
+SELECT * FROM ALL_CONSTRAINTS where CONSTRAINT_name = 'SYS_C003978';
+ALTER TABLE QUEST_POST add constraint fk_user_id foreign key(user_id) references quest_user(id);
+
 --´ñ±Û
 create table quest_comment(
     comment_id number primary key,

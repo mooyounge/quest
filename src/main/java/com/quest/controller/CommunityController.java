@@ -113,13 +113,20 @@ public class CommunityController {
 	@PostMapping("/postWrite")
 	public String postWritepost(@ModelAttribute @Valid Post post,BindingResult result,
 								@RequestParam(required=false) String game_abb,
-								@RequestParam(defaultValue="free") String name
+								@RequestParam(defaultValue="free") String name,
+								HttpServletRequest req
 								) {
 		if(result.hasErrors()) {
 			return "community/communitywrite";
 		}
+		User user = (User) req.getSession().getAttribute("user");
+		post.setUser_id(user.getId());
 		
-		postService.insert(post,name);
+		Map<String, Object> map = new HashMap<>();
+		map.put("post", post);
+		map.put("name", name);
+		
+		postService.insert(map);
 		
 		if(game_abb != null) {
 			return "redirect:/community?game_abb="+game_abb;
@@ -305,6 +312,7 @@ public class CommunityController {
 						@RequestParam(required=false) String genre,
 						@RequestParam(required=false) String view_like) {
 		Post post = postService.getPost(id);
+		
 		model.addAttribute("post",post);
 		
 		//사전작업

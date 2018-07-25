@@ -33,8 +33,12 @@ public class PostServiceImpl implements PostService {
 	private TagDao tagDao;
 	
 	@Override
-	public void insert(Post post,String name) {
+	public void insert(Map<String, Object> map) {
 		int board_id = 1;
+		
+		Post post = (Post) map.get("post");
+		String name = (String) map.get("name");
+		
 		if("info".equals(name)) {
 			board_id = boardDao.getBoardInfoId(post.getGame_abb());
 		}else {
