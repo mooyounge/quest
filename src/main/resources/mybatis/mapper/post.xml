@@ -149,7 +149,11 @@
 	
 	
 	<select id="getSize" resultType="int">
-		select count(post_id) from quest_post
+		select count(post_id) from 
+								(select 
+								(select count(*) from quest_post_like where a.post_id = post_id and post_like='like') as post_like,
+								a.*
+								from quest_post a)
 						where
 		        			<choose>
 		        			 	<when test="game_abb != 'all'">
@@ -159,6 +163,7 @@
 		        					game_abb like('%')
 		        				</otherwise>
 		        			</choose>
+		        			
 		        		<if test="board_idList != null">
 		        			and
 		        			<foreach collection="board_idList" item="board_idList" index="index" open="(" close=")" separator="or">
@@ -202,6 +207,9 @@
 			        		</when>
 			        	</choose>
 			        	</if>
+			        	
+			        	<if test="view_like!=null">and post_like >= 2</if>
+			        	
 	</select>
 	
 	<insert id="insert" parameterType="post">

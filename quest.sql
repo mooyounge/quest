@@ -193,3 +193,5 @@ select * from
             (select count(*) from quest_post_like where a.post_id = post_id and post_like='dislike') as post_dislike,
             a.* 
      from (select * from quest_post order by post_regdate desc) a ) b where post_like >= 1)  where rnum between 1 and 3 ;
+     
+select * from (select (select count(*) from quest_post_like where a.post_id = post_id and post_like='like') as post_like,a.* from quest_post a) where post_like >=2;
