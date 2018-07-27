@@ -151,9 +151,13 @@ create table quest_comment_like(
     comment_like_id number primary key,
     user_id varchar2(50) references quest_user(id),
     user_ip varchar2(30) not null,
-    comment_id number references quest_comment(comment_id),
+    comment_id number references quest_comment(comment_id) on delete cascade,
     comment_like varchar2(10) check(comment_like in('like','dislike'))
 );
+select *  from quest_comment_like;
+
+
+
 create sequence quest_comment_like_id;
 drop table quest_comment_like;
 
