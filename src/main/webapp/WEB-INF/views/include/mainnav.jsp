@@ -25,11 +25,11 @@
 <nav id="menu">
 	<ul class="links">
 		<li><a href="/">Main</a></li>
-		<li><a href="gameShop">GameShop</a></li>
+		<li><a href="#">GameShop</a></li>
 		<li><a href="/community">Community</a></li>
-		<li><a href="streaming">Streaming</a></li>
-		<li><a href="gameReviews">Game Reviews</a></li>
-		<li><a href="Support">Support</a></li>
+		<li><a href="/vod/main">Streaming</a></li>
+		<li><a href="#">Game Reviews</a></li>
+		<li><a href="#">Support</a></li>
 	</ul>
 	<ul class="actions vertical">
 		<li><c:choose>
