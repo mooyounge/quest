@@ -3,22 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="comment">
-	<select id="selectList" parameterType="int" resultType="comment">
+	<select id="selectList" parameterType="int" resultMap="commentMap">
 		select * from quest_comment where post_id = #{value}
 	</select>
+	
+	<resultMap type="comment" id="commentMap">
+		<id property="comment_id" column="comment_id"/>
+		<collection select="comment_like.getlikecount"
+		            column="comment_id"
+		            ofType="comment"
+		            property="comment_like"/>
+		<collection select="comment_like.getdislikecount"
+		            column="comment_id"
+		            ofType="comment"
+		            property="comment_dislike"/>
+	</resultMap>
+	
+	
 	<select id="getPassword" parameterType="int" resultType="String">
 		select password from quest_comment where comment_id = #{value}
 	</select>
 	<insert id="insert" parameterType="comment">
 		insert into quest_comment values(quest_comment_id.nextval,#{post_id},null,#{user_name},#{password},#{comment_content},sysdate)
 	</insert>
-	
-	<update id="plusLike" parameterType="comment_like">
-		update quest_comment set comment_like = comment_like+1 where comment_id = #{comment_id} 
-	</update>
-	<update id="plusdisLike" parameterType="comment_like">
-		update quest_comment set comment_dislike = commentt_dislike+1 where comment_id = #{comment_id} 
-	</update>
 	
 	<delete id="delete" parameterType="int">
 		delete from quest_comment where comment_id = #{value}

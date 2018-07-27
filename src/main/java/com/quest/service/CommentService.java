@@ -26,12 +26,10 @@ public class CommentService {
 
 	public void insertComment_like(Comment_like comment_like) {
 		commentDao.insertcomment_like(comment_like);
-		commentDao.plusLike(comment_like);
 	}
 
 	public void insertComment_dislike(Comment_like comment_like) {
 		commentDao.insertcomment_dislike(comment_like);
-		commentDao.plusdisLike(comment_like);
 	}
 
 	public String getPassword(int comment_id) {

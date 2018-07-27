@@ -362,7 +362,7 @@ public class CommunityController {
 	private Paging getPaging(int page) {
 		Paging paging = new Paging();
         paging.setPageNo(page);
-        paging.setPageSize(4);
+        paging.setPageSize(10);
         
         return paging;
 	}

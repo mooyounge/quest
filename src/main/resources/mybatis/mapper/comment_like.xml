@@ -26,6 +26,13 @@
 									<otherwise>#{user_id},</otherwise>
 									</choose>#{user_ip},#{comment_id},'dislike')
 	</insert>
+	
+	<select id="getlikecount" parameterType="int" resultType="int">
+		select count(*) from quest_comment_like where comment_id=#{value} and comment_like='like'
+	</select>
+	<select id="getdislikecount" parameterType="int" resultType="int">
+		select count(*) from quest_comment_like where comment_id=#{value} and comment_like='dislike'
+	</select>
 </mapper>
 
 
