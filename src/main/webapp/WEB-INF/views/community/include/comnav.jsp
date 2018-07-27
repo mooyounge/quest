@@ -34,7 +34,7 @@
 }
 
 .menubar {
-	z-index:9998;
+	z-index:999;
 	text-align: center;
 	margin-top: 10px;
 }

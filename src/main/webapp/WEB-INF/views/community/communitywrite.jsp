@@ -13,6 +13,14 @@
 #write-form textarea {
 	width: 99%;
 }
+.modal-dialog{
+	margin: 120px auto;
+	z-index:1050;
+}
+.modal-content{
+	margin: 120px auto;
+}
+
 </style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -119,7 +127,7 @@
 	<script>
 	function check(f){
 		var ipReg = /^[A-Za-z0-9ㄱ-힣\s]{2,40}$/;
-		var ipReg2 = /^[A-Za-z0-9ㄱ-힣<>/]{9,500}$/;
+		var ipReg2 = /^.{9,500}$/;
 		var titleval = $("#post_title").val();
 		var content = $("#post_content").val();
 		if(titleval == ""){
@@ -180,7 +188,7 @@
 		}
 		var idx = 0;
 		function addTag(){
-			var ipReg = /^[A-Za-z0-9가-힣]{1,10}$/;
+			var ipReg = /^[A-Za-z0-9가-힣\s]{1,10}$/;
 			var tagval = $("#tag-name").val();
 			if(tagval == ""){
 				alert("태그를 입력해 주세요");
