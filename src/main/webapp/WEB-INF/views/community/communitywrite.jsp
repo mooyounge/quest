@@ -148,7 +148,6 @@
 			}
 		});
 	
-	
 		$("#post_content").summernote({
 			height : 300,
 			focus : true,
@@ -159,7 +158,7 @@
 				}
 			}
 		});
-	
+		
 		function changeGameName(){
 			var genre = $("#genre").val();
 			
