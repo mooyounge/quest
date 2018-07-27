@@ -52,7 +52,7 @@
 			        			post_content like '%'||#{text}||'%')
 			        		</when>
 			        	</choose>
-			        </if> order by post_regdate desc )  a) b<if test="view_like!=null">where post_like >= 2</if>) where rnum between #{start} and #{end} 
+			        </if> order by post_regdate desc )  a) b<if test="view_like!=null">where post_like >= 1</if>) where rnum between #{start} and #{end} 
 	</select>
 	
 	<resultMap type="post" id="postListMap">
@@ -215,7 +215,7 @@
 			        	</choose>
 			        	</if>
 			        	
-			        	<if test="view_like!=null">and post_like >= 2</if>
+			        	<if test="view_like!=null">and post_like >= 1</if>
 			        	
 	</select>
 	

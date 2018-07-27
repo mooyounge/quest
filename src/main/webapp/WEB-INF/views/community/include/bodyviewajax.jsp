@@ -52,7 +52,7 @@
 </table>
 <div class="text-center">
 	<button class="btn btn-success col-sm-1"
-		onclick="location.href='/community?view_like=3'" style="height: 30px;">베스트</button>
+		onclick="best();" style="height: 30px;">베스트</button>
 	<div id="downnav" class="search actions" style="display: inline-block;">
 		<a class="btn btn-danger"
 			href="/community?name=info<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if><c:if test="${param.view_like!=null}">&view_like=${param.view_like}</c:if>">정보</a>
@@ -98,4 +98,8 @@
 			
 			location.href ="/community?option="+option+"&text="+text<c:if test="${param.game_abb!=null}">+"&game_abb=${param.game_abb}"</c:if><c:if test="${param.name!=null}">+"&name=${param.name}"</c:if><c:if test="${param.genre!=null}">+"&genre=${param.genre}"</c:if><c:if test="${param.view_like!=null}">+"&view_like=${param.view_like}"</c:if>;
 		}
-	</script>
+		
+		function best(){
+			location.href="/community?view_like=3"<c:if test="${param.genre!=null}">+"&genre=${param.genre}"</c:if><c:if test="${param.game_abb!=null}">+"&game_abb=${param.game_abb}"</c:if>
+		}
+</script>
