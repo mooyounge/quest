@@ -113,13 +113,20 @@ public class CommunityController {
 	@PostMapping("/postWrite")
 	public String postWritepost(@ModelAttribute @Valid Post post,BindingResult result,
 								@RequestParam(required=false) String game_abb,
-								@RequestParam(defaultValue="free") String name
+								@RequestParam(defaultValue="free") String name,
+								HttpServletRequest req
 								) {
 		if(result.hasErrors()) {
 			return "community/communitywrite";
 		}
+		User user = (User) req.getSession().getAttribute("user");
+		post.setUser_id(user.getId());
 		
-		postService.insert(post,name);
+		Map<String, Object> map = new HashMap<>();
+		map.put("post", post);
+		map.put("name", name);
+		
+		postService.insert(map);
 		
 		if(game_abb != null) {
 			return "redirect:/community?game_abb="+game_abb;
@@ -305,6 +312,7 @@ public class CommunityController {
 						@RequestParam(required=false) String genre,
 						@RequestParam(required=false) String view_like) {
 		Post post = postService.getPost(id);
+		
 		model.addAttribute("post",post);
 		
 		//사전작업
@@ -335,24 +343,17 @@ public class CommunityController {
 			@RequestParam(defaultValue="1") int page,
 			@RequestParam(defaultValue="all") String game_abb,
 			@RequestParam(defaultValue="all") String name,
-			@RequestParam(required=false) String genre) {
+			@RequestParam(required=false) String genre,
+			@RequestParam(required=false) String view_like
+			) {
 		
 		Map<String,Object> returnmap = new HashMap<String,Object>();
 		Paging paging = getPaging(page);
 		
-		List<Post> postList = null;
-        //game_abb가 없으면 전체 리스트 불러오기
-		Map<String,Object> map = getSearchMap(paging);
-		map.put("option", option);
-		map.put("text", text);
-		map.put("game_abb", game_abb);
-		map.put("name",name);
-		map.put("genre",genre);
-		
-		postList = postService.getList(map);
+		//사전작업
+		Map map = before(option, text, page, game_abb, name, genre,view_like);
+		returnmap.put("map",map);
         //요기까지
-
-		returnmap.put("postList", postList);
 		returnmap.put("page", page);
 		return returnmap;
 	}

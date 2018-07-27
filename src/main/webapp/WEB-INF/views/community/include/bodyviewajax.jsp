@@ -42,8 +42,8 @@
 			<tr>
 				<td>${status.count}</td>
 				<td><a
-					href="/community/view?id=${post.post_id}&page=${param.page}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if><c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.name!=null}">&name=${param.name}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">${post.post_title}</a></td>
-				<td>${post.user_id}</td>
+					href="/community/view?id=${post.post_id}&page=${param.page}<c:if test="${param.option != null && param.text != null}" >&option=${param.option}&text=${param.text}</c:if><c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.name!=null}">&name=${param.name}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if><c:if test="${param.view_like!=null}">&view_like=${param.view_like}</c:if>">${post.post_title}</a></td>
+				<td>${post.nicname}</td>
 				<td>${post.post_regdate}</td>
 				<td>${post.post_lookup}</td>
 			</tr>
@@ -52,12 +52,12 @@
 </table>
 <div class="text-center">
 	<button class="btn btn-success col-sm-1"
-		onclick="location.href='/community?view_like=9999'" style="height: 30px;">베스트</button>
+		onclick="location.href='/community?view_like=3'" style="height: 30px;">베스트</button>
 	<div id="downnav" class="search actions" style="display: inline-block;">
 		<a class="btn btn-danger"
-			href="/community?name=info<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">정보</a>
+			href="/community?name=info<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if><c:if test="${param.view_like!=null}">&view_like=${param.view_like}</c:if>">정보</a>
 		<a class="btn btn-danger"
-			href="/community?name=free<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>">자유</a>
+			href="/community?name=free<c:if test="${param.game_abb!=null}">&game_abb=${param.game_abb}</c:if><c:if test="${param.genre!=null}">&genre=${param.genre}</c:if><c:if test="${param.view_like!=null}">&view_like=${param.view_like}</c:if>">자유</a>
 		<select id="search_option">
 			<option value="all" selected="selected">전체</option>
 			<option value="title">제목</option>
@@ -96,6 +96,6 @@
 				return;
 			}
 			
-			location.href ="/community?option="+option+"&text="+text<c:if test="${param.game_abb!=null}">+"&game_abb=${param.game_abb}"</c:if><c:if test="${param.name!=null}">+"&name=${param.name}"</c:if><c:if test="${param.genre!=null}">+"&genre=${param.genre}"</c:if>;
+			location.href ="/community?option="+option+"&text="+text<c:if test="${param.game_abb!=null}">+"&game_abb=${param.game_abb}"</c:if><c:if test="${param.name!=null}">+"&name=${param.name}"</c:if><c:if test="${param.genre!=null}">+"&genre=${param.genre}"</c:if><c:if test="${param.view_like!=null}">+"&view_like=${param.view_like}"</c:if>;
 		}
 	</script>

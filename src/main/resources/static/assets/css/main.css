@@ -2676,7 +2676,7 @@
 		position: fixed;
 		top: 0;
 		width: 100%;
-		z-index: 10001;
+		z-index: 1041;
 		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.075);
 		text-align: center;
 	}

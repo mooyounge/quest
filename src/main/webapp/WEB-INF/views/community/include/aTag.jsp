@@ -19,3 +19,8 @@
 <c:if test="${param.genre!=null}">&genre=${param.genre}</c:if>
 <!-- 장르조건 js -->
 <c:if test="${param.genre!=null}">+"&genre=${param.genre}"</c:if>
+
+<!--  페이지 BEST글 -->
+<c:if test="${param.view_like!=null}">&view_like=${param.view_like}</c:if>
+<!-- 페이지 BEST글 js -->
+<c:if test="${param.view_like!=null}">+"&view_like=${param.view_like}"</c:if>

@@ -11,8 +11,6 @@ public interface PostService {
 	
 	List<Post> getList(String option, String text, Paging paging, String game_abb);
 
-	void insert(Post post, String name);
-
 	Post getPost(int id);
 	
 	int getSize(String option, String text, String game_abb);
@@ -32,6 +30,8 @@ public interface PostService {
 	List<Post> getList(Map<String, Object> map);
 
 	int getSize(Map<String, Object> map);
+
+	void insert(Map<String, Object> map);
 
 
 }

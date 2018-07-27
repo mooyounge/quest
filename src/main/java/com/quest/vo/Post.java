@@ -14,6 +14,7 @@ public class Post {
 	private int post_id;
 	private int board_id;
 	private String user_id;
+	private String nicname;
 	
 	@Size(min=3,max=15,message="3~15글자 이내로 작성해 주세요.")
 	private String post_title;
@@ -108,6 +109,12 @@ public class Post {
 	}
 	public void setTagList(List<Tag> tagList) {
 		this.tagList = tagList;
+	}
+	public String getNicname() {
+		return nicname;
+	}
+	public void setNicname(String nicname) {
+		this.nicname = nicname;
 	}
 	
 	

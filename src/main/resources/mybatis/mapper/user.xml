@@ -7,6 +7,10 @@
 	<select id="getOne" parameterType="String" resultType="user">
 		select * from quest_user where id=#{value}
 	</select>
+	
+	<select id="getnicname" parameterType="String" resultType="String">
+		select nicname from quest_user where id=#{value}
+	</select>
 
 	<insert id="signup" parameterType="user">
 		insert into quest_user values(#{id},#{password},#{nicname},null,null)

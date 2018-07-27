@@ -9,14 +9,9 @@ public class User {
 	@Pattern(regexp="[A-Za-z0-9]{4,15}", 
 			 message="아이디는 영대소문자 및 숫자만 가능, 길이:4~15글자")
 	private String password;
-	private String number;
 	@Pattern(regexp="[A-Za-z0-9가-힣]{2,30}", 
 			 message="닉네임은 한글, 영대소문자 및 숫자만 가능, 길이:2~30글자")
 	private String nicname;
-	private String email;
-	private int phoneNumber;
-	private String name;
-	private String birth;
 	private int ban_confirm;
 	private String ban_time;
 	
@@ -32,42 +27,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getNumber() {
-		return number;
-	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
-	public String getNicname() {
-		return nicname;
-	}
-	public void setNicname(String nicname) {
-		this.nicname = nicname;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public int getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getBirth() {
-		return birth;
-	}
-	public void setBirth(String birth) {
-		this.birth = birth;
-	}
 	public int getBan_confirm() {
 		return ban_confirm;
 	}
@@ -79,6 +38,12 @@ public class User {
 	}
 	public void setBan_time(String ban_time) {
 		this.ban_time = ban_time;
+	}
+	public String getNicname() {
+		return nicname;
+	}
+	public void setNicname(String nicname) {
+		this.nicname = nicname;
 	}
 	
 	
