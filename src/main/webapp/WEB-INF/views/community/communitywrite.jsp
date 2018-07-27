@@ -118,8 +118,8 @@
 		src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/lang/summernote-ko-KR.min.js"></script>
 	<script>
 	function check(f){
-		var ipReg = /^[A-Za-z0-9ㄱ-힣]{2,40}$/;
-		var ipReg2 = /^[A-Za-z0-9ㄱ-힣<>/]{9,500}$/;
+		var ipReg = /^[A-Za-z0-9ㄱ-힣<>/]{2,40}$/g;
+		var ipReg2 = /^[A-Za-z0-9ㄱ-힣<>/]{9,500}$/g;
 		var titleval = $("#post_title").val();
 		var content = $("#post_content").val();
 		if(titleval == ""){

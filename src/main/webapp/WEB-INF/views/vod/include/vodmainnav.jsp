@@ -17,5 +17,5 @@
 
 
 <div class="menuright col-sm-1">
-	<a href="#"><img src="/images/vod+.png" alt="" style="width:50px;"/></a>
+	<a href="/vod/upload"><img src="/images/vod+.png" alt="" style="width:50px;"/></a>
 </div>
