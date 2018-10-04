@@ -100,6 +100,6 @@
 		}
 		
 		function best(){
-			location.href="/community?view_like=3"<c:if test="${param.genre!=null}">+"&genre=${param.genre}"</c:if><c:if test="${param.game_abb!=null}">+"&game_abb=${param.game_abb}"</c:if>
+			location.href="/community?view_like=3"<c:if test="${param.genre!=null}">+"&genre=${param.genre}"</c:if><c:if test="${param.game_abb!=null}">+"&game_abb=${param.game_abb}"</c:if><c:if test="${param.name!=null}">+"&name=${param.name}"</c:if>
 		}
 </script>
