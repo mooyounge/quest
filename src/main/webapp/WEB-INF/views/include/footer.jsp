@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<style>
+	div>ul>li>a>span{
+		color:#bb5d00;
+	}
+	div>ul>li>span{
+		color:#bb5d00;
+	}
+</style>
+	
 <div class="inner">
 	<h2>Quest info</h2>
 	<ul class="actions">

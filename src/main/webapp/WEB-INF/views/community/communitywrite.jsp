@@ -140,7 +140,7 @@
 			alert("내용을 입력해 주세요");
 			$("#post_content").focus();
 		}else if(!ipReg2.test(content)){
-			alert("내용은 영어, 숫자로 2~500글자 한글로 1~250글자여야 합니다.");
+			alert("2~500글자 한글은 1~250글자여야 합니다.");
 			console.log(content);
 			$("#post_content").focus();
 		}else{
